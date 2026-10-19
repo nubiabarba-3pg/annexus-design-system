@@ -363,9 +363,9 @@ The Athene Income Wellness Annuity Calculator frontend application needs to be b
 |-----------|------|--------------|
 | Requirements Complete | 2026-10-12 | `docs/requirements.md` (this document) |
 | Architecture Complete | 2026-10-12 | `docs/architecture/` |
-| P0 Components (8) + Stories + Figma pages | 2026-10-14 | Button, Input, Toggle, Slider, Dropdown/Nav, Modal, Tooltip, Badge, Icons, Logo |
-| P1 Components (9) + Stories + Figma pages | 2026-10-15 | Footer, Header Section, Legend, Add-on Row, Help Icon, Group Item, Frequency Selector, Age Tag, Button Group, Row, Adjust Inflation Rate |
-| P2 Components (8) + Stories + Figma pages | 2026-10-16 | Chart, Graph Container, Top Summary, Bottom Summary, Premium, Animated Values |
+| P0 Components (10) + Stories + Figma pages | 2026-10-14 | Button, Input, Toggle, Slider, Dropdown/Nav, Modal, Tooltip, Badge, Icons, Logo |
+| P1 Components (11) + Stories + Figma pages | 2026-10-15 | Footer, Header Section, Legend, Add-on Row, Help Icon, Group Item, Frequency Selector, Age Tag, Button Group, Row, Adjust Inflation Rate |
+| P2 Components (6) + Stories + Figma pages | 2026-10-16 | Chart, Graph Container, Top Summary, Bottom Summary, Premium, Animated Values |
 | Visual regression baseline approved | 2026-10-16 | All Chromatic/Percy snapshots approved |
 | Package published | 2026-10-16 | npm package live and installable |
 | Hard Deadline | 2026-10-16 | All deliverables complete |

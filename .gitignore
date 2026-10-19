@@ -10,3 +10,7 @@ SPEC/workflows/
 .claude/skills/
 .claude/claude.md
 # === end AIRE SDLC Agentic Framework ===
+docs/plans/.parallel/
+node_modules
+dist/
+.DS_Store
