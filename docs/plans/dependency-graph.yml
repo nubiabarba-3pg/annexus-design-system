@@ -1,0 +1,710 @@
+version: 1
+generated_by: AIRE_PRODUCT_OWNER
+generated_at: 2026-10-12
+
+team_size: 2
+# Asked during plan workflow. Used as story-granularity hint: each wave should contain
+# at least team_size independent stories where architecture allows.
+
+shared_files:
+  # These files already exist from CYCLE-1 (repo scaffold).
+  # Wave-1 stories all add their exports to src/index.ts — safe 3-way text merge.
+  - src/index.ts
+  - package.json
+  - tsconfig.json
+  - vite.config.ts
+  - vitest.config.ts
+  - .gitignore
+  - .storybook/main.ts
+
+stories:
+  - id: 1.1
+    title: Button component
+    epic: 1
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    enables: [2.4]
+    files_touched:
+      - src/components/Button/Button.tsx
+      - src/components/Button/Button.types.ts
+      - src/components/Button/Button.scss
+      - src/components/Button/Button.stories.tsx
+      - src/components/Button/Button.test.tsx
+      - src/components/Button/index.ts
+      - src/index.ts
+
+  - id: 1.2
+    title: Input component
+    epic: 1
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    enables: [2.4]
+    files_touched:
+      - src/components/Input/Input.tsx
+      - src/components/Input/Input.types.ts
+      - src/components/Input/Input.scss
+      - src/components/Input/Input.stories.tsx
+      - src/components/Input/Input.test.tsx
+      - src/components/Input/index.ts
+      - src/index.ts
+
+  - id: 1.3
+    title: Toggle component
+    epic: 1
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    enables: []
+    files_touched:
+      - src/components/Toggle/Toggle.tsx
+      - src/components/Toggle/Toggle.types.ts
+      - src/components/Toggle/Toggle.scss
+      - src/components/Toggle/Toggle.stories.tsx
+      - src/components/Toggle/Toggle.test.tsx
+      - src/components/Toggle/index.ts
+      - src/index.ts
+
+  - id: 1.4
+    title: Badge component
+    epic: 1
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    enables: []
+    files_touched:
+      - src/components/Badge/Badge.tsx
+      - src/components/Badge/Badge.types.ts
+      - src/components/Badge/Badge.scss
+      - src/components/Badge/Badge.stories.tsx
+      - src/components/Badge/Badge.test.tsx
+      - src/components/Badge/index.ts
+      - src/index.ts
+
+  - id: 1.5
+    title: Icon component (check-circle, chevron-down, winLose SVG React components)
+    epic: 1
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    enables: [2.3]
+    files_touched:
+      - src/components/Icon/CheckCircle.tsx
+      - src/components/Icon/ChevronDown.tsx
+      - src/components/Icon/WinLose.tsx
+      - src/components/Icon/Icon.types.ts
+      - src/components/Icon/Icon.stories.tsx
+      - src/components/Icon/Icon.test.tsx
+      - src/components/Icon/index.ts
+      - src/index.ts
+
+  - id: 1.6
+    title: Athene Logo SVG component
+    epic: 1
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    enables: []
+    files_touched:
+      - src/components/Logo/Logo.tsx
+      - src/components/Logo/Logo.types.ts
+      - src/components/Logo/Logo.stories.tsx
+      - src/components/Logo/Logo.test.tsx
+      - src/components/Logo/index.ts
+      - src/index.ts
+
+  - id: 2.1
+    title: Slider component (with ControlHandle + NumberStrip sub-elements)
+    epic: 2
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    # Slider's sub-elements (ControlHandle, NumberStrip) are implemented
+    # within this story — no external component imports from wave-1 stories.
+    enables: []
+    files_touched:
+      - src/components/Slider/Slider.tsx
+      - src/components/Slider/Slider.types.ts
+      - src/components/Slider/Slider.scss
+      - src/components/Slider/Slider.stories.tsx
+      - src/components/Slider/Slider.test.tsx
+      - src/components/Slider/ControlHandle.tsx
+      - src/components/Slider/NumberStrip.tsx
+      - src/components/Slider/index.ts
+      - src/hooks/useSlider.ts
+      - src/index.ts
+
+  - id: 2.2
+    title: Tooltip component
+    epic: 2
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 1
+    requires: []
+    # Tooltip accepts trigger element as children — does not import Icon or any atom.
+    enables: []
+    files_touched:
+      - src/components/Tooltip/Tooltip.tsx
+      - src/components/Tooltip/Tooltip.types.ts
+      - src/components/Tooltip/Tooltip.scss
+      - src/components/Tooltip/Tooltip.stories.tsx
+      - src/components/Tooltip/Tooltip.test.tsx
+      - src/components/Tooltip/index.ts
+      - src/hooks/useTooltip.ts
+      - src/index.ts
+
+  - id: 2.3
+    title: Dropdown / Header Navigation component
+    epic: 2
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 2
+    requires: [1.5]
+    # Dropdown imports ChevronDown icon from src/components/Icon/ for the
+    # open/close indicator. Icon (1.5) must be merged first.
+    enables: []
+    files_touched:
+      - src/components/Dropdown/Dropdown.tsx
+      - src/components/Dropdown/Dropdown.types.ts
+      - src/components/Dropdown/Dropdown.scss
+      - src/components/Dropdown/Dropdown.stories.tsx
+      - src/components/Dropdown/Dropdown.test.tsx
+      - src/components/Dropdown/index.ts
+      - src/index.ts
+
+  - id: 2.4
+    title: Modal component (Input state + Add Benefits state)
+    epic: 2
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 2
+    requires: [1.1, 1.2]
+    # Modal's pre-built states (Input state, Add Benefits state) compose
+    # Button (close/action) and Input (form fields) — both must be merged first.
+    enables: []
+    files_touched:
+      - src/components/Modal/Modal.tsx
+      - src/components/Modal/Modal.types.ts
+      - src/components/Modal/Modal.scss
+      - src/components/Modal/Modal.stories.tsx
+      - src/components/Modal/Modal.test.tsx
+      - src/components/Modal/index.ts
+      - src/hooks/useFocusTrap.ts
+      - src/index.ts
+
+  # ── EPIC 3: CYCLE-1 Foundation ──────────────────────────────────────────────
+
+  - id: 3.1
+    title: Repo scaffold
+    epic: 3
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 3
+    requires: []
+    enables: [3.2, 3.3, 3.4, 3.5, 3.6]
+    files_touched:
+      - package.json
+      - tsconfig.json
+      - vite.config.ts
+      - .npmrc
+      - .prettierrc
+      - .eslintrc.cjs
+      - pnpm-workspace.yaml
+
+  - id: 3.2
+    title: SCSS design tokens
+    epic: 3
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 4
+    requires: [3.1]
+    enables: [3.6]
+    files_touched:
+      - src/tokens/_colors.scss
+      - src/tokens/_typography.scss
+      - src/tokens/_spacing.scss
+      - src/tokens/_shadows.scss
+      - src/tokens/index.scss
+
+  - id: 3.3
+    title: Storybook 8.x setup
+    epic: 3
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 4
+    requires: [3.1]
+    enables: [3.6]
+    files_touched:
+      - .storybook/main.ts
+      - .storybook/preview.ts
+
+  - id: 3.4
+    title: Vitest + RTL setup
+    epic: 3
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 4
+    requires: [3.1]
+    enables: [3.6]
+    files_touched:
+      - vitest.config.ts
+      - src/test/setup.ts
+
+  - id: 3.5
+    title: Shared utilities and types
+    epic: 3
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 4
+    requires: [3.1]
+    enables: [3.6]
+    files_touched:
+      - src/utils/classNames.ts
+      - src/utils/devWarning.ts
+      - src/types/common.types.ts
+      - src/index.ts
+
+  - id: 3.6
+    title: CI/CD pipeline
+    epic: 3
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 5
+    requires: [3.1, 3.2, 3.3, 3.4, 3.5]
+    enables: []
+    files_touched:
+      - .github/workflows/ci.yml
+      - .github/workflows/publish.yml
+      - README.md
+
+  # ── EPIC 4: CYCLE-3 P1 Composition ──────────────────────────────────────────
+
+  - id: 4.1
+    title: Footer component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Button (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/Footer/Footer.tsx
+      - src/components/Footer/Footer.types.ts
+      - src/components/Footer/Footer.scss
+      - src/components/Footer/Footer.stories.tsx
+      - src/components/Footer/Footer.test.tsx
+      - src/components/Footer/index.ts
+      - src/index.ts
+
+  - id: 4.2
+    title: HeaderSection component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Dropdown/Nav + Logo (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/HeaderSection/HeaderSection.tsx
+      - src/components/HeaderSection/HeaderSection.types.ts
+      - src/components/HeaderSection/HeaderSection.scss
+      - src/components/HeaderSection/HeaderSection.stories.tsx
+      - src/components/HeaderSection/HeaderSection.test.tsx
+      - src/components/HeaderSection/index.ts
+      - src/index.ts
+
+  - id: 4.3
+    title: Legend component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    enables: []
+    files_touched:
+      - src/components/Legend/Legend.tsx
+      - src/components/Legend/Legend.types.ts
+      - src/components/Legend/Legend.scss
+      - src/components/Legend/Legend.stories.tsx
+      - src/components/Legend/Legend.test.tsx
+      - src/components/Legend/index.ts
+      - src/index.ts
+
+  - id: 4.4
+    title: AddonRow component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Badge (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/AddonRow/AddonRow.tsx
+      - src/components/AddonRow/AddonRow.types.ts
+      - src/components/AddonRow/AddonRow.scss
+      - src/components/AddonRow/AddonRow.stories.tsx
+      - src/components/AddonRow/AddonRow.test.tsx
+      - src/components/AddonRow/index.ts
+      - src/index.ts
+
+  - id: 4.5
+    title: HelpIcon component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Tooltip + Icon (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/HelpIcon/HelpIcon.tsx
+      - src/components/HelpIcon/HelpIcon.types.ts
+      - src/components/HelpIcon/HelpIcon.scss
+      - src/components/HelpIcon/HelpIcon.stories.tsx
+      - src/components/HelpIcon/HelpIcon.test.tsx
+      - src/components/HelpIcon/index.ts
+      - src/index.ts
+
+  - id: 4.6
+    title: GroupItem component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    enables: []
+    files_touched:
+      - src/components/GroupItem/GroupItem.tsx
+      - src/components/GroupItem/GroupItem.types.ts
+      - src/components/GroupItem/GroupItem.scss
+      - src/components/GroupItem/GroupItem.stories.tsx
+      - src/components/GroupItem/GroupItem.test.tsx
+      - src/components/GroupItem/index.ts
+      - src/index.ts
+
+  - id: 4.7
+    title: FrequencySelector component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Toggle (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/FrequencySelector/FrequencySelector.tsx
+      - src/components/FrequencySelector/FrequencySelector.types.ts
+      - src/components/FrequencySelector/FrequencySelector.scss
+      - src/components/FrequencySelector/FrequencySelector.stories.tsx
+      - src/components/FrequencySelector/FrequencySelector.test.tsx
+      - src/components/FrequencySelector/index.ts
+      - src/index.ts
+
+  - id: 4.8
+    title: AgeTag component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    enables: []
+    files_touched:
+      - src/components/AgeTag/AgeTag.tsx
+      - src/components/AgeTag/AgeTag.types.ts
+      - src/components/AgeTag/AgeTag.scss
+      - src/components/AgeTag/AgeTag.stories.tsx
+      - src/components/AgeTag/AgeTag.test.tsx
+      - src/components/AgeTag/index.ts
+      - src/index.ts
+
+  - id: 4.9
+    title: ButtonGroup component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Button (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/ButtonGroup/ButtonGroup.tsx
+      - src/components/ButtonGroup/ButtonGroup.types.ts
+      - src/components/ButtonGroup/ButtonGroup.scss
+      - src/components/ButtonGroup/ButtonGroup.stories.tsx
+      - src/components/ButtonGroup/ButtonGroup.test.tsx
+      - src/components/ButtonGroup/index.ts
+      - src/index.ts
+
+  - id: 4.10
+    title: Row component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Badge (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/Row/Row.tsx
+      - src/components/Row/Row.types.ts
+      - src/components/Row/Row.scss
+      - src/components/Row/Row.stories.tsx
+      - src/components/Row/Row.test.tsx
+      - src/components/Row/index.ts
+      - src/index.ts
+
+  - id: 4.11
+    title: AdjustInflationRate component
+    epic: 4
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 6
+    requires: []
+    # Composes Slider + Input (P0) — merged before CYCLE-3 starts
+    enables: []
+    files_touched:
+      - src/components/AdjustInflationRate/AdjustInflationRate.tsx
+      - src/components/AdjustInflationRate/AdjustInflationRate.types.ts
+      - src/components/AdjustInflationRate/AdjustInflationRate.scss
+      - src/components/AdjustInflationRate/AdjustInflationRate.stories.tsx
+      - src/components/AdjustInflationRate/AdjustInflationRate.test.tsx
+      - src/components/AdjustInflationRate/index.ts
+      - src/index.ts
+
+  # ── EPIC 5: CYCLE-4 P2 Complex ───────────────────────────────────────────────
+
+  - id: 5.1
+    title: Chart/Bar component
+    epic: 5
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 7
+    requires: []
+    enables: [5.2]
+    files_touched:
+      - src/components/ChartBar/ChartBar.tsx
+      - src/components/ChartBar/ChartBar.types.ts
+      - src/components/ChartBar/ChartBar.scss
+      - src/components/ChartBar/ChartBar.stories.tsx
+      - src/components/ChartBar/ChartBar.test.tsx
+      - src/components/ChartBar/index.ts
+      - src/index.ts
+
+  - id: 5.2
+    title: GraphContainer component
+    epic: 5
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 8
+    requires: [5.1]
+    # GraphContainer composes ChartBar — must be merged first
+    enables: [5.7]
+    files_touched:
+      - src/components/GraphContainer/GraphContainer.tsx
+      - src/components/GraphContainer/GraphContainer.types.ts
+      - src/components/GraphContainer/GraphContainer.scss
+      - src/components/GraphContainer/GraphContainer.stories.tsx
+      - src/components/GraphContainer/GraphContainer.test.tsx
+      - src/components/GraphContainer/index.ts
+      - src/index.ts
+
+  - id: 5.3
+    title: TopSummary component
+    epic: 5
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 7
+    requires: []
+    enables: [5.7]
+    files_touched:
+      - src/components/TopSummary/TopSummary.tsx
+      - src/components/TopSummary/TopSummary.types.ts
+      - src/components/TopSummary/TopSummary.scss
+      - src/components/TopSummary/TopSummary.stories.tsx
+      - src/components/TopSummary/TopSummary.test.tsx
+      - src/components/TopSummary/index.ts
+      - src/index.ts
+
+  - id: 5.4
+    title: BottomSummary component
+    epic: 5
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 7
+    requires: []
+    enables: [5.7]
+    files_touched:
+      - src/components/BottomSummary/BottomSummary.tsx
+      - src/components/BottomSummary/BottomSummary.types.ts
+      - src/components/BottomSummary/BottomSummary.scss
+      - src/components/BottomSummary/BottomSummary.stories.tsx
+      - src/components/BottomSummary/BottomSummary.test.tsx
+      - src/components/BottomSummary/index.ts
+      - src/index.ts
+
+  - id: 5.5
+    title: Premium component
+    epic: 5
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 7
+    requires: []
+    # Composes Button + Input (P0) in Edit mode — merged before CYCLE-4 starts
+    enables: [5.7]
+    files_touched:
+      - src/components/Premium/Premium.tsx
+      - src/components/Premium/Premium.types.ts
+      - src/components/Premium/Premium.scss
+      - src/components/Premium/Premium.stories.tsx
+      - src/components/Premium/Premium.test.tsx
+      - src/components/Premium/index.ts
+      - src/index.ts
+
+  - id: 5.6
+    title: AnimatedValues component
+    epic: 5
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 7
+    requires: []
+    enables: [5.7]
+    files_touched:
+      - src/components/AnimatedValues/AnimatedValues.tsx
+      - src/components/AnimatedValues/AnimatedValues.types.ts
+      - src/components/AnimatedValues/AnimatedValues.scss
+      - src/components/AnimatedValues/AnimatedValues.stories.tsx
+      - src/components/AnimatedValues/AnimatedValues.test.tsx
+      - src/components/AnimatedValues/index.ts
+      - src/index.ts
+
+  - id: 5.7
+    title: v1.0 Release
+    epic: 5
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 9
+    requires: [5.1, 5.2, 5.3, 5.4, 5.5, 5.6]
+    # Release gates on all 27 components complete and Chromatic approved
+    enables: []
+    files_touched:
+      - README.md
+      - CHANGELOG.md
+      - package.json
+
+waves:
+  - wave: 1
+    stories: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2]
+    assignments:
+      # Round-robin by complexity depth. Advisory — devs may swap before starting.
+      - dev: 1
+        stories: [1.1, 1.3, 1.5, 2.1]
+      - dev: 2
+        stories: [1.2, 1.4, 1.6, 2.2]
+
+  - wave: 2
+    stories: [2.3, 2.4]
+    assignments:
+      - dev: 1
+        stories: [2.3]
+      - dev: 2
+        stories: [2.4]
+
+  # ── CYCLE-1 Foundation waves ─────────────────────────────────────────────────
+
+  - wave: 3
+    stories: [3.1]
+    assignments:
+      - dev: 1
+        stories: [3.1]
+      # Dev 2 unblocked after 3.1 merges — picks up wave 4
+
+  - wave: 4
+    stories: [3.2, 3.3, 3.4, 3.5]
+    assignments:
+      - dev: 1
+        stories: [3.2, 3.3]
+      - dev: 2
+        stories: [3.4, 3.5]
+
+  - wave: 5
+    stories: [3.6]
+    assignments:
+      - dev: 1
+        stories: [3.6]
+
+  # ── CYCLE-3 P1 Composition wave ──────────────────────────────────────────────
+
+  - wave: 6
+    stories: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
+    assignments:
+      - dev: 1
+        stories: [4.1, 4.3, 4.5, 4.7, 4.9, 4.11]
+      - dev: 2
+        stories: [4.2, 4.4, 4.6, 4.8, 4.10]
+
+  # ── CYCLE-4 P2 Complex waves ─────────────────────────────────────────────────
+
+  - wave: 7
+    stories: [5.1, 5.3, 5.4, 5.5, 5.6]
+    assignments:
+      - dev: 1
+        stories: [5.1, 5.3, 5.5]
+      - dev: 2
+        stories: [5.4, 5.6]
+
+  - wave: 8
+    stories: [5.2]
+    assignments:
+      - dev: 1
+        stories: [5.2]
+
+  - wave: 9
+    stories: [5.7]
+    assignments:
+      - dev: 1
+        stories: [5.7]
