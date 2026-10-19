@@ -1,7 +1,7 @@
 # Project Status
 
 **Last Updated**: 2026-10-19
-**Updated By**: DEV
+**Updated By**: QA
 **Overall Status**: 🟢 ON TRACK
 
 ---
@@ -26,12 +26,31 @@
 | Build Cycles | ✅ Done | BUILD_CYCLE_PLANNER | 2026-10-12 | `docs/plans/builds/` | 2026-10-12 11:30 |
 | UI/UX Design | ✅ Done | UI_UX_DESIGNER | 2026-10-12 | `docs/ui-ux/ui-ux-spec.md` | 2026-10-12 12:00 |
 | Implementation Plan | ✅ Done | PRODUCT_OWNER | 2026-10-13 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
-| Review | 🟡 In Progress | REVIEWER | 2026-10-19 | `docs/reviews/story-3.1-code-review-v1.md` | 2026-10-19 10:00 |
-| QA | ⏸️ Not Started | — | — | — | 2026-10-12 00:00 |
+| Review | ✅ Done | REVIEWER | 2026-10-19 | `docs/reviews/story-3.1-code-review-v1.md` | 2026-10-19 10:00 |
+| QA | ✅ Done | QA | 2026-10-19 | `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-19 14:30 |
 
 ---
 
 ## Current Step Details
+
+### QA — Story 3.1
+
+**Owner**: QA
+**Status**: ✅ Done
+**Started**: 2026-10-19
+**Completed**: 2026-10-19
+
+**Progress**:
+- [x] Test plan created for Story 3.1 (Repo Scaffold) ✅
+  - Evidence: `docs/testing/test-plan-story-3.1.md`
+  - 22 test cases across 4 priority levels (6 Critical, 5 High, 6 Medium, 5 Low)
+- [x] Validation executed — 22/22 PASS, 0 failures, 0 bugs ✅
+  - Evidence: `docs/testing/validation-report-story-3.1-2026-10-19.md`
+  - All 19 acceptance criteria verified with live terminal output
+  - All quality gates passed (install, build, typecheck, lint, regression pipeline)
+  - Story 3.1 SIGNED OFF — CYCLE-1 stories 3.2–3.6 unblocked
+
+---
 
 ### Review / Remediation — Story 3.1
 
@@ -163,12 +182,20 @@
 - [x] **Remediation — Story 3.1** — ✅ Resolved — 2026-10-19
   - Fixed ISS-001: `src/styles.scss` comment; ISS-002: removed dead `react-refresh` plugin
   - `pnpm lint` exits 0 after changes
+- [x] **QA Validation — Story 3.1** — ✅ PASS — 2026-10-19
+  - Evidence: `docs/testing/validation-report-story-3.1-2026-10-19.md`
+  - 22/22 test cases passed; 0 failures; 0 bugs; all 19 ACs verified
+  - Story 3.1 SIGNED OFF — CYCLE-1 stories 3.2–3.6 unblocked
+- [x] **QA Regression — Story 3.1** — ✅ NO REGRESSIONS — 2026-10-19
+  - Evidence: `docs/testing/regression-report-2026-10-19.md`
+  - 22/22 pass; 0 new failures; 0 flaky tests; identical file sizes to baseline
 
 ---
 
 ## Upcoming
 
-1. **Build CYCLE-1 Wave 4** — `aire-dev-implement 3.2` / `3.3` / `3.4` / `3.5` in parallel (all unblocked by 3.1) → then Wave 5: 3.6 CI/CD
+1. ~~**QA Story 3.1**~~ — ✅ Complete (22/22 PASS, signed off 2026-10-19)
+2. **Build CYCLE-1 Wave 4** — `aire-dev-implement 3.2` / `3.3` / `3.4` / `3.5` in parallel (all unblocked by 3.1) → then Wave 5: 3.6 CI/CD
 3. **Build CYCLE-2 (Sprint 2)** — run `aire-dev-implement 1.1` (Wave 1: 8 stories in parallel) → Wave 2: [2.3, 2.4]
 4. **Build CYCLE-3 (Sprint 3)** — run Wave 6: all 11 stories in parallel (all independent)
 5. **Build CYCLE-4 (Sprint 4)** — Wave 7: [5.1, 5.3, 5.4, 5.5, 5.6] parallel → Wave 8: 5.2 GraphContainer → Wave 9: 5.7 v1.0 Release
@@ -210,5 +237,5 @@
 | BUILD_CYCLE_PLANNER | Build cycles complete — 4 cycles, docs/plans/builds/ | Idle | 2026-10-12 | 2026-10-12 11:30 |
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
 | DEV | Remediated story 3.1 (story-3.1-code-review-v1.md) — ISS-001 + ISS-002 fixed | Idle | 2026-10-19 | 2026-10-19 10:30 |
-| REVIEWER | Reviewed story 3.1 — ⚠️ APPROVED WITH COMMENTS | Active | 2026-10-19 | 2026-10-19 10:00 |
-| QA | — | Standby | — | 2026-10-12 00:00 |
+| REVIEWER | Reviewed story 3.1 — ⚠️ APPROVED WITH COMMENTS | Idle | 2026-10-19 | 2026-10-19 10:00 |
+| QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
