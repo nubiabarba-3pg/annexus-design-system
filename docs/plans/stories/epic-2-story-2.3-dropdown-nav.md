@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-2-story-2.3-dropdown-nav.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23659 | **Epic**: 2 - P0 COMPLEX & OVERLAY COMPONENTS | **ID**: 2.3 | **Date**: 2026-10-12
-**Wave**: 2
-**Requires**: [1.5]
+**Wave**: 5
+**Requires**: [1.5, 3.6]
 **Enables**: []
 **Files Touched**:
   - src/components/Dropdown/Dropdown.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** the Dropdown trigger button shows a `ChevronDown` icon that rotates 180° when open; the dropdown menu panel opens below the trigger on click or Enter; Arrow Down/Up navigate through menu items; Escape closes the menu and returns focus to the trigger; Tab away also closes the menu. **Mechanism:** `Dropdown` renders a `<div>` wrapper with a trigger `<button>` and a conditionally-rendered `<ul role="menu">` panel; the trigger button uses `aria-haspopup="menu"` and `aria-expanded`; each menu item renders as `<li role="menuitem">`; `ChevronDown` from Story 1.5 is imported as the indicator icon; open/close state managed internally with optional controlled mode; keyboard navigation uses a `keydown` handler on the menu panel. **Authz & preconditions:** no RBAC — single actor; requires Icon (Story 1.5) to be merged first (imports `ChevronDown`). **Edge/idempotency:** clicking the trigger while open closes the menu (toggle); pressing Escape while closed has no effect; Arrow Down from the last item wraps to the first (or stays — no wrap, simpler implementation); focus is placed on the first menu item when the menu opens via keyboard. **Regression:** Chromatic snapshots cover open and closed states; unit tests verify aria-haspopup, aria-expanded toggling, keyboard Arrow/Escape navigation, click-outside-to-close, and ChevronDown import; a11y audit verifies the menu role pattern.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

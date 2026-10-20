@@ -2,6 +2,7 @@
 
 **Cycle ID**: cycle-1
 **BUILDID**: CYCLE-1
+**Dates**: Oct 20–22, 2026 (re-baselined from Oct 12 — CR-001)
 **Expected Outcome**: Working skeleton — repo scaffolded, CI/CD green, Storybook running locally, design tokens in place, utilities and shared types defined. Ready to receive components.
 
 ---
@@ -11,8 +12,7 @@
 ### In Scope (this cycle)
 
 - Repo scaffold — package.json (`@annexus/ui`), tsconfig.json (strict), .npmrc (GitHub Packages registry), .prettierrc, .eslintrc, vite.config.ts (library mode)
-- SCSS design token files: `src/tokens/_colors.scss`, `_typography.scss`, `_spacing.scss` — CSS custom properties at `:root` using `--annexus-{category}-{scale}-{variant}` convention
-- `src/tokens/index.scss` — token barrel (forwards all token partials)
+- Design system styles (re-scoped CR-001): `src/styles/pallete.color.scss` (all colors in hex, one variable per color, named after the color), `src/styles/design.variables.scss` (section-named variables — fonts and colors — referencing the palette; the only variables component SCSS may use), `design.variables.module.scss` + `designVariables.ts` (export of those variables to JS)
 - Storybook 8.x configuration: `.storybook/main.ts`, `preview.ts`, a11y addon wired
 - Vitest 2.x + React Testing Library 16.x setup: `vitest.config.ts`, coverage thresholds (lines/branches/functions/statements ≥ 90%)
 - ESLint + Prettier config (TypeScript strict rules)
@@ -32,8 +32,10 @@
 
 ## Workshop Plan
 
-**Day 1** (Oct 12): Full foundation setup
-→ Goal: `pnpm build` passes, `pnpm storybook` runs (empty), CI pipeline green on first push, Chromatic project connected
+**Day 1** (Oct 20): Story 3.2 (design system styles) + Story 3.4 (Vitest)
+**Day 2** (Oct 21): Story 3.3 (Storybook) + Story 3.5 (utils/types)
+**Day 3** (Oct 22): Story 3.6 (CI/CD, Chromatic) + cycle close
+→ Goal: `pnpm build` passes, `pnpm storybook` runs (empty), CI pipeline green on first push, Chromatic project connected. CYCLE-2 does not start until this goal is met.
 
 Each day ends with **production-ready, deployable code** — no partial or broken states overnight.
 
@@ -50,7 +52,7 @@ Each day ends with **production-ready, deployable code** — no partial or broke
 - [ ] GitHub Actions CI workflow executes all steps without failure
 - [ ] Chromatic project connected — baseline run complete
 - [ ] `.npmrc` correctly scopes `@annexus` to GitHub Packages registry
-- [ ] Design tokens defined as CSS custom properties visible in browser DevTools at `:root`
+- [ ] Palette and design variables compile; `designVariables` is importable from `@annexus/ui` with the exported values
 
 ## Open Items
 

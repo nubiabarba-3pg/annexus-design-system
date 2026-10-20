@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-1-story-1.5-icon.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23655 | **Epic**: 1 - P0 ATOM COMPONENTS | **ID**: 1.5 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: [2.3]
 **Files Touched**:
   - src/components/Icon/CheckCircle.tsx
@@ -17,6 +17,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** three SVG React components (CheckCircle, ChevronDown, WinLose) render inline SVG at the specified size; decorative usage has `aria-hidden="true"` and no accessible name; standalone usage with `aria-label` prop exposes an accessible name to screen readers; SVG `currentColor` inherits the parent's text color. **Mechanism:** each icon is a functional React component wrapping an inline `<svg>` element extracted from the Figma source; `size` prop maps to `width`/`height` attributes; `aria-hidden` defaults to `"true"` (decorative) and is overridden by the `aria-label` prop (standalone); `currentColor` fill ensures the icon picks up the CSS `color` property of its parent. **Authz & preconditions:** no RBAC — single actor; purely display/structural. **Edge/idempotency:** rendering any icon without size prop defaults to `24`; rendering with `aria-label` removes `aria-hidden`; rendering the same icon twice produces identical SVG output. **Regression:** Chromatic snapshots cover all 3 icons at default and custom sizes; unit tests assert aria-hidden/aria-label mutual exclusion, size attribute, and role="img" when aria-label is set; Storybook a11y verifies each decorative usage has aria-hidden and standalone has sufficient labeling.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

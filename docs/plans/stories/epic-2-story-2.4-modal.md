@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-2-story-2.4-modal.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23660 | **Epic**: 2 - P0 COMPLEX & OVERLAY COMPONENTS | **ID**: 2.4 | **Date**: 2026-10-12
-**Wave**: 2
-**Requires**: [1.1, 1.2]
+**Wave**: 5
+**Requires**: [1.1, 1.2, 3.6]
 **Enables**: []
 **Files Touched**:
   - src/components/Modal/Modal.tsx
@@ -17,6 +17,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** the Modal renders as a centered overlay above a semi-transparent backdrop; focus moves into the dialog when it opens and is trapped there (Tab/Shift+Tab cycle only within focusable descendants); pressing Escape closes the modal and returns focus to the previously focused element; clicking the backdrop closes the modal; clicking anywhere inside the dialog does not close it; the dialog has `role="dialog"`, `aria-modal="true"`, and `aria-labelledby` pointing to the visible title element. **Mechanism:** `Modal` uses `ReactDOM.createPortal` to render into `document.body`, avoiding CSS stacking context issues; `useFocusTrap` hook attaches a `keydown` listener on the dialog container to intercept Tab/Shift+Tab and cycle focus among all focusable descendants; an Escape listener is registered on `document` when `isOpen` is true; the backdrop `<div>` calls `onClose` on click while the dialog `<div>` calls `e.stopPropagation()` to prevent bubbling; `document.body.style.overflow = 'hidden'` is applied while open to prevent background scroll. **Authz & preconditions:** no RBAC — single actor; requires Button (Story 1.1) and Input (Story 1.2) merged first (imports used in Storybook composition stories). **Edge/idempotency:** `isOpen=false` renders null (no DOM nodes); the close `×` button always calls `onClose`; clicking the dialog content surface does not trigger `onClose`; pressing Escape while `isOpen=false` has no effect; mounting the same props twice produces identical output (pure function). **Regression:** Chromatic snapshots cover `InputState` and `AddBenefitsState`; unit tests verify `role="dialog"`, `aria-modal`, `aria-labelledby`, Escape key, backdrop click, dialog click stopPropagation, close button, null render when closed, and className merging; Storybook a11y addon verifies accessible name, dialog role, and zero violations.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 
@@ -312,7 +314,7 @@ No role-differentiated access — single actor.
 
 5. **Create `src/components/Modal/Modal.scss`**:
    ```scss
-   @use '../../tokens/index' as tokens;
+   @use '../../styles/design.variables' as *;
 
    .annexus-modal-overlay {
      position: fixed;

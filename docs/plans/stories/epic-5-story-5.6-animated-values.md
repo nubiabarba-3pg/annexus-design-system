@@ -4,7 +4,7 @@
 
 **BUILDID**: CYCLE-4 | **AzureDevOps**: #23697 | **Epic**: 5 - P2 COMPLEX + v1.0 | **ID**: 5.6 | **Date**: 2026-10-13
 **Wave**: 7
-**Requires**: [3.1, 3.2, 3.3, 3.4, 3.5]
+**Requires**: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
 **Enables**: []
 **Files Touched**:
   - src/components/AnimatedValues/AnimatedValues.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** `pnpm storybook` shows AnimatedValues counting up from 0 to the target value on mount; changing the value prop animates the transition; `pnpm test src/components/AnimatedValues` exits 0 with ≥ 90% coverage; `pnpm typecheck` exits 0. **Mechanism:** AnimatedValues uses `requestAnimationFrame` (via `useEffect`) to animate a numeric count-up from 0 (or previous value) to the `value` prop over a configurable `duration`. Uses a linear easing. Renders the current animated value as a formatted string. **Authz & preconditions:** requires CYCLE-1 fully merged; Wave 7.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

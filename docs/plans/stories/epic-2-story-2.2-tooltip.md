@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-2-story-2.2-tooltip.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23658 | **Epic**: 2 - P0 COMPLEX & OVERLAY COMPONENTS | **ID**: 2.2 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: []
 **Files Touched**:
   - src/components/Tooltip/Tooltip.tsx
@@ -17,6 +17,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** the tooltip popover appears on pointer-enter and keyboard-focus of the trigger element and disappears on pointer-leave and blur; `role="tooltip"` is present on the popover element; the trigger element has `aria-describedby` pointing to the tooltip's `id`; keyboard Tab navigates to the trigger and shows the popover. **Mechanism:** `Tooltip` wraps a trigger (passed as `children`) and a popover `<div role="tooltip">` toggled via a `useTooltip` hook managing open state from `onMouseEnter`/`onMouseLeave`/`onFocus`/`onBlur` events; the popover is conditionally rendered in the DOM when open, with a stable `id` referenced by the trigger's `aria-describedby`; Escape closes the tooltip. **Authz & preconditions:** no RBAC — single actor; no access guard — purely informational. **Edge/idempotency:** tooltip does not open when trigger is disabled (engineer must disable the trigger); Escape closes the tooltip without moving focus; hovering in and out rapidly does not leave stale open state; tooltip content is display-only (not interactive). **Regression:** Chromatic snapshots cover open and closed states; unit tests assert open/close on mouse enter/leave, focus/blur, Escape key, aria-describedby wiring, and role="tooltip"; a11y audit verifies tooltip accessibility pattern.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

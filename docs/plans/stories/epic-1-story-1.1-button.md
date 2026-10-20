@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-1-story-1.1-button.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23651 | **Epic**: 1 - P0 ATOM COMPONENTS | **ID**: 1.1 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: [2.4]
 **Files Touched**:
   - src/components/Button/Button.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** all 7 button hierarchies × 3 sizes × 4 interaction states (Default, Hover, Disabled, Focus) render with correct token-derived colors, heights, border-radius, and shadow; disabled state removes interactivity with no visual hover; `:focus-visible` outline appears on keyboard focus only, not on mouse click. **Mechanism:** `Button` renders a native `<button>` with BEM modifier classes (`annexus-button--{hierarchy}`, `annexus-button--{size}`, `annexus-button--disabled`); SCSS reads CSS custom properties from the CYCLE-1 token layer; `React.forwardRef` forwards the `ref` to the underlying DOM `<button>` node. **Authz & preconditions:** no RBAC — single actor; the `disabled` prop is the only interaction guard — it sets the native `disabled` attribute (removes from tab order) and `pointer-events: none`. **Edge/idempotency:** clicking a disabled button fires no `onClick` event; rendering with no `children` produces a valid but empty button (no crash); each click fires `onClick` exactly once with no side-effects on the component's internal state. **Regression:** Chromatic snapshots cover all 7 hierarchies × 4 states; unit tests assert disabled click suppression, `onClick` fires on enabled, ref forwarding resolves to the DOM element, and aria attributes are correct; a11y audit verifies `role="button"`, `:focus-visible` 2px outline, and ≥24×24px touch target per WCAG 2.5.8.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 
@@ -135,7 +137,7 @@ No role-differentiated access — single actor.
 - **What does NOT change**: no component internal state changes on any render; the DOM `<button>` element's `type` attribute defaults to `"button"` (prevents accidental form submission unless consumer explicitly sets `type="submit"`).
 
 **Prerequisites**:
-- CYCLE-1 complete: `src/tokens/_colors.scss`, `src/tokens/_typography.scss`, `src/tokens/_spacing.scss`, `src/tokens/_radius.scss`, `src/tokens/_shadows.scss` all exist and define the CSS custom properties referenced in this story
+- CYCLE-1 complete: `src/styles/pallete.color.scss` and `src/styles/design.variables.scss` exist (Story 3.2); button variables are added there by this story
 - `src/index.ts` barrel file exists (created in CYCLE-1 foundation)
 - Storybook 8.x configured and running (`pnpm storybook`)
 - Vitest + React Testing Library installed and configured in `vitest.config.ts`

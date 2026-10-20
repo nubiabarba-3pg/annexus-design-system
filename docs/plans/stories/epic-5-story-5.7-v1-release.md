@@ -13,6 +13,8 @@
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** `git tag v1.0.0 && git push origin v1.0.0` triggers `publish.yml`; GitHub Packages shows `@annexus/ui@1.0.0`; `pnpm add @annexus/ui` in a consuming repo resolves the package; `pnpm build` on `main` at v1.0.0 exits 0 with all components in `dist/`. **Mechanism:** Version bump in `package.json`; `CHANGELOG.md` documents all CYCLE-2/3/4 components; git tag triggers the CI publish workflow (Story 3.6). **Authz & preconditions:** requires all Stories 5.1–5.6 merged AND all CYCLE-2 stories (1.1–2.4) merged; `pnpm build` exits 0 for all components; `pnpm test` exits 0 with ≥ 90% coverage across all components.
 
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
+
 ---
 
 #### 👤 User Reference

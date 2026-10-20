@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-1-story-1.6-logo.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23656 | **Epic**: 1 - P0 ATOM COMPONENTS | **ID**: 1.6 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: []
 **Files Touched**:
   - src/components/Logo/Logo.tsx
@@ -15,6 +15,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** the Logo renders as an inline SVG with `role="img"` and a visible accessible name supplied via `aria-label` (default: "Athene"); the SVG displays the brand logotype at the specified height; no `aria-hidden` is set (Logo is always a meaningful image). **Mechanism:** `Logo` renders a single `<svg>` element wrapping the Athene logotype paths; `height` prop controls the rendered height (width scales proportionally via the SVG `viewBox`); `aria-label` prop sets the accessible name; the SVG always carries `role="img"`. **Authz & preconditions:** no RBAC — single actor; no access guard. **Edge/idempotency:** rendering with no props produces the logo at default height with default aria-label; rendering with the same props twice produces identical SVG output. **Regression:** Chromatic snapshot covers the logo at default height and a custom height; unit tests assert role="img", aria-label, height attribute; Storybook a11y verifies accessible name is present.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

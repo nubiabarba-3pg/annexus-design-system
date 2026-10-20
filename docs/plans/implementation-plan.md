@@ -1,6 +1,6 @@
 # Annexus Design System — Implementation Plan
 
-**Project**: Annexus Design System | **Version**: 1.0 | **Created**: 2026-10-12 | **Updated**: 2026-10-12
+**Project**: Annexus Design System | **Version**: 1.0 | **Created**: 2026-10-12 | **Updated**: 2026-10-20 (CR-001 re-baseline)
 **Author**: PRODUCT_OWNER | **Status**: APPROVED — READY FOR DEV
 **BUILDIDs**: CYCLE-1 (Sprint 1) · CYCLE-2 (Sprint 2) · CYCLE-3 (Sprint 3) · CYCLE-4 (Sprint 4)
 
@@ -35,15 +35,33 @@ graph TD
 
 | Wave | Stories | Notes |
 |------|---------|-------|
-| 1 | 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2 | 8 independent stories — all disjoint component directories |
-| 2 | 2.3, 2.4 | Dropdown requires Icon (1.5); Modal requires Button (1.1) + Input (1.2) |
+| 1 | 3.1 | CYCLE-1 — repo scaffold (done) |
+| 2 | 3.2, 3.3, 3.4, 3.5 | CYCLE-1 — design system styles, Storybook, Vitest, utils |
+| 3 | 3.6 | CYCLE-1 — CI/CD; closes the cycle |
+| 4 | 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2 | CYCLE-2 — 8 independent stories; all require 3.6 (strict cycle order) |
+| 5 | 2.3, 2.4 | CYCLE-2 — Dropdown requires Icon (1.5); Modal requires Button (1.1) + Input (1.2) |
+| 6 | 4.1–4.11 | CYCLE-3 — require all P0 stories |
+| 7–9 | 5.1, 5.3–5.6 · 5.2 · 5.7 | CYCLE-4 — require all P1 stories |
 
 ### Wave Workload Distribution (team_size: 2)
 
 | Wave | Stories | Per Dev | Dev Assignments | Notes |
 |------|---------|---------|----------------|-------|
-| 1 | 8 | 4 each | Dev-1: [1.1, 1.3, 1.5, 2.1] / Dev-2: [1.2, 1.4, 1.6, 2.2] | ✅ All devs active |
-| 2 | 2 | 1 each | Dev-1: [2.3] / Dev-2: [2.4] | ✅ All devs active |
+| 2 | 4 | 2 each | Dev-1: [3.2, 3.3] / Dev-2: [3.4, 3.5] | ✅ All devs active |
+| 4 | 8 | 4 each | Dev-1: [1.1, 1.3, 1.5, 2.1] / Dev-2: [1.2, 1.4, 1.6, 2.2] | ✅ All devs active |
+| 5 | 2 | 1 each | Dev-1: [2.3] / Dev-2: [2.4] | ✅ All devs active |
+
+---
+
+## Styling Convention (CR-001, 2026-10-20)
+
+Applies to every component story, whatever its text says about `--annexus-*` or `src/tokens/`:
+
+1. `src/styles/pallete.color.scss` — all colors in hex; one variable per color named after the color (`$midnightBlue`); no repeated values or names.
+2. `src/styles/design.variables.scss` — variables named after the section they style (`$inputFieldBorderColor: palette.$gray300`); the only variables component `.scss` may use. Fonts included (`$fontFamilyBase`, `$<section>FontSize`…).
+3. `src/styles/design.variables.module.scss` + `designVariables.ts` — export of every design variable to JS.
+
+Defined by Story 3.2; first used by Story 1.2 (Input), which is the reference implementation.
 
 ---
 
@@ -123,7 +141,7 @@ graph TD
 | Story | File | Objective |
 |-------|------|-----------|
 | 3.1: Repo Scaffold | `docs/plans/stories/epic-3-story-3.1-repo-scaffold.md` | package.json, tsconfig strict, vite.config.ts library mode, .npmrc GitHub Packages, ESLint, Prettier, pnpm workspace |
-| 3.2: Design Tokens | `docs/plans/stories/epic-3-story-3.2-design-tokens.md` | SCSS token partials (_colors, _typography, _spacing, _shadows) + index.scss barrel — `--annexus-*` CSS custom properties at :root |
+| 3.2: Design System Styles | `docs/plans/stories/epic-3-story-3.2-design-tokens.md` | `pallete.color.scss` (hex palette) + `design.variables.scss` (section-named variables for fonts and colors) + JS export (`designVariables`) — re-scoped by CR-001 |
 | 3.3: Storybook Setup | `docs/plans/stories/epic-3-story-3.3-storybook.md` | Storybook 8.x — main.ts, preview.ts, a11y addon wired, autodocs enabled |
 | 3.4: Vitest + RTL Setup | `docs/plans/stories/epic-3-story-3.4-vitest.md` | vitest.config.ts, coverage thresholds ≥90%, RTL setup, test-utils barrel |
 | 3.5: Shared Utilities + Types | `docs/plans/stories/epic-3-story-3.5-shared-utils.md` | classNames.ts, devWarning.ts, common.types.ts (Size/Variant/BaseProps), src/index.ts empty barrel |

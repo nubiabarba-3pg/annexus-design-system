@@ -3,7 +3,7 @@
 **File**: `docs/plans/stories/epic-3-story-3.1-repo-scaffold.md`
 
 **BUILDID**: CYCLE-1 | **AzureDevOps**: #23665 | **Epic**: 3 - FOUNDATION SETUP | **ID**: 3.1 | **Date**: 2026-10-12
-**Wave**: 3
+**Wave**: 1
 **Requires**: []
 **Enables**: [3.2, 3.3, 3.4, 3.5, 3.6]
 **Files Touched**:
@@ -284,7 +284,7 @@ This story creates the project skeleton. `package.json` declares the `@annexus/u
 
 9. **Create `src/` directory structure**:
    ```bash
-   mkdir -p src/components src/hooks src/utils src/types src/tokens src/test
+   mkdir -p src/components src/hooks src/utils src/types src/styles src/test
    ```
 
 10. **Run verification**:

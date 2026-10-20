@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-1-story-1.2-input.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23652 | **Epic**: 1 - P0 ATOM COMPONENTS | **ID**: 1.2 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: [2.4]
 **Files Touched**:
   - src/components/Input/Input.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** three visual states render correctly for all four Figma variants — Default (gray border), Selected/focus (brand-primary border + shadow-xs), and Error (red border + inline error text below the field); `aria-invalid` and `aria-describedby` are present on the DOM element in error state. **Mechanism:** `Input` wraps a native `<input>` element with a label, optional helper text, and optional error message; `forwardRef` forwards the ref to the `<input>` DOM node; error prop drives `aria-invalid`, a unique `errorId`, and the `aria-describedby` linkage. **Authz & preconditions:** no RBAC — single actor; no access guard — component is display-only with controlled/uncontrolled value. **Edge/idempotency:** passing an empty string as `error` does NOT trigger the error state (only a truthy non-empty string does); rendering without `label` produces a valid input (engineer must supply `aria-label` in that case); forwarded ref resolves to the `<input>` element, not the wrapper `<div>`. **Regression:** Chromatic snapshots cover Default / Selected / Error for all four Figma variants; unit tests assert aria-invalid toggling, aria-describedby linkage, disabled behavior, ref forwarding, and error message rendering; a11y audit verifies label association and keyboard focus.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 
@@ -130,7 +132,7 @@ No role-differentiated access — single actor.
 - **What does NOT change**: no component internal state is mutated on re-render with the same props; the `id` used for label association and the error `id` are stable across re-renders (derived from the `id` prop or a stable fallback).
 
 **Prerequisites**:
-- CYCLE-1 complete: token CSS custom properties (`--annexus-color-*`, `--annexus-radius-*`, `--annexus-shadow-*`) defined in `src/tokens/`
+- CYCLE-1 complete: `src/styles/pallete.color.scss` and `src/styles/design.variables.scss` (Story 3.2). **Status**: implemented on branch `feat/cycle-2-story-1.2-input` (Input design variables, `Input.scss`, tests); merges after Story 3.6
 - `src/index.ts` barrel exists
 - Storybook 8.x configured; Vitest + RTL installed
 

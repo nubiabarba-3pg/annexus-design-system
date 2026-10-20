@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-2-story-2.1-slider.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23657 | **Epic**: 2 - P0 COMPLEX & OVERLAY COMPONENTS | **ID**: 2.1 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: []
 **Files Touched**:
   - src/components/Slider/Slider.tsx
@@ -19,6 +19,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** the Slider thumb (ControlHandle) drags along the track to set a value; the NumberStrip reflects the current numeric value; arrow keys increment/decrement the value when the slider is focused; `aria-valuenow` updates on every value change; clicking anywhere on the track jumps the thumb to that position (WCAG 2.5.7 dragging alternative). **Mechanism:** `Slider` renders a `<div role="slider">` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`; drag is implemented via `pointerdown` / `pointermove` / `pointerup` events on the track; keyboard arrow keys adjust value by `step`; ControlHandle is the styled thumb sub-element; NumberStrip renders the numeric value; a `useSlider` hook encapsulates value clamping and event handling. **Authz & preconditions:** no RBAC — single actor; `disabled` prop disables all interaction. **Edge/idempotency:** value is clamped to [min, max] at all times — dragging past the track end stops at max/min; clicking on the same position repeatedly does not re-fire `onChange` if value is unchanged; keyboard navigation wraps at bounds (arrow past max stays at max). **Regression:** Chromatic snapshots cover default, dragged-to-midpoint, and max-value states; unit tests verify aria-valuenow updates, keyboard arrow key increments, click-on-track jumping, value clamping, and disabled suppression; a11y audit verifies role="slider" and all required aria attributes.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 
