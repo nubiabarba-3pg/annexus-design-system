@@ -72,15 +72,15 @@ flowchart TD
 - **Colors**:
   - Default border: `--annexus-color-gray-300: #D5D7DA`
   - Focus/selected border: `--annexus-color-brand-primary: #11175E`
-  - Error border + error text: `--annexus-color-error: #B73B3B`
+  - Error border + error text: `--annexus-color-semantic-error: #B73B3B`
   - Label text: `--annexus-color-gray-700: #404042`
   - Placeholder: `--annexus-color-gray-400: #A4A7AE`
   - Input text: `--annexus-color-gray-900: #181D27`
   - Disabled background: `--annexus-color-gray-100: #F5F5F5`
-  - White background: `--annexus-color-white: #FFFFFF`
+  - White background: `--annexus-color-neutral-white: #FFFFFF`
 - **Elevation**: `--annexus-shadow-xs: 0px 1px 2px rgba(10,13,18,0.05)` (focus state)
 - **Border radius**: `--annexus-radius-md: 4px` (Input uses md per Figma)
-- **Typography**: label — 14px/20px weight 600 (`--annexus-font-family`); input text — 14px/20px weight 400; error — 12px/18px weight 400
+- **Typography**: label — 14px/20px weight 600 (`--annexus-font-family-base`); input text — 14px/20px weight 400; error — 12px/18px weight 400
 - **Spacing**: padding-y 8px, padding-x 12px; field min-height 44px; gap between label and field 4px; gap between field and error text 4px
 
 **Description**:
@@ -90,7 +90,7 @@ This story implements the `Input` React component as a labelled text field with 
 - `Input` and `InputProps` are exported from the `@annexus/ui` barrel
 - Default state: `border: 1px solid var(--annexus-color-gray-300)` on the input element
 - Selected/focus state: `:focus-within` on the wrapper applies `border-color: var(--annexus-color-brand-primary)` and `box-shadow: var(--annexus-shadow-xs)`
-- Error state (truthy `error` prop): `border-color: var(--annexus-color-error)` on input, `color: var(--annexus-color-error)` on error span, `aria-invalid="true"` on `<input>`, `aria-describedby="${id}-error"` on `<input>`
+- Error state (truthy `error` prop): `border-color: var(--annexus-color-semantic-error)` on input, `color: var(--annexus-color-semantic-error)` on error span, `aria-invalid="true"` on `<input>`, `aria-describedby="${id}-error"` on `<input>`
 - Empty string `error=""` does NOT trigger error state — only `error.length > 0` does
 - The `<label>` element has `htmlFor={id}` matching the `<input id={id}>` — clicking label moves focus to field
 - `disabled` prop: sets native `disabled` attribute on `<input>`, applies `opacity: 0.5` and `cursor: not-allowed` on wrapper, no hover or focus styles reachable
@@ -223,7 +223,7 @@ No role-differentiated access — single actor.
 
      // ── Label ─────────────────────────────────────────────────────────────
      &__label {
-       font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+       font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
        font-size: 14px;
        line-height: 20px;
        font-weight: 600;
@@ -237,8 +237,8 @@ No role-differentiated access — single actor.
        padding: 8px 12px;
        border: 1px solid var(--annexus-color-gray-300, #d5d7da);
        border-radius: var(--annexus-radius-md, 4px);
-       background-color: var(--annexus-color-white, #ffffff);
-       font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+       background-color: var(--annexus-color-neutral-white, #ffffff);
+       font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
        font-size: 14px;
        line-height: 20px;
        font-weight: 400;
@@ -266,25 +266,25 @@ No role-differentiated access — single actor.
 
      // ── Error state ───────────────────────────────────────────────────────
      &--error &__field {
-       border-color: var(--annexus-color-error, #b73b3b);
+       border-color: var(--annexus-color-semantic-error, #b73b3b);
 
        &:focus {
-         border-color: var(--annexus-color-error, #b73b3b);
+         border-color: var(--annexus-color-semantic-error, #b73b3b);
          box-shadow: none;
        }
      }
 
      &__error {
-       font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+       font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
        font-size: 12px;
        line-height: 18px;
        font-weight: 400;
-       color: var(--annexus-color-error, #b73b3b);
+       color: var(--annexus-color-semantic-error, #b73b3b);
      }
 
      // ── Helper text ───────────────────────────────────────────────────────
      &__helper {
-       font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+       font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
        font-size: 12px;
        line-height: 18px;
        font-weight: 400;

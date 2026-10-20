@@ -36,7 +36,7 @@
 ## Testing Summary
 
 - **Unit Tests**: N/A — CSS-only story; no JavaScript representation of tokens
-- **Build verification**: `pnpm build` exits 0; `dist/style.css` 1.99 kB, single `:root {}` block
+- **Build verification**: `pnpm build` exits 0; `dist/style.css` 1.99 kB, one `:root {}` block per partial (4)
 - **Token count**: 51 unique `--annexus-*` properties (19 color, 11 font, 4 line-height, 9 spacing, 3 shadow, 3 radius, 2 touch-target) — AC requires ≥ 30
 - **Idempotency**: two consecutive builds produce byte-identical `dist/style.css` (`cmp` clean)
 - **Typecheck**: `pnpm typecheck` exits 0
@@ -85,8 +85,9 @@ dist/style.css     1.99 kB │ gzip: 0.64 kB
 
 ### Gate 3 — Contract Consistency
 
-- Token names used by downstream stories (`gray-600`, `gray-700`, `font-size-2xl`, `brand-primary`, `shadow-lg`, etc.) all exist ✅
-- Downstream `var()` fallbacks for `gray-700` (`#404042`) and `gray-600` (`#535862`) match the defined values ✅
+- ~~Token names used by downstream stories all exist ✅~~ — **corrected 2026-10-20** (code review ISS-001): the original check sampled names instead of diffing. Four names used by Stories 1.1–1.4 / 2.1–2.3 (`color-white`, `color-error`, `color-success`, `font-family`) were undefined; the stories were aligned to the canonical 3.2 names.
+- Every `var(--annexus-*)` in `docs/plans/stories/` and the patterns doc, diffed against the properties emitted in `dist/style.css` → **0 undefined** ✅
+- Every downstream hex `var()` fallback matches its defined token value (incl. `gray-700` `#404042`, `gray-600` `#535862`) ✅
 
 ## Deviations from Plan
 

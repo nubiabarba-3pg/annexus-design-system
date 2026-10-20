@@ -73,8 +73,8 @@ flowchart TD
 **Design Tokens**:
 - **Colors**:
   - Trigger bg: transparent (inherits nav bar background)
-  - Trigger text: `--annexus-color-white: #FFFFFF` (used on dark nav bar)
-  - Menu panel bg: `--annexus-color-white: #FFFFFF`
+  - Trigger text: `--annexus-color-neutral-white: #FFFFFF` (used on dark nav bar)
+  - Menu panel bg: `--annexus-color-neutral-white: #FFFFFF`
   - Menu item hover: `--annexus-color-gray-50: #FAFAFA`
   - Menu item text: `--annexus-color-gray-700: #404042`
   - Menu border: `--annexus-color-gray-200: #E9EAEB`
@@ -330,10 +330,10 @@ No role-differentiated access — single actor.
        gap: 6px;
        padding: 8px 14px;
        background-color: transparent;
-       color: var(--annexus-color-white, #ffffff);
+       color: var(--annexus-color-neutral-white, #ffffff);
        border: none;
        border-radius: var(--annexus-radius-sm, 3px);
-       font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+       font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
        font-size: 14px;
        line-height: 20px;
        font-weight: 600;
@@ -345,7 +345,7 @@ No role-differentiated access — single actor.
        }
 
        &:focus-visible {
-         outline: 2px solid var(--annexus-color-white, #ffffff);
+         outline: 2px solid var(--annexus-color-neutral-white, #ffffff);
          outline-offset: 2px;
        }
      }
@@ -369,7 +369,7 @@ No role-differentiated access — single actor.
        top: calc(100% + 4px);
        left: 0;
        min-width: 180px;
-       background-color: var(--annexus-color-white, #ffffff);
+       background-color: var(--annexus-color-neutral-white, #ffffff);
        border: 1px solid var(--annexus-color-gray-200, #e9eaeb);
        border-radius: var(--annexus-radius-md, 4px);
        box-shadow: var(
@@ -387,7 +387,7 @@ No role-differentiated access — single actor.
      // ── Menu item ──────────────────────────────────────────────────────────
      &__item {
        padding: 8px 16px;
-       font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+       font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
        font-size: 14px;
        line-height: 20px;
        font-weight: 400;

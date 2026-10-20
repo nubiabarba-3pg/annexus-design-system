@@ -73,7 +73,7 @@ flowchart TD
   - Primary bg: `--annexus-color-brand-primary: #11175E`
   - Primary hover: `--annexus-color-brand-hover: #1B3E80`
   - CTA (Secondary/Tertiary/Link Color): `--annexus-color-brand-cta: #0167AC`
-  - White (Primary text): `--annexus-color-white: #FFFFFF`
+  - White (Primary text): `--annexus-color-neutral-white: #FFFFFF`
   - Gray-300 (Secondary Gray border): `--annexus-color-gray-300: #D5D7DA`
   - Gray-500 (Link Gray text): `--annexus-color-gray-500: #717680`
   - Gray-700 (Secondary/Tertiary Gray text): `--annexus-color-gray-700: #404042`
@@ -81,7 +81,7 @@ flowchart TD
   - Gray-100 (Tertiary Gray hover bg): `--annexus-color-gray-100: #F5F5F5`
 - **Elevation**: `--annexus-shadow-xs-skeuomorphic` (Primary Default state only)
 - **Border radius**: `--annexus-radius-sm: 3px`
-- **Typography**: `--annexus-font-family: 'Assistant', sans-serif`; weight 600 (labels); sm scale (14px/20px) for sm+md, md scale (16px/24px) for lg
+- **Typography**: `--annexus-font-family-base: 'Assistant', sans-serif`; weight 600 (labels); sm scale (14px/20px) for sm+md, md scale (16px/24px) for lg
 - **Spacing** (from Figma): padding-y 8px, padding-x 12px (sm) / 14px (md/lg)
 - **Touch targets**: md min-height 44px, lg min-height 48px, sm min-height 32px; WCAG 2.5.8 — all ≥24px in both axes
 
@@ -231,7 +231,7 @@ No role-differentiated access — single actor.
      align-items: center;
      justify-content: center;
      border-radius: var(--annexus-radius-sm, 3px);
-     font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+     font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
      font-weight: 600;
      cursor: pointer;
      border: 1px solid transparent;
@@ -275,7 +275,7 @@ No role-differentiated access — single actor.
      // ── Hierarchies ───────────────────────────────────────────────────────
      &--primary {
        background-color: var(--annexus-color-brand-primary, #11175E);
-       color: var(--annexus-color-white, #ffffff);
+       color: var(--annexus-color-neutral-white, #ffffff);
        border-color: transparent;
        box-shadow: var(
          --annexus-shadow-xs-skeuomorphic,

@@ -345,25 +345,26 @@ export function BottomSummary({ premium, inflationRate, years }: ...) {
 ### 4.1 Token Consumption
 
 **✅ DO: `@use` tokens, never hardcode values**
+
+Tokens are CSS custom properties only (Story 3.2) — the token modules expose no SCSS `$` variables. Reference them with `var(--annexus-…)`; canonical names live in `src/tokens/_*.scss`.
+
 ```scss
 // Button.scss
-@use '../../tokens/colors' as *;
-@use '../../tokens/spacing' as *;
-@use '../../tokens/typography' as *;
+@use '../../tokens/index' as tokens; // emits the --annexus-* :root block; no SCSS members
 
 .annexus-button {
-  padding: $spacing-2 $spacing-4;
-  font-size: $font-size-body-md;
-  border-radius: $radius-md;
-  background-color: var(--annexus-color-primary-500);
+  padding: var(--annexus-spacing-2) var(--annexus-spacing-4);
+  font-size: var(--annexus-font-size-md);
+  border-radius: var(--annexus-radius-md);
+  background-color: var(--annexus-color-brand-primary);
 
   &--primary {
-    background-color: var(--annexus-color-primary-500);
-    color: var(--annexus-color-white);
+    background-color: var(--annexus-color-brand-primary);
+    color: var(--annexus-color-neutral-white);
 
-    &:hover { background-color: var(--annexus-color-primary-600); }
+    &:hover { background-color: var(--annexus-color-brand-hover); }
     &:focus-visible {
-      outline: 2px solid var(--annexus-color-primary-500);
+      outline: 2px solid var(--annexus-color-brand-primary);
       outline-offset: 2px; // WCAG 2.2 AA: 2.4.11 Focus Appearance
     }
     &:disabled { opacity: 0.4; pointer-events: none; }
@@ -400,7 +401,7 @@ export function BottomSummary({ premium, inflationRate, years }: ...) {
 
 ```scss
 // _focus.scss — shared mixin
-@mixin focus-visible-ring($color: var(--annexus-color-primary-500)) {
+@mixin focus-visible-ring($color: var(--annexus-color-brand-primary)) {
   &:focus-visible {
     outline: 2px solid $color;           // WCAG 2.4.11: ≥2px
     outline-offset: 2px;
@@ -422,8 +423,8 @@ export function BottomSummary({ premium, inflationRate, years }: ...) {
 ```scss
 // _sizing.scss — shared mixin
 @mixin min-touch-target {
-  min-width: $target-size-min;   // $target-size-min: 24px
-  min-height: $target-size-min;
+  min-width: var(--annexus-touch-target-min);   // 24px
+  min-height: var(--annexus-touch-target-min);
 }
 
 // Applied to all interactive components

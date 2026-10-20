@@ -64,11 +64,11 @@ flowchart TD
   - Neutral: bg `--annexus-color-gray-100: #F5F5F5` / text `--annexus-color-gray-700: #404042`
   - Info: bg `--annexus-color-brand-cta: #0167AC` (at 15% opacity) / text `--annexus-color-brand-cta: #0167AC`
     - Implement as: `background: rgba(1, 103, 172, 0.15); color: #0167AC`
-  - Success: bg `rgba(7, 148, 85, 0.15)` / text `--annexus-color-success: #079455`
+  - Success: bg `rgba(7, 148, 85, 0.15)` / text `--annexus-color-semantic-success: #079455`
   - Warning: bg `rgba(180, 120, 0, 0.15)` / text `#B47800` (amber — not in token set; use hardcoded)
-  - Danger: bg `rgba(183, 59, 59, 0.15)` / text `--annexus-color-error: #B73B3B`
+  - Danger: bg `rgba(183, 59, 59, 0.15)` / text `--annexus-color-semantic-error: #B73B3B`
 - **Border radius**: `--annexus-radius-full: 9999px`
-- **Typography**: 12px/18px (xs scale), font-weight 600, `--annexus-font-family`
+- **Typography**: 12px/18px (xs scale), font-weight 600, `--annexus-font-family-base`
 - **Spacing**: padding 2px 8px (compact pill shape)
 
 **Description**:
@@ -81,11 +81,11 @@ This story implements the `Badge` as a pure display component: a `<span>` elemen
 - `tone` prop: `'neutral' | 'info' | 'success' | 'warning' | 'danger'` — drives background-color and text-color
 - Neutral: `background: var(--annexus-color-gray-100)`, `color: var(--annexus-color-gray-700)`
 - Info: `background: rgba(1,103,172,0.15)`, `color: var(--annexus-color-brand-cta, #0167AC)`
-- Success: `background: rgba(7,148,85,0.15)`, `color: var(--annexus-color-success, #079455)`
+- Success: `background: rgba(7,148,85,0.15)`, `color: var(--annexus-color-semantic-success, #079455)`
 - Warning: `background: rgba(180,120,0,0.15)`, `color: #B47800`
-- Danger: `background: rgba(183,59,59,0.15)`, `color: var(--annexus-color-error, #B73B3B)`
+- Danger: `background: rgba(183,59,59,0.15)`, `color: var(--annexus-color-semantic-error, #B73B3B)`
 - `border-radius: var(--annexus-radius-full, 9999px)` on the `<span>`
-- Font: 12px/18px semibold (weight 600), `--annexus-font-family`
+- Font: 12px/18px semibold (weight 600), `--annexus-font-family-base`
 - Padding: 2px 8px
 - `children` rendered as text content inside the span
 - No `onClick`, `onKeyDown`, or interaction event props exposed (extend `HTMLAttributes<HTMLSpanElement>` — click events ARE technically passable via spread but the component exposes no dedicated `onClick` prop)
@@ -116,7 +116,7 @@ No role-differentiated access — single actor.
 - **What does NOT change**: Badge has no internal state; any re-render with unchanged props produces byte-identical HTML; no event listeners are attached to the DOM node.
 
 **Prerequisites**:
-- CYCLE-1 complete: `--annexus-color-success`, `--annexus-color-error`, `--annexus-color-gray-100`, `--annexus-color-gray-700`, `--annexus-radius-full` defined in token files
+- CYCLE-1 complete: `--annexus-color-semantic-success`, `--annexus-color-semantic-error`, `--annexus-color-gray-100`, `--annexus-color-gray-700`, `--annexus-radius-full` defined in token files
 - `src/index.ts` barrel exists
 - Storybook 8.x, Vitest + RTL installed
 
@@ -185,7 +185,7 @@ No role-differentiated access — single actor.
      justify-content: center;
      padding: 2px 8px;
      border-radius: var(--annexus-radius-full, 9999px);
-     font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+     font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
      font-size: 12px;
      line-height: 18px;
      font-weight: 600;
@@ -204,7 +204,7 @@ No role-differentiated access — single actor.
 
      &--success {
        background-color: rgba(7, 148, 85, 0.15);
-       color: var(--annexus-color-success, #079455);
+       color: var(--annexus-color-semantic-success, #079455);
      }
 
      &--warning {
@@ -214,7 +214,7 @@ No role-differentiated access — single actor.
 
      &--danger {
        background-color: rgba(183, 59, 59, 0.15);
-       color: var(--annexus-color-error, #b73b3b);
+       color: var(--annexus-color-semantic-error, #b73b3b);
      }
    }
    ```

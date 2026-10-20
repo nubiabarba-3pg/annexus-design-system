@@ -78,7 +78,7 @@ flowchart TD
 - **Colors**:
   - Track fill (filled portion, left of thumb): `--annexus-color-brand-primary: #11175E`
   - Track background (unfilled): `--annexus-color-gray-200: #E9EAEB`
-  - ControlHandle background: `--annexus-color-white: #FFFFFF`
+  - ControlHandle background: `--annexus-color-neutral-white: #FFFFFF`
   - ControlHandle border: `--annexus-color-brand-primary: #11175E`
   - NumberStrip text: `--annexus-color-gray-700: #404042`
 - **Dimensions** (from Figma / architecture): track height 4px; ControlHandle diameter 20px; NumberStrip font 14px/20px semibold
@@ -140,7 +140,7 @@ No role-differentiated access — single actor.
 - **What does NOT change**: Slider does not maintain its own value state (always controlled); no DOM mutation occurs outside the Slider's own subtree on any interaction.
 
 **Prerequisites**:
-- CYCLE-1 complete: `--annexus-color-brand-primary`, `--annexus-color-gray-200`, `--annexus-radius-full`, `--annexus-color-white` defined in token files; `src/hooks/` directory exists
+- CYCLE-1 complete: `--annexus-color-brand-primary`, `--annexus-color-gray-200`, `--annexus-radius-full`, `--annexus-color-neutral-white` defined in token files; `src/hooks/` directory exists
 - `src/index.ts` barrel exists
 - Storybook 8.x, Vitest + RTL installed
 
@@ -410,7 +410,7 @@ No role-differentiated access — single actor.
        width: 20px;
        height: 20px;
        border-radius: var(--annexus-radius-full, 9999px);
-       background-color: var(--annexus-color-white, #ffffff);
+       background-color: var(--annexus-color-neutral-white, #ffffff);
        border: 2px solid var(--annexus-color-brand-primary, #11175e);
        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
        cursor: grab;
@@ -441,7 +441,7 @@ No role-differentiated access — single actor.
        position: absolute;
        top: 24px;
        transform: translateX(-50%);
-       font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+       font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
        font-size: 14px;
        line-height: 20px;
        font-weight: 600;

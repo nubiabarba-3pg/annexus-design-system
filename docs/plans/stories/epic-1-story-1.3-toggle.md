@@ -75,7 +75,7 @@ flowchart TD
   - Track off: `--annexus-color-control-off: #CED6DB`
   - Track on: `--annexus-color-brand-primary: #11175E`
   - Track hover (off→on): `--annexus-color-brand-hover: #1B3E80`
-  - Thumb: `--annexus-color-white: #FFFFFF`
+  - Thumb: `--annexus-color-neutral-white: #FFFFFF`
 - **Border radius**: `--annexus-radius-full: 9999px` (track + thumb are fully rounded)
 - **Typography**: none (no text in the Toggle itself; label is the engineer's responsibility via `aria-label` or adjacent `<label>`)
 - **Dimensions** (from Figma — hard-coded, not tokenized): track 51×28px, thumb 23px diameter, thumb inset 2.5px from edge
@@ -241,7 +241,7 @@ No role-differentiated access — single actor.
        width: 23px;
        height: 23px;
        border-radius: var(--annexus-radius-full, 9999px);
-       background-color: var(--annexus-color-white, #ffffff);
+       background-color: var(--annexus-color-neutral-white, #ffffff);
        left: 2.5px;
        top: 50%;
        transform: translateY(-50%) translateX(0);

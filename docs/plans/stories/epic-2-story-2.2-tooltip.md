@@ -68,10 +68,10 @@ flowchart TD
 **Design Tokens**:
 - **Colors**:
   - Tooltip background: `--annexus-color-gray-900: #181D27` (dark)
-  - Tooltip text: `--annexus-color-white: #FFFFFF`
+  - Tooltip text: `--annexus-color-neutral-white: #FFFFFF`
 - **Elevation**: `--annexus-shadow-lg` (modal/dropdown level — Tooltip is an overlay)
 - **Border radius**: `--annexus-radius-md: 4px`
-- **Typography**: 12px/18px (xs scale), weight 400, `--annexus-font-family`
+- **Typography**: 12px/18px (xs scale), weight 400, `--annexus-font-family-base`
 - **Spacing**: padding 6px 10px
 - **Max width**: 240px (wraps long content)
 - **Z-index**: `1000` (above all content, below modals if needed)
@@ -91,7 +91,7 @@ This story implements `Tooltip` as a **wrapper component** — it takes `childre
 - Trigger's `aria-describedby` always points to the stable tooltip `id` (present even when closed — the trigger still describes itself to the tooltip even when not visible, as the DOM element may be absent; `aria-describedby` references a non-existent id which is valid per spec)
 - `content` prop: string or React node
 - `position` prop: `'top'` only (bottom/left/right deferred)
-- Tooltip background: `--annexus-color-gray-900` (#181D27); text: `--annexus-color-white`; `border-radius: var(--annexus-radius-md)`; `box-shadow: var(--annexus-shadow-lg)`
+- Tooltip background: `--annexus-color-gray-900` (#181D27); text: `--annexus-color-neutral-white`; `border-radius: var(--annexus-radius-md)`; `box-shadow: var(--annexus-shadow-lg)`
 - Vitest coverage ≥ 90%
 - CSF3 stories: Default (open), WrappingAButton, WrappingAnIcon, LongContent
 - Storybook a11y zero violations
@@ -122,7 +122,7 @@ No role-differentiated access — single actor.
 - **What does NOT change**: tooltip has no internal state other than open/closed; no network requests; no side-effects on the parent component's state.
 
 **Prerequisites**:
-- CYCLE-1 complete: `--annexus-color-gray-900`, `--annexus-color-white`, `--annexus-shadow-lg`, `--annexus-radius-md` defined; `src/hooks/` directory exists; `src/index.ts` barrel exists
+- CYCLE-1 complete: `--annexus-color-gray-900`, `--annexus-color-neutral-white`, `--annexus-shadow-lg`, `--annexus-radius-md` defined; `src/hooks/` directory exists; `src/index.ts` barrel exists
 - Storybook 8.x, Vitest + RTL installed
 
 **Context**:
@@ -251,7 +251,7 @@ No role-differentiated access — single actor.
      max-width: 240px;
      padding: 6px 10px;
      background-color: var(--annexus-color-gray-900, #181d27);
-     color: var(--annexus-color-white, #ffffff);
+     color: var(--annexus-color-neutral-white, #ffffff);
      border-radius: var(--annexus-radius-md, 4px);
      box-shadow: var(
        --annexus-shadow-lg,
@@ -259,7 +259,7 @@ No role-differentiated access — single actor.
        0px 4px 6px -2px rgba(10, 13, 18, 0.03),
        0px 12px 16px -4px rgba(10, 13, 18, 0.08)
      );
-     font-family: var(--annexus-font-family, 'Assistant', sans-serif);
+     font-family: var(--annexus-font-family-base, 'Assistant', sans-serif);
      font-size: 12px;
      line-height: 18px;
      font-weight: 400;
