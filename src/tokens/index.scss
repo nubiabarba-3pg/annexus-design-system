@@ -1,0 +1,5 @@
+// Token barrel — component SCSS imports this once: @use '../../tokens/index' as tokens;
+@forward 'colors';
+@forward 'typography';
+@forward 'spacing';
+@forward 'shadows';

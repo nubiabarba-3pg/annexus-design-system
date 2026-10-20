@@ -1,0 +1,24 @@
+// Typography tokens — values from docs/ui-ux/ui-ux-spec.md (design_tokens.typography)
+:root {
+  --annexus-font-family-base: 'Assistant', sans-serif;
+
+  // Size scale
+  --annexus-font-size-xs: 0.75rem; // 12px
+  --annexus-font-size-sm: 0.875rem; // 14px
+  --annexus-font-size-md: 1rem; // 16px
+  --annexus-font-size-lg: 1.125rem; // 18px
+  --annexus-font-size-xl: 1.25rem; // 20px
+  --annexus-font-size-2xl: 1.5rem; // 24px
+
+  // Weight scale
+  --annexus-font-weight-regular: 400;
+  --annexus-font-weight-medium: 500;
+  --annexus-font-weight-semibold: 600;
+  --annexus-font-weight-bold: 700;
+
+  // Line-height scale
+  --annexus-line-height-xs: 1.125rem; // 18px
+  --annexus-line-height-sm: 1.25rem; // 20px
+  --annexus-line-height-md: 1.5rem; // 24px
+  --annexus-line-height-lg: 1.75rem; // 28px
+}

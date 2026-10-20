@@ -1,0 +1,29 @@
+// Color tokens — values from docs/ui-ux/ui-ux-spec.md (design_tokens.colors)
+:root {
+  // Brand
+  --annexus-color-brand-primary: #11175e;
+  --annexus-color-brand-hover: #1b3e80;
+  --annexus-color-brand-cta: #0167ac;
+  --annexus-color-brand-700: #044638;
+
+  // Semantic
+  --annexus-color-semantic-success: #079455;
+  --annexus-color-semantic-error: #b73b3b;
+  --annexus-color-control-off: #ced6db;
+
+  // Neutral
+  --annexus-color-neutral-white: #ffffff;
+  --annexus-color-neutral-black: #222222;
+
+  // Gray scale
+  --annexus-color-gray-50: #fafafa;
+  --annexus-color-gray-100: #f5f5f5;
+  --annexus-color-gray-200: #e9eaeb;
+  --annexus-color-gray-300: #d5d7da;
+  --annexus-color-gray-400: #a4a7ae;
+  --annexus-color-gray-500: #717680;
+  --annexus-color-gray-600: #535862;
+  --annexus-color-gray-700: #404042;
+  --annexus-color-gray-800: #252b37;
+  --annexus-color-gray-900: #181d27;
+}

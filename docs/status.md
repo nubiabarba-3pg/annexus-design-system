@@ -1,7 +1,7 @@
 # Project Status
 
-**Last Updated**: 2026-10-19
-**Updated By**: QA
+**Last Updated**: 2026-10-20
+**Updated By**: DEV
 **Overall Status**: 🟢 ON TRACK
 
 ---
@@ -32,6 +32,22 @@
 ---
 
 ## Current Step Details
+
+### Implementation — Story 3.2
+
+**Owner**: DEV
+**Status**: ✅ Done — ready for review
+**Started**: 2026-10-20
+**Completed**: 2026-10-20
+
+**Progress**:
+- [x] Token partials created: `src/tokens/_colors.scss`, `_typography.scss`, `_spacing.scss`, `_shadows.scss` + `index.scss` barrel ✅
+- [x] `src/styles.scss` uses `@use 'tokens';` — 51 `--annexus-*` properties emitted at `:root` in `dist/style.css` ✅
+- [x] `pnpm build` / `pnpm typecheck` / `pnpm lint` exit 0; build output idempotent ✅
+  - Dev self-review: `docs/stories-implemented/story-3.2-review.md`
+  - Deviation: `gray-700` uses canonical spec value `#404042` (story snippet had `#414651`)
+
+---
 
 ### QA — Story 3.1
 
@@ -93,7 +109,7 @@
 | CYCLE-2 | 2.3 | Dropdown / Header Navigation component | #23659 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 2.4 | Modal component (Input state + Add Benefits state) | #23660 | — | — | 2026-10-12 13:00 |
 | CYCLE-1 | 3.1 | Repo Scaffold | #23665 | 2026-10-14 | 2026-10-14 | 2026-10-14 |
-| CYCLE-1 | 3.2 | SCSS Design Tokens | #23669 | — | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.2 | SCSS Design Tokens | #23669 | 2026-10-20 | 2026-10-20 | 2026-10-20 |
 | CYCLE-1 | 3.3 | Storybook 8.x Setup | #23668 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.4 | Vitest + RTL Setup | #23666 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.5 | Shared Utilities and Types | #23667 | — | — | 2026-10-13 12:00 |
@@ -189,13 +205,18 @@
 - [x] **QA Regression — Story 3.1** — ✅ NO REGRESSIONS — 2026-10-19
   - Evidence: `docs/testing/regression-report-2026-10-19.md`
   - 22/22 pass; 0 new failures; 0 flaky tests; identical file sizes to baseline
+- [x] **Story 3.2: SCSS Design Tokens** — Done — 2026-10-20
+  - Evidence: `pnpm build` exits 0; `dist/style.css` contains 51 `--annexus-*` properties at `:root`
+  - `pnpm typecheck` exits 0; `pnpm lint` exits 0; Prettier clean
+  - Dev self-review: `docs/stories-implemented/story-3.2-review.md`
+  - Implemented manually (AIRE CLI not installed on this workstation)
 
 ---
 
 ## Upcoming
 
 1. ~~**QA Story 3.1**~~ — ✅ Complete (22/22 PASS, signed off 2026-10-19)
-2. **Build CYCLE-1 Wave 4** — `aire-dev-implement 3.2` / `3.3` / `3.4` / `3.5` in parallel (all unblocked by 3.1) → then Wave 5: 3.6 CI/CD
+2. **Build CYCLE-1 Wave 4** — ~~3.2~~ (✅ implemented 2026-10-20, awaiting review) / `aire-dev-implement 3.3` / `3.4` / `3.5` in parallel (all unblocked by 3.1) → then Wave 5: 3.6 CI/CD
 3. **Build CYCLE-2 (Sprint 2)** — run `aire-dev-implement 1.1` (Wave 1: 8 stories in parallel) → Wave 2: [2.3, 2.4]
 4. **Build CYCLE-3 (Sprint 3)** — run Wave 6: all 11 stories in parallel (all independent)
 5. **Build CYCLE-4 (Sprint 4)** — Wave 7: [5.1, 5.3, 5.4, 5.5, 5.6] parallel → Wave 8: 5.2 GraphContainer → Wave 9: 5.7 v1.0 Release
@@ -236,6 +257,6 @@
 | PRODUCT_OWNER | Implementation plan complete — 5 epics, 34 stories (Waves 1–9), all 4 cycles planned | Idle | 2026-10-13 | 2026-10-13 12:00 |
 | BUILD_CYCLE_PLANNER | Build cycles complete — 4 cycles, docs/plans/builds/ | Idle | 2026-10-12 | 2026-10-12 11:30 |
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
-| DEV | Remediated story 3.1 (story-3.1-code-review-v1.md) — ISS-001 + ISS-002 fixed | Idle | 2026-10-19 | 2026-10-19 10:30 |
+| DEV | Implemented story 3.2 (SCSS Design Tokens) — story-3.2-review.md | Idle | 2026-10-20 | 2026-10-20 |
 | REVIEWER | Reviewed story 3.1 — ⚠️ APPROVED WITH COMMENTS | Idle | 2026-10-19 | 2026-10-19 10:00 |
 | QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
