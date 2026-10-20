@@ -13,4 +13,5 @@ SPEC/workflows/
 docs/plans/.parallel/
 node_modules
 dist/
+storybook-static/
 .DS_Store
