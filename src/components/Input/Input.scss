@@ -1,0 +1,91 @@
+@use '../../styles/design.variables' as *;
+
+.annexus-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  // ── Label ─────────────────────────────────────────────────────────────
+  &__label {
+    font-family: $fontFamilyBase;
+    font-size: $inputLabelFontSize;
+    line-height: $inputLabelLineHeight;
+    font-weight: $inputLabelFontWeight;
+    color: $inputLabelColor;
+  }
+
+  // ── Field (the <input>) ───────────────────────────────────────────────
+  &__field {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid $inputFieldBorderColor;
+    border-radius: var(--annexus-radius-md, 4px);
+    background-color: $inputFieldBackgroundColor;
+    font-family: $fontFamilyBase;
+    font-size: $inputFieldFontSize;
+    line-height: $inputFieldLineHeight;
+    font-weight: $inputFieldFontWeight;
+    color: $inputFieldTextColor;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+    box-sizing: border-box;
+    outline: none;
+
+    &::placeholder {
+      color: $inputFieldPlaceholderColor;
+    }
+
+    // Selected (focus) state
+    &:focus {
+      border-color: $inputFieldFocusBorderColor;
+      box-shadow: 0px 1px 2px rgba($inputFieldShadowColor, 0.05);
+    }
+
+    // Focus-visible outline for keyboard nav (WCAG 2.4.11)
+    &:focus-visible {
+      outline: 2px solid $inputFieldFocusOutlineColor;
+      outline-offset: 2px;
+    }
+  }
+
+  // ── Error state ───────────────────────────────────────────────────────
+  &--error &__field {
+    border-color: $inputErrorBorderColor;
+
+    &:focus {
+      border-color: $inputErrorFocusBorderColor;
+      box-shadow: none;
+    }
+  }
+
+  &__error {
+    font-family: $fontFamilyBase;
+    font-size: $inputErrorFontSize;
+    line-height: $inputErrorLineHeight;
+    font-weight: $inputErrorFontWeight;
+    color: $inputErrorTextColor;
+  }
+
+  // ── Helper text ───────────────────────────────────────────────────────
+  &__helper {
+    font-family: $fontFamilyBase;
+    font-size: $inputHelperFontSize;
+    line-height: $inputHelperLineHeight;
+    font-weight: $inputHelperFontWeight;
+    color: $inputHelperTextColor;
+  }
+
+  // ── Disabled ──────────────────────────────────────────────────────────
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    .annexus-input__field {
+      cursor: not-allowed;
+      background-color: $inputDisabledBackgroundColor;
+      pointer-events: none;
+    }
+  }
+}
