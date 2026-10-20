@@ -1,0 +1,31 @@
+// Color palette — single source of truth for every hex value in @annexus/ui.
+// Each variable is named after its color; a hex value is defined only once.
+// Only design.variables.scss may reference this file; components use design variables.
+
+// ── Brand ───────────────────────────────────────────────────────────────
+$midnightBlue: #11175e;
+$cobaltBlue: #1b3e80;
+$azureBlue: #0167ac;
+$deepGreen: #044638;
+
+// ── Semantic ────────────────────────────────────────────────────────────
+$jadeGreen: #079455;
+$brickRed: #b73b3b;
+$lightSteel: #ced6db;
+
+// ── Neutrals ────────────────────────────────────────────────────────────
+$white: #ffffff;
+$jetBlack: #222222;
+$shadowBlack: #0a0d12;
+
+// ── Gray scale ──────────────────────────────────────────────────────────
+$gray50: #fafafa;
+$gray100: #f5f5f5;
+$gray200: #e9eaeb;
+$gray300: #d5d7da;
+$gray400: #a4a7ae;
+$gray500: #717680;
+$gray600: #535862;
+$gray700: #414651;
+$gray800: #252b37;
+$gray900: #181d27;

@@ -6,7 +6,10 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [
     react(),
-    dts({ include: ['src'], exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx'] }),
+    dts({
+      include: ['src'],
+      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx', 'src/**/*.test.ts'],
+    }),
   ],
   build: {
     lib: {
