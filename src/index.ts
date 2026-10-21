@@ -5,3 +5,4 @@ export { Input } from './components/Input';
 export type { InputProps } from './components/Input';
 export { designVariables } from './styles/designVariables';
 export type { DesignVariables } from './styles/designVariables';
+export type { Size, Tone, BaseProps } from './types/common.types';

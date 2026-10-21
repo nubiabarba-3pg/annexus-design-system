@@ -1,8 +1,8 @@
 # Project Status
 
 **Last Updated**: 2026-10-21
-**Updated By**: DEV
-**Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 1/6 stories done; 3.4, 3.5, 3.6 not started
+**Updated By**: REVIEWER
+**Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 1/6 stories done; 3.5 implemented (review + QA pending); 3.4, 3.6 not started
 
 ---
 
@@ -33,12 +33,29 @@
 | Build Cycles | ✅ Done | BUILD_CYCLE_PLANNER | 2026-10-12 | `docs/plans/builds/` | 2026-10-12 11:30 |
 | UI/UX Design | ✅ Done | UI_UX_DESIGNER | 2026-10-12 | `docs/ui-ux/ui-ux-spec.md` | 2026-10-12 12:00 |
 | Implementation Plan | ✅ Done (updated CR-001) | PRODUCT_OWNER | 2026-10-20 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
-| Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.2-code-review-v1.md` | 2026-10-21 12:30 |
+| Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.5-code-review-v1.md` | 2026-10-21 15:00 |
 | QA | ✅ Done | QA | 2026-10-19 | `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-19 14:30 |
 
 ---
 
 ## Current Step Details
+
+### Implementation — Story 3.5
+
+**Owner**: DEV (Angel)
+**Status**: ✅ Implemented and reviewed (approved with comments) — pending remediation of ISS-001/002 and QA
+**Started**: 2026-10-21
+
+**Progress**:
+- [x] `classNames`, `devWarning`, `common.types` + public type exports implemented via TDD ✅
+  - Evidence: `docs/stories-implemented/story-3.5-review.md`
+  - 35/35 tests (10 new), coverage 100%, typecheck/lint/build exit 0
+- [x] `aire-review-code` for 3.5 — ⚠️ APPROVED WITH COMMENTS | 0 🔴 | 0 🟠 | 2 🟡 | 3 🟢 ✅
+  - Evidence: `docs/reviews/story-3.5-code-review-v1.md`
+  - ISS-001 (patterns doc §3.3/§8 out of sync with story) and ISS-002 (`env.d.ts` breaks if `@types/node` is added) recommended before CYCLE-1 closes
+- [ ] QA validation (Vicky)
+
+---
 
 ### Remediation — Story 3.2
 
@@ -147,7 +164,7 @@
 | CYCLE-1 | 3.2 | Design System Styles (merged PR #7; review + partial remediation PR #9; QA pending) | #23669 | 2026-10-20 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.3 | Storybook 8.x Setup (PR #5 closed unmerged 2026-10-20 — needs rework on CR-001 baseline) | #23668 | 2026-10-20 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.4 | Vitest + RTL Setup | #23666 | — | — | 2026-10-13 12:00 |
-| CYCLE-1 | 3.5 | Shared Utilities and Types | #23667 | — | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.5 | Shared Utilities and Types (implemented 2026-10-21; review + QA pending) | #23667 | 2026-10-21 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.6 | CI/CD Pipeline | #23670 | — | — | 2026-10-13 12:00 |
 | CYCLE-3 | 4.1 | Footer component | LOCAL | — | — | 2026-10-13 12:00 |
 | CYCLE-3 | 4.2 | HeaderSection component | LOCAL | — | — | 2026-10-13 12:00 |
@@ -191,7 +208,7 @@
 |--------|--------|---------|--------|----------|
 | Unit Test Coverage | ≥90% | 100% | ✅ | 2026-10-21 |
 | Integration Tests | 100% pass | — | ⏸️ | 2026-10-12 00:00 |
-| Code Review | All stories | 3/34 | 🟡 | 2026-10-21 |
+| Code Review | All stories | 4/34 | 🟡 | 2026-10-21 |
 | Documentation | All stories | 2/34 | 🟡 | 2026-10-21 |
 
 ---
@@ -244,6 +261,9 @@
 - [x] **QA Regression — Story 3.1** — ✅ NO REGRESSIONS — 2026-10-19
   - Evidence: `docs/testing/regression-report-2026-10-19.md`
   - 22/22 pass; 0 new failures; 0 flaky tests; identical file sizes to baseline
+- [x] **Code Review — Story 3.5** — ⚠️ APPROVED WITH COMMENTS — 2026-10-21
+  - Evidence: `docs/reviews/story-3.5-code-review-v1.md`
+  - Issues: 0 🔴 | 0 🟠 | 2 🟡 | 3 🟢
 - [x] **Code Review — Story 3.2** — ⚠️ APPROVED WITH COMMENTS — 2026-10-21
   - Evidence: `docs/reviews/story-3.2-code-review-v1.md`
   - Issues: 0 🔴 | 0 🟠 | 3 🟡 | 2 🟢
@@ -299,6 +319,7 @@
 | PRODUCT_OWNER | Implementation plan complete — 5 epics, 34 stories (Waves 1–9), all 4 cycles planned | Idle | 2026-10-13 | 2026-10-13 12:00 |
 | BUILD_CYCLE_PLANNER | Build cycles complete — 4 cycles, docs/plans/builds/ | Idle | 2026-10-12 | 2026-10-12 11:30 |
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
+| DEV | Implemented story 3.5 — 35/35 tests, coverage 100% | Idle | 2026-10-21 | 2026-10-21 14:00 |
 | DEV | Remediated story 3.2 (story-3.2-code-review-v1.md) — ISS-002/003/004 fixed | Idle | 2026-10-21 | 2026-10-21 13:00 |
-| REVIEWER | Reviewed story 3.2 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 3🟡 2🟢) | Idle | 2026-10-21 | 2026-10-21 12:30 |
+| REVIEWER | Reviewed story 3.5 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 2🟡 3🟢) | Idle | 2026-10-21 | 2026-10-21 15:00 |
 | QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
