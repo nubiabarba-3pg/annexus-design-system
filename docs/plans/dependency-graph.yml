@@ -6,6 +6,10 @@ team_size: 2
 # Asked during plan workflow. Used as story-granularity hint: each wave should contain
 # at least team_size independent stories where architecture allows.
 
+# Re-baseline 2026-10-20 (CR-001): cycles are STRICTLY SEQUENTIAL.
+# CYCLE-1 (3.x) -> CYCLE-2 (1.x, 2.x) -> CYCLE-3 (4.x) -> CYCLE-4 (5.x).
+# Story 1.2 (Input) was started early (2026-10-20); it stays on its branch and
+# is merged only after CYCLE-1 closes.
 shared_files:
   # These files already exist from CYCLE-1 (repo scaffold).
   # Wave-1 stories all add their exports to src/index.ts — safe 3-way text merge.
@@ -24,8 +28,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     enables: [2.4]
     files_touched:
       - src/components/Button/Button.tsx
@@ -42,8 +46,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     enables: [2.4]
     files_touched:
       - src/components/Input/Input.tsx
@@ -60,8 +64,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     enables: []
     files_touched:
       - src/components/Toggle/Toggle.tsx
@@ -78,8 +82,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     enables: []
     files_touched:
       - src/components/Badge/Badge.tsx
@@ -96,8 +100,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     enables: [2.3]
     files_touched:
       - src/components/Icon/CheckCircle.tsx
@@ -115,8 +119,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     enables: []
     files_touched:
       - src/components/Logo/Logo.tsx
@@ -132,8 +136,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     # Slider's sub-elements (ControlHandle, NumberStrip) are implemented
     # within this story — no external component imports from wave-1 stories.
     enables: []
@@ -155,8 +159,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 1
-    requires: []
+    wave: 4
+    requires: [3.6]
     # Tooltip accepts trigger element as children — does not import Icon or any atom.
     enables: []
     files_touched:
@@ -175,8 +179,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 2
-    requires: [1.5]
+    wave: 5
+    requires: [1.5, 3.6]
     # Dropdown imports ChevronDown icon from src/components/Icon/ for the
     # open/close indicator. Icon (1.5) must be merged first.
     enables: []
@@ -195,8 +199,8 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 2
-    requires: [1.1, 1.2]
+    wave: 5
+    requires: [1.1, 1.2, 3.6]
     # Modal's pre-built states (Input state, Add Benefits state) compose
     # Button (close/action) and Input (form fields) — both must be merged first.
     enables: []
@@ -218,7 +222,7 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 3
+    wave: 1
     requires: []
     enables: [3.2, 3.3, 3.4, 3.5, 3.6]
     files_touched:
@@ -236,7 +240,7 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 4
+    wave: 2
     requires: [3.1]
     enables: [3.6]
     files_touched:
@@ -252,7 +256,7 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 4
+    wave: 2
     requires: [3.1]
     enables: [3.6]
     files_touched:
@@ -265,7 +269,7 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 4
+    wave: 2
     requires: [3.1]
     enables: [3.6]
     files_touched:
@@ -278,7 +282,7 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 4
+    wave: 2
     requires: [3.1]
     enables: [3.6]
     files_touched:
@@ -293,7 +297,7 @@ stories:
     jira: LOCAL
     github: null
     azure_devops: null
-    wave: 5
+    wave: 3
     requires: [3.1, 3.2, 3.3, 3.4, 3.5]
     enables: []
     files_touched:
@@ -310,7 +314,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Button (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -329,7 +333,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Dropdown/Nav + Logo (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -348,7 +352,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     enables: []
     files_touched:
       - src/components/Legend/Legend.tsx
@@ -366,7 +370,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Badge (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -385,7 +389,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Tooltip + Icon (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -404,7 +408,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     enables: []
     files_touched:
       - src/components/GroupItem/GroupItem.tsx
@@ -422,7 +426,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Toggle (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -441,7 +445,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     enables: []
     files_touched:
       - src/components/AgeTag/AgeTag.tsx
@@ -459,7 +463,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Button (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -478,7 +482,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Badge (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -497,7 +501,7 @@ stories:
     github: null
     azure_devops: null
     wave: 6
-    requires: []
+    requires: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
     # Composes Slider + Input (P0) — merged before CYCLE-3 starts
     enables: []
     files_touched:
@@ -518,7 +522,7 @@ stories:
     github: null
     azure_devops: null
     wave: 7
-    requires: []
+    requires: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
     enables: [5.2]
     files_touched:
       - src/components/ChartBar/ChartBar.tsx
@@ -555,7 +559,7 @@ stories:
     github: null
     azure_devops: null
     wave: 7
-    requires: []
+    requires: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
     enables: [5.7]
     files_touched:
       - src/components/TopSummary/TopSummary.tsx
@@ -573,7 +577,7 @@ stories:
     github: null
     azure_devops: null
     wave: 7
-    requires: []
+    requires: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
     enables: [5.7]
     files_touched:
       - src/components/BottomSummary/BottomSummary.tsx
@@ -591,7 +595,7 @@ stories:
     github: null
     azure_devops: null
     wave: 7
-    requires: []
+    requires: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
     # Composes Button + Input (P0) in Edit mode — merged before CYCLE-4 starts
     enables: [5.7]
     files_touched:
@@ -610,7 +614,7 @@ stories:
     github: null
     azure_devops: null
     wave: 7
-    requires: []
+    requires: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
     enables: [5.7]
     files_touched:
       - src/components/AnimatedValues/AnimatedValues.tsx
@@ -637,7 +641,31 @@ stories:
       - package.json
 
 waves:
+  # Wave numbers follow strict cycle order (renumbered 2026-10-20, CR-001).
+  # ── CYCLE-1 Foundation ───────────────────────────────────────────────────────
   - wave: 1
+    stories: [3.1]
+    assignments:
+      - dev: 1
+        stories: [3.1]
+      # Dev 2 unblocked after 3.1 merges — picks up wave 2
+
+  - wave: 2
+    stories: [3.2, 3.3, 3.4, 3.5]
+    assignments:
+      - dev: 1
+        stories: [3.2, 3.3]
+      - dev: 2
+        stories: [3.4, 3.5]
+
+  - wave: 3
+    stories: [3.6]
+    assignments:
+      - dev: 1
+        stories: [3.6]
+
+  # ── CYCLE-2 P0 Primitives ────────────────────────────────────────────────────
+  - wave: 4
     stories: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2]
     assignments:
       # Round-robin by complexity depth. Advisory — devs may swap before starting.
@@ -646,36 +674,13 @@ waves:
       - dev: 2
         stories: [1.2, 1.4, 1.6, 2.2]
 
-  - wave: 2
+  - wave: 5
     stories: [2.3, 2.4]
     assignments:
       - dev: 1
         stories: [2.3]
       - dev: 2
         stories: [2.4]
-
-  # ── CYCLE-1 Foundation waves ─────────────────────────────────────────────────
-
-  - wave: 3
-    stories: [3.1]
-    assignments:
-      - dev: 1
-        stories: [3.1]
-      # Dev 2 unblocked after 3.1 merges — picks up wave 4
-
-  - wave: 4
-    stories: [3.2, 3.3, 3.4, 3.5]
-    assignments:
-      - dev: 1
-        stories: [3.2, 3.3]
-      - dev: 2
-        stories: [3.4, 3.5]
-
-  - wave: 5
-    stories: [3.6]
-    assignments:
-      - dev: 1
-        stories: [3.6]
 
   # ── CYCLE-3 P1 Composition wave ──────────────────────────────────────────────
 

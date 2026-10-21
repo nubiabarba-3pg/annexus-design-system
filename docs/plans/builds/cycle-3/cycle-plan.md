@@ -2,6 +2,7 @@
 
 **Cycle ID**: cycle-3
 **BUILDID**: CYCLE-3
+**Dates**: Oct 30–Nov 4, 2026 (re-baselined from Oct 15 — CR-001). Starts only after CYCLE-2 is closed.
 **Expected Outcome**: Full application UI scaffold available — all 11 P1 layout and composition components ready. The Athene calculator app can now be built end-to-end using @annexus/ui.
 
 ---
@@ -32,7 +33,7 @@ Each component is delivered as a **complete vertical slice**: `.tsx` component +
 
 ## Workshop Plan
 
-**Day 3** (Oct 15): All 11 P1 components
+**Days 1–4** (Oct 30, Nov 2, 3, 4): All 11 P1 components
 → Goal: All 11 P1 components complete — code, tests ≥90% coverage, Storybook stories, Figma pages, CI green, Chromatic snapshots captured
 
 Each day ends with **production-ready, deployable code** — no partial or broken states overnight.

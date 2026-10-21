@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-1-story-1.4-badge.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23654 | **Epic**: 1 - P0 ATOM COMPONENTS | **ID**: 1.4 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: []
 **Files Touched**:
   - src/components/Badge/Badge.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** all Type × Tone combinations render with correct background color, text color, and border-radius derived from design tokens; Badge is display-only (no interactive states, no click events). **Mechanism:** `Badge` renders a `<span>` with two BEM modifier classes — `annexus-badge--{type}` and `annexus-badge--{tone}` — driving background-color and text-color via CSS custom properties; no JavaScript logic beyond prop → class mapping. **Authz & preconditions:** no RBAC — single actor; no access guard — purely display. **Edge/idempotency:** rendering with no `children` produces an empty badge (no crash); rendering the same props repeatedly produces identical output. **Regression:** Chromatic snapshots cover all 2 types × 5 tones = 10 combinations; unit tests assert BEM class application for every Type and Tone value; a11y audit verifies semantic `<span>` and appropriate text contrast ratios.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

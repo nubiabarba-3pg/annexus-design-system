@@ -4,7 +4,7 @@
 
 **BUILDID**: CYCLE-3 | **AzureDevOps**: #23691 | **Epic**: 4 - P1 COMPOSITION | **ID**: 4.10 | **Date**: 2026-10-13
 **Wave**: 6
-**Requires**: [3.1, 3.2, 3.3, 3.4, 3.5]
+**Requires**: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
 **Enables**: []
 **Files Touched**:
   - src/components/Row/Row.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** `pnpm storybook` shows Row stories with a label on the left and a value on the right, with optional sub-label; `pnpm test src/components/Row` exits 0 with ≥ 90% coverage; `pnpm typecheck` exits 0. **Mechanism:** Row is a summary data row — a flex layout with a left text block (label + optional sublabel) and a right value. Used in summary panels, benefit breakdowns, and detail lists. Stateless, pure presentational. **Authz & preconditions:** requires CYCLE-1 fully merged.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

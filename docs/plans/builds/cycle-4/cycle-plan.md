@@ -2,6 +2,7 @@
 
 **Cycle ID**: cycle-4
 **BUILDID**: CYCLE-4
+**Dates**: Nov 5–9, 2026 (re-baselined from Oct 16 — CR-001). Starts only after CYCLE-3 is closed.
 **Expected Outcome**: All 27 components shipped. v1.0 published to GitHub Packages (@annexus/ui). Chromatic visual regression baselines approved. Package installable by the Athene calculator app.
 
 ---
@@ -36,10 +37,10 @@ Each component is delivered as a **complete vertical slice**: `.tsx` component +
 
 ## Workshop Plan
 
-**Day 4 AM** (Oct 16): P2 components (6 components)
+**Days 1–2** (Nov 5–6): P2 components (6 components)
 → Goal: Chart/Bar + GraphContainer + TopSummary + BottomSummary + Premium + AnimatedValues — all code, tests, stories, Figma pages complete
 
-**Day 4 PM** (Oct 16): Release gate
+**Day 3** (Nov 9): Release gate
 → Goal: Chromatic approved, v1.0.0 tagged and published, package smoke-tested, Storybook URL shared, README complete
 
 Each day ends with **production-ready, deployable code** — no partial or broken states overnight.
@@ -75,7 +76,7 @@ Each day ends with **production-ready, deployable code** — no partial or broke
 - Cycle 3 complete: all 21 P0 + P1 components stable and merged to main
 - Chromatic project active with all P0 + P1 baselines captured
 - GitHub Packages publish permission confirmed (GITHUB_TOKEN with `write:packages`)
-- Source Figma still frozen (no design changes after Oct 14)
+- Source Figma still frozen (no design changes since Oct 14)
 
 ---
 

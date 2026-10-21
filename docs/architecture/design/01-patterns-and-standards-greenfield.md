@@ -15,7 +15,7 @@
 ```
 annexus-design-system/
 ├── src/
-│   ├── tokens/                          # Design tokens — innermost layer
+│   ├── styles/                          # Palette + design variables — innermost layer
 │   │   ├── _colors.scss
 │   │   ├── _typography.scss
 │   │   ├── _spacing.scss
@@ -346,24 +346,23 @@ export function BottomSummary({ premium, inflationRate, years }: ...) {
 
 **✅ DO: `@use` tokens, never hardcode values**
 ```scss
-// Button.scss
-@use '../../tokens/colors' as *;
-@use '../../tokens/spacing' as *;
-@use '../../tokens/typography' as *;
+// Button.scss — components use ONLY design variables (src/styles/design.variables.scss).
+// Those reference the hex palette (src/styles/pallete.color.scss); never use palette
+// variables or hex values in a component. Names are camelCase and start with the section.
+@use '../../styles/design.variables' as *;
 
 .annexus-button {
-  padding: $spacing-2 $spacing-4;
-  font-size: $font-size-body-md;
-  border-radius: $radius-md;
-  background-color: var(--annexus-color-primary-500);
+  font-family: $fontFamilyBase;
+  font-size: $buttonFontSize;
+  background-color: $buttonPrimaryBackgroundColor;
 
   &--primary {
-    background-color: var(--annexus-color-primary-500);
-    color: var(--annexus-color-white);
+    background-color: $buttonPrimaryBackgroundColor;
+    color: $buttonPrimaryTextColor;
 
-    &:hover { background-color: var(--annexus-color-primary-600); }
+    &:hover { background-color: $buttonPrimaryHoverBackgroundColor; }
     &:focus-visible {
-      outline: 2px solid var(--annexus-color-primary-500);
+      outline: 2px solid $buttonPrimaryFocusOutlineColor;
       outline-offset: 2px; // WCAG 2.2 AA: 2.4.11 Focus Appearance
     }
     &:disabled { opacity: 0.4; pointer-events: none; }
@@ -375,7 +374,7 @@ export function BottomSummary({ premium, inflationRate, years }: ...) {
 ```scss
 // ❌ Avoid
 .annexus-button { background-color: #0057ff; font-size: 14px; } // hardcoded
-@import '../../tokens/colors'; // @import is deprecated — use @use
+@import '../../styles/design.variables'; // @import is deprecated — use @use
 ```
 
 ### 4.2 BEM Naming Convention
@@ -775,7 +774,7 @@ This map is the authoritative input for story `files_touched` and `shared_files`
 
 | Concern | Owning Globs | Notes |
 |---------|-------------|-------|
-| Design tokens | `src/tokens/**` | Changed only by ARCHITECT or when Figma tokens update |
+| Design system styles | `src/styles/**` | `pallete.color.scss` changes only when Figma colors update; `design.variables.scss` grows per component story |
 | Button component | `src/components/Button/**` | Self-contained; no cross-component imports |
 | Input component | `src/components/Input/**` | Self-contained |
 | Toggle component | `src/components/Toggle/**` | Self-contained |
@@ -799,7 +798,7 @@ These files are modified by more than one component story — coordinate to avoi
 | File | Touched by | Reason |
 |------|-----------|--------|
 | `src/index.ts` | Every component story | Each new component adds its export line |
-| `src/tokens/index.scss` | Any story that introduces a new token | Token barrel |
+| `src/styles/design.variables.scss` + `design.variables.module.scss` | Any story that introduces a design variable | Add the variable and its `:export` line together |
 | `src/types/common.types.ts` | Any story that needs a shared type | Shared type definitions |
 | `package.json` | Infra/devops stories only | Dependency additions |
 | `.storybook/main.ts` | Infra/devops stories only | Addon additions |
@@ -807,7 +806,7 @@ These files are modified by more than one component story — coordinate to avoi
 ### Cross-Concern Rule
 
 Components may import from:
-- `src/tokens/` (all components)
+- `src/styles/design.variables` (all components — never `pallete.color` directly)
 - `src/utils/` (all components)
 - `src/types/` (all components)
 - `src/hooks/` (only when a hook is genuinely shared — not component-specific)

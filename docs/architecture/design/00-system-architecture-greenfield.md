@@ -155,13 +155,13 @@ flowchart TD
 
 ## Token Architecture
 
-Design tokens are the single source of truth for all visual values. They are defined in SCSS and simultaneously exposed as CSS custom properties at `:root` for runtime theming.
+The design system styles are the single source of truth for all visual values: `src/styles/pallete.color.scss` (hex palette) → `src/styles/design.variables.scss` (section-named variables, the only ones components use) → `designVariables` (JS export through CSS Modules `:export`). No CSS custom properties are generated (CR-001, 2026-10-20).
 
 ```mermaid
 flowchart LR
-  FIG["Figma Variables\n(AnnexusEX)"] -->|manual sync| SCSS["SCSS Token Files\n(src/tokens/)"]
+  FIG["Figma Variables\n(AnnexusEX)"] -->|manual sync| SCSS["Palette + Design Variables\n(src/styles/)"]
   SCSS -->|@use| COMP["Component .scss files"]
-  SCSS -->|CSS custom props at :root| RUNTIME["Browser Runtime\n(var(--annexus-color-primary))"]
+  SCSS -->|":export" via designVariables.ts| RUNTIME["JS consumers\n(designVariables)"]
   COMP --> BUILD["Bundled CSS\ndist/style.css"]
 ```
 

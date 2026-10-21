@@ -2,6 +2,7 @@
 
 **Cycle ID**: cycle-2
 **BUILDID**: CYCLE-2
+**Dates**: Oct 23–29, 2026 (re-baselined from Oct 13–14 — CR-001). Starts only after CYCLE-1 is closed; Story 1.2 (Input) is already implemented on its branch and is merged first.
 **Expected Outcome**: Frontend engineers can install `@annexus/ui` and render all 10 P0 components with full TypeScript types, documented Storybook stories, and ≥90% unit test coverage. Package is pre-release ready.
 
 ---
@@ -31,10 +32,10 @@ Each component is delivered as a **complete vertical slice**: `.tsx` component +
 
 ## Workshop Plan
 
-**Day 1** (Oct 13): Button + Input + Toggle + Slider + Icons + Logo (6 components)
-→ Goal: 6 components complete — code, tests ≥90% coverage, Storybook stories, Figma pages
+**Days 1–3** (Oct 23, 24, 27): Button + Input (merge) + Toggle + Slider + Icons + Logo + Badge + Tooltip
+→ Goal: 8 wave-4 components complete — code, tests ≥90% coverage, Storybook stories, Figma pages
 
-**Day 2** (Oct 14): Dropdown/Nav + Modal + Tooltip + Badge (4 components)
+**Days 4–5** (Oct 28–29): Dropdown/Nav + Modal (wave 5)
 → Goal: All 10 P0 components complete — CI green, Chromatic snapshots captured for all P0 stories
 
 Each day ends with **production-ready, deployable code** — no partial or broken states overnight.

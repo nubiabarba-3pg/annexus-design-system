@@ -3,8 +3,8 @@
 **File**: `docs/plans/stories/epic-1-story-1.3-toggle.md`
 
 **BUILDID**: CYCLE-2 | **AzureDevOps**: #23653 | **Epic**: 1 - P0 ATOM COMPONENTS | **ID**: 1.3 | **Date**: 2026-10-12
-**Wave**: 1
-**Requires**: []
+**Wave**: 4
+**Requires**: [3.6]
 **Enables**: []
 **Files Touched**:
   - src/components/Toggle/Toggle.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** the Toggle track switches between off (gray `#CED6DB`) and on (brand-primary `#11175E`) with a sliding thumb; four interaction states (Default, Hover, Focus, Disabled) render correctly in both Pressed=True and Pressed=False; `aria-pressed` on the button reflects the current boolean state. **Mechanism:** Toggle renders as a `<button role="button">` with `aria-pressed` rather than a `<input type="checkbox">`, matching the Figma pattern; internal state tracks pressed via `useState` (uncontrolled) or is fully controlled via `pressed`/`onPressedChange` props; the thumb slides via CSS `transform: translateX`. **Authz & preconditions:** no RBAC — single actor; `disabled` prop is the only guard (prevents state change). **Edge/idempotency:** pressing a disabled Toggle fires no state change; pressing an enabled Toggle in controlled mode calls `onPressedChange` but does not mutate internal state; pressing and immediately re-pressing returns to the original state (idempotent toggle cycle). **Regression:** Chromatic snapshots cover Pressed=True/False × Default/Hover/Disabled; unit tests assert aria-pressed toggling, disabled suppression, controlled/uncontrolled duality, and keyboard Space/Enter activation.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

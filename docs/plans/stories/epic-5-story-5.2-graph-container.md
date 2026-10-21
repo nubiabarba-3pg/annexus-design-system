@@ -17,6 +17,8 @@
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** `pnpm storybook` shows a GraphContainer story with a title, a ChartBar chart, and a Legend beneath it, all in a card-style container; `pnpm test src/components/GraphContainer` exits 0 with ≥ 90% coverage; `pnpm typecheck` exits 0. **Mechanism:** GraphContainer composes ChartBar + Legend inside a titled card. It accepts `data` (shared between chart and legend) and derives the `LegendItem[]` from the data. **Authz & preconditions:** requires Story 5.1 (ChartBar) merged; Wave 8.
 
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
+
 ---
 
 #### 👤 User Reference

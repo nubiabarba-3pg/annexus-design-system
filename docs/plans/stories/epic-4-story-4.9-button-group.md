@@ -4,7 +4,7 @@
 
 **BUILDID**: CYCLE-3 | **AzureDevOps**: #23693 | **Epic**: 4 - P1 COMPOSITION | **ID**: 4.9 | **Date**: 2026-10-13
 **Wave**: 6
-**Requires**: [3.1, 3.2, 3.3, 3.4, 3.5]
+**Requires**: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.1, 2.2, 2.3, 2.4]
 **Enables**: []
 **Files Touched**:
   - src/components/ButtonGroup/ButtonGroup.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** `pnpm storybook` shows ButtonGroup stories with 2–3 buttons joined side-by-side with shared borders; `pnpm test src/components/ButtonGroup` exits 0 with ≥ 90% coverage; `pnpm typecheck` exits 0. **Mechanism:** ButtonGroup is a layout wrapper — it renders a flex row with `gap: 0` and removes the border-radius from the inner/outer edges of adjacent children via CSS `:first-child`/`:last-child`/`:not(:first-child)` selectors. Accepts `React.ReactNode` children (typically Button components). **Authz & preconditions:** requires CYCLE-1 fully merged.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

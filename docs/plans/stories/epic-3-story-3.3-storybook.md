@@ -3,14 +3,14 @@
 **File**: `docs/plans/stories/epic-3-story-3.3-storybook.md`
 
 **BUILDID**: CYCLE-1 | **AzureDevOps**: #23668 | **Epic**: 3 - FOUNDATION SETUP | **ID**: 3.3 | **Date**: 2026-10-12
-**Wave**: 4
+**Wave**: 2
 **Requires**: [3.1]
 **Enables**: [3.6]
 **Files Touched**:
   - .storybook/main.ts
   - .storybook/preview.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
-**QA Candidate**: Yes — **Observable:** `pnpm storybook` launches on `http://localhost:6006` with zero console errors; the Storybook UI shows an empty component list (no stories yet); the a11y addon tab is visible in the addons panel; `pnpm build-storybook` exits 0 and produces a `storybook-static/` directory. **Mechanism:** `main.ts` registers `@storybook/react-vite` as the framework, wires the a11y and essentials addons, and points the stories glob to `src/**/*.stories.tsx`; `preview.ts` imports `dist/style.css` (or `src/tokens/index.scss`) so design token custom properties are available in every story. **Authz & preconditions:** requires Story 3.1 (repo scaffold with Storybook devDeps). **Edge/idempotency:** running `pnpm storybook` twice on the same config always produces the same empty UI. **Regression:** Story 3.6 CI gate runs `pnpm build-storybook`; every component story added in CYCLE-2+ depends on this config being correct.
+**QA Candidate**: Yes — **Observable:** `pnpm storybook` launches on `http://localhost:6006` with zero console errors; the Storybook UI shows an empty component list (no stories yet); the a11y addon tab is visible in the addons panel; `pnpm build-storybook` exits 0 and produces a `storybook-static/` directory. **Mechanism:** `main.ts` registers `@storybook/react-vite` as the framework, wires the a11y and essentials addons, and points the stories glob to `src/**/*.stories.tsx`; `preview.ts` imports `src/styles.scss` so global styles are available in every story. **Authz & preconditions:** requires Story 3.1 (repo scaffold with Storybook devDeps). **Edge/idempotency:** running `pnpm storybook` twice on the same config always produces the same empty UI. **Regression:** Story 3.6 CI gate runs `pnpm build-storybook`; every component story added in CYCLE-2+ depends on this config being correct.
 
 ---
 
@@ -54,14 +54,14 @@ flowchart TD
 **Design Tokens**: N/A — this story configures Storybook; token import in `preview.ts` ensures all future stories have CSS custom properties.
 
 **Description**:
-Two files: `.storybook/main.ts` and `.storybook/preview.ts`. `main.ts` uses the `@storybook/react-vite` framework (same Vite config as the library build, sharing the SCSS preprocessor setup), registers `@storybook/addon-essentials` and `@storybook/addon-a11y`, and sets the stories glob. `preview.ts` imports `'../src/tokens/index.scss'` so design tokens are compiled and available in all stories without requiring consumers to import `style.css` themselves in the Storybook environment.
+Two files: `.storybook/main.ts` and `.storybook/preview.ts`. `main.ts` uses the `@storybook/react-vite` framework (same Vite config as the library build, sharing the SCSS preprocessor setup), registers `@storybook/addon-essentials` and `@storybook/addon-a11y`, and sets the stories glob. `preview.ts` imports `'../src/styles.scss'` so global styles are compiled and available in all stories; component SCSS pulls its own design variables through `@use`.
 
 **Acceptance Criteria** (comprehensive):
 - `.storybook/main.ts` framework is `@storybook/react-vite`
 - `.storybook/main.ts` addons include `@storybook/addon-essentials` and `@storybook/addon-a11y`
 - `.storybook/main.ts` stories glob: `['../src/**/*.stories.@(js|jsx|ts|tsx)']`
 - `.storybook/main.ts` docs: `{ autodocs: 'tag' }` (enables autodocs for stories tagged `['autodocs']`)
-- `.storybook/preview.ts` imports design token SCSS: `import '../src/tokens/index.scss'`
+- `.storybook/preview.ts` imports global styles: `import '../src/styles.scss'`
 - `pnpm storybook` launches on port 6006; zero console errors; empty sidebar
 - `pnpm build-storybook` exits 0; `storybook-static/index.html` exists
 - a11y addon visible in addons panel of any story
@@ -121,7 +121,7 @@ Two files: `.storybook/main.ts` and `.storybook/preview.ts`. `main.ts` uses the 
 2. **Create `.storybook/preview.ts`**:
    ```typescript
    import type { Preview } from '@storybook/react';
-   import '../src/tokens/index.scss';
+   import '../src/styles.scss';
 
    const preview: Preview = {
      parameters: {

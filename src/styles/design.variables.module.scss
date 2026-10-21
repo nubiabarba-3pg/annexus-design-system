@@ -1,0 +1,32 @@
+// Exposes the design variables to JS (CSS Modules `:export`).
+// Import through designVariables.ts, not directly.
+@use 'design.variables' as v;
+
+:export {
+  fontFamilyBase: v.$fontFamilyBase;
+  inputLabelFontSize: v.$inputLabelFontSize;
+  inputLabelLineHeight: v.$inputLabelLineHeight;
+  inputLabelFontWeight: v.$inputLabelFontWeight;
+  inputFieldFontSize: v.$inputFieldFontSize;
+  inputFieldLineHeight: v.$inputFieldLineHeight;
+  inputFieldFontWeight: v.$inputFieldFontWeight;
+  inputErrorFontSize: v.$inputErrorFontSize;
+  inputErrorLineHeight: v.$inputErrorLineHeight;
+  inputErrorFontWeight: v.$inputErrorFontWeight;
+  inputHelperFontSize: v.$inputHelperFontSize;
+  inputHelperLineHeight: v.$inputHelperLineHeight;
+  inputHelperFontWeight: v.$inputHelperFontWeight;
+  inputLabelColor: v.$inputLabelColor;
+  inputFieldBorderColor: v.$inputFieldBorderColor;
+  inputFieldBackgroundColor: v.$inputFieldBackgroundColor;
+  inputFieldTextColor: v.$inputFieldTextColor;
+  inputFieldPlaceholderColor: v.$inputFieldPlaceholderColor;
+  inputFieldFocusBorderColor: v.$inputFieldFocusBorderColor;
+  inputFieldFocusOutlineColor: v.$inputFieldFocusOutlineColor;
+  inputFieldShadowColor: v.$inputFieldShadowColor;
+  inputErrorBorderColor: v.$inputErrorBorderColor;
+  inputErrorFocusBorderColor: v.$inputErrorFocusBorderColor;
+  inputErrorTextColor: v.$inputErrorTextColor;
+  inputHelperTextColor: v.$inputHelperTextColor;
+  inputDisabledBackgroundColor: v.$inputDisabledBackgroundColor;
+}

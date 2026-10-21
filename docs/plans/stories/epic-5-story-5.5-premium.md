@@ -4,7 +4,7 @@
 
 **BUILDID**: CYCLE-4 | **AzureDevOps**: #23694 | **Epic**: 5 - P2 COMPLEX + v1.0 | **ID**: 5.5 | **Date**: 2026-10-13
 **Wave**: 7
-**Requires**: [3.1, 3.2, 3.3, 3.4, 3.5]
+**Requires**: [4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11]
 **Enables**: []
 **Files Touched**:
   - src/components/Premium/Premium.tsx
@@ -16,6 +16,8 @@
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
 **QA Candidate**: Yes — **Observable:** `pnpm storybook` shows Premium stories with a large currency amount, a frequency label, and an optional "per life" qualifier; `pnpm test src/components/Premium` exits 0 with ≥ 90% coverage; `pnpm typecheck` exits 0. **Mechanism:** Premium is a display-only component for showing a formatted premium amount with frequency and optional qualifier text. Pure presentational, no state. **Authz & preconditions:** requires CYCLE-1 fully merged; Wave 7.
+
+> **Styling (CR-001, 2026-10-20)**: wherever this story says `var(--annexus-*)`, `src/tokens/` or a hex value, implement it as a **design variable** instead. Add `$<section><Element><State><Property>` (camelCase, section-prefixed, never repeated) to `src/styles/design.variables.scss`, pointing to a color in `src/styles/pallete.color.scss`, and `@use '../../styles/design.variables' as *;` in the component SCSS. Component SCSS never uses hex values or palette variables. Every new design variable is also added to `src/styles/design.variables.module.scss` so it is exported to JS (`designVariables`). Fonts use `$fontFamilyBase` and section-named size/line-height/weight variables. Reference implementation: `src/components/Input/Input.scss`. Spec: Story 3.2.
 
 ---
 

@@ -3,7 +3,7 @@
 **File**: `docs/plans/stories/epic-3-story-3.5-shared-utils.md`
 
 **BUILDID**: CYCLE-1 | **AzureDevOps**: #23667 | **Epic**: 3 - FOUNDATION SETUP | **ID**: 3.5 | **Date**: 2026-10-12
-**Wave**: 4
+**Wave**: 2
 **Requires**: [3.1]
 **Enables**: [3.6]
 **Files Touched**:

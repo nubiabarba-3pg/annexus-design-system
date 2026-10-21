@@ -3,7 +3,7 @@
 **File**: `docs/plans/stories/epic-3-story-3.6-cicd.md`
 
 **BUILDID**: CYCLE-1 | **AzureDevOps**: #23670 | **Epic**: 3 - FOUNDATION SETUP | **ID**: 3.6 | **Date**: 2026-10-13
-**Wave**: 5
+**Wave**: 3
 **Requires**: [3.1, 3.2, 3.3, 3.4, 3.5]
 **Enables**: []
 **Files Touched**:
