@@ -14,6 +14,13 @@
 **Target Completion**: 2026-11-09 (re-baselined from 2026-10-16 — CR-001)
 **Active Cycle**: CYCLE-1
 
+### Team
+
+| Role | Count | Assignment |
+|------|-------|------------|
+| Dev | 2 | Dev-1 / Dev-2 per `docs/plans/implementation-plan.md` (Wave Workload Distribution) |
+| QA | 1 | Vicky (QA-1) — added 2026-10-21; validates every story after code review, approves Chromatic/a11y, runs cycle regression |
+
 ---
 
 ## Progress Summary
