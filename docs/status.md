@@ -1,7 +1,7 @@
 # Project Status
 
-**Last Updated**: 2026-10-19
-**Updated By**: QA
+**Last Updated**: 2026-10-20
+**Updated By**: REVIEWER
 **Overall Status**: 🟢 ON TRACK
 
 ---
@@ -11,7 +11,7 @@
 **Project**: Annexus Design System
 **Type**: Greenfield
 **Start Date**: 2026-10-12
-**Target Completion**: 2026-10-16
+**Target Completion**: 2026-11-09 (re-baselined from 2026-10-16 — CR-001)
 **Active Cycle**: CYCLE-1
 
 ---
@@ -25,7 +25,7 @@
 | Patterns | ✅ Done | ARCHITECT | 2026-10-12 | `docs/architecture/design/01-patterns-and-standards-greenfield.md` | 2026-10-12 11:00 |
 | Build Cycles | ✅ Done | BUILD_CYCLE_PLANNER | 2026-10-12 | `docs/plans/builds/` | 2026-10-12 11:30 |
 | UI/UX Design | ✅ Done | UI_UX_DESIGNER | 2026-10-12 | `docs/ui-ux/ui-ux-spec.md` | 2026-10-12 12:00 |
-| Implementation Plan | ✅ Done | PRODUCT_OWNER | 2026-10-13 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
+| Implementation Plan | ✅ Done (updated CR-001) | PRODUCT_OWNER | 2026-10-20 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
 | Review | ✅ Done | REVIEWER | 2026-10-19 | `docs/reviews/story-3.1-code-review-v1.md` | 2026-10-19 10:00 |
 | QA | ✅ Done | QA | 2026-10-19 | `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-19 14:30 |
 
@@ -52,6 +52,23 @@
 
 ---
 
+### Review — Story 1.2
+
+**Owner**: REVIEWER
+**Status**: ✅ Done
+**Started**: 2026-10-20
+
+**Progress**:
+- [x] Story 1.2 reviewed — ⚠️ APPROVED WITH COMMENTS | 0 🔴 | 0 🟠 | 4 🟡 | 4 🟢 ✅
+  - Evidence: `docs/reviews/story-1.2-code-review-v1.md`
+- [x] Story 1.2 re-reviewed (v2, NEW_CHANGES) — ❌ CHANGES REQUESTED | 0 🔴 | 1 🟠 (ISS-101: coverage gate fails, `src/styles` untested) ✅
+  - Evidence: `docs/reviews/story-1.2-code-review-v2.md`
+  - Remediated 2026-10-20 — ISS-101 ✅ Resolved: `src/styles/designVariables.test.ts` added, coverage config fixed; 22/22 tests, coverage 100%, lint/tsc/build clean
+- [x] Story 1.2 re-reviewed (v3, FIX_VERIFICATION) — ✅ APPROVED | 0 🔴 | 0 🟠 — ISS-101 verified resolved ✅
+  - Evidence: `docs/reviews/story-1.2-code-review-v3.md`
+
+---
+
 ### Review / Remediation — Story 3.1
 
 **Owner**: DEV
@@ -71,10 +88,10 @@
 
 | Cycle | BUILDID | Scope | Stories | Status | Start | End | Recorded |
 |-------|---------|-------|---------|--------|-------|-----|----------|
-| Cycle 1 | CYCLE-1 | Foundation: scaffold, tokens, CI/CD, Storybook, Chromatic | 1/6 | 🟡 In Progress | 2026-10-14 | — | 2026-10-14 |
-| Cycle 2 | CYCLE-2 | P0 Primitives: Button, Input, Toggle, Slider, Dropdown/Nav, Modal, Tooltip, Badge, Icons, Logo | 0/10 | ⏸️ Not Started | — | — | 2026-10-12 13:00 |
-| Cycle 3 | CYCLE-3 | P1 Composition: Footer, HeaderSection, Legend, AddonRow, HelpIcon, GroupItem, FrequencySelector, AgeTag, ButtonGroup, Row, AdjustInflationRate | 0/11 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
-| Cycle 4 | CYCLE-4 | P2 Complex: Chart/Bar, GraphContainer, TopSummary, BottomSummary, Premium, AnimatedValues + v1.0 release | 0/7 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
+| Cycle 1 | CYCLE-1 | Foundation: scaffold, design system styles, CI/CD, Storybook, Chromatic (due 2026-10-22) | 1/6 | 🟡 In Progress | 2026-10-14 | — | 2026-10-14 |
+| Cycle 2 | CYCLE-2 | P0 Primitives: Button, Input, Toggle, Slider, Dropdown/Nav, Modal, Tooltip, Badge, Icons, Logo (Oct 23–29; Input already in progress, on hold for merge) | 0/10 | ⏸️ Not Started | — | — | 2026-10-12 13:00 |
+| Cycle 3 | CYCLE-3 | P1 Composition: Footer, HeaderSection, Legend, AddonRow, HelpIcon, GroupItem, FrequencySelector, AgeTag, ButtonGroup, Row, AdjustInflationRate (Oct 30–Nov 4) | 0/11 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
+| Cycle 4 | CYCLE-4 | P2 Complex: Chart/Bar, GraphContainer, TopSummary, BottomSummary, Premium, AnimatedValues (6) + v1.0 release story (Nov 5–9) | 0/7 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
 
 ---
 
@@ -83,7 +100,7 @@
 | BUILDID | Story | Title | AzureDevOps | Start | End | Recorded |
 |---------|-------|-------|-------------|-------|-----|----------|
 | CYCLE-2 | 1.1 | Button component | #23651 | — | — | 2026-10-12 13:00 |
-| CYCLE-2 | 1.2 | Input component | #23652 | — | — | 2026-10-12 13:00 |
+| CYCLE-2 | 1.2 | Input component | #23652 | 2026-10-20 | — | 2026-10-12 13:00 |
 | CYCLE-2 | 1.3 | Toggle component | #23653 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 1.4 | Badge component | #23654 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 1.5 | Icon component (CheckCircle, ChevronDown, WinLose) | #23655 | — | — | 2026-10-12 13:00 |
@@ -130,6 +147,7 @@
 
 | CR ID | Status | Scheduled Cycle | Summary | Drafted | Applied | Recorded |
 |-------|--------|-----------------|---------|---------|---------|----------|
+| CR-001 | ✅ Applied | ALL | Re-baseline: deadline Oct 16 → Nov 9; strict cycle order; waves renumbered; Story 3.2 re-scoped to palette + design variables + JS export; Story 1.2 started early (kept, merges after 3.6) | 2026-10-20 | 2026-10-20 | 2026-10-20 |
 
 ---
 
@@ -139,7 +157,7 @@
 |--------|--------|---------|--------|----------|
 | Unit Test Coverage | ≥90% | —% | ⏸️ | 2026-10-12 09:00 |
 | Integration Tests | 100% pass | — | ⏸️ | 2026-10-12 00:00 |
-| Code Review | All stories | 1/34 | 🟡 | 2026-10-19 10:00 |
+| Code Review | All stories | 2/34 | 🟡 | 2026-10-20 |
 | Documentation | All stories | 1/34 | 🟡 | 2026-10-14 |
 
 ---
@@ -170,6 +188,9 @@
   - 34 story files: `epic-1-story-1.1-button.md` through `epic-5-story-5.7-v1-release.md`
   - CYCLE-2 Azure DevOps: Epic #23649 (P0 Atom), Epic #23650 (P0 Complex); Stories #23651–#23660; Sprint 2
   - CYCLE-1/3/4 Azure DevOps: Epics #23662/23663/23664; Stories #23665–23700; all parent-linked and content-populated
+- [x] **Implementation Plan updated (CR-001)** — Done — 2026-10-20
+  - Evidence: `docs/plans/implementation-plan.md` (Styling Convention section), `docs/plans/dependency-graph.yml` (strict cycle order, waves 1–9 renumbered)
+  - Story 3.2 re-scoped to palette + design variables + JS export; styling note added to all component stories; stale `src/tokens` references fixed in stories 1.1, 1.2, 2.4, 3.1, 3.3, 3.4 and architecture docs. Still 34 stories, numbering unchanged.
 - [x] **Story 3.1: Repo Scaffold** — Done — 2026-10-14
   - Evidence: `pnpm build` exits 0; `dist/` → `index.es.js`, `index.cjs.js`, `index.d.ts`, `style.css`
   - `pnpm typecheck` exits 0 (clean); `pnpm lint` exits 0 (zero warnings)
@@ -237,5 +258,5 @@
 | BUILD_CYCLE_PLANNER | Build cycles complete — 4 cycles, docs/plans/builds/ | Idle | 2026-10-12 | 2026-10-12 11:30 |
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
 | DEV | Remediated story 3.1 (story-3.1-code-review-v1.md) — ISS-001 + ISS-002 fixed | Idle | 2026-10-19 | 2026-10-19 10:30 |
-| REVIEWER | Reviewed story 3.1 — ⚠️ APPROVED WITH COMMENTS | Idle | 2026-10-19 | 2026-10-19 10:00 |
+| REVIEWER | Reviewed story 1.2 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 4🟡 4🟢) | Idle | 2026-10-20 | 2026-10-20 |
 | QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
