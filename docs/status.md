@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-10-21
 **Updated By**: DEV
-**Overall Status**: 🟢 ON TRACK
+**Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 1/6 stories done; 3.4, 3.5, 3.6 not started
 
 ---
 
@@ -123,7 +123,7 @@
 | Cycle | BUILDID | Scope | Stories | Status | Start | End | Recorded |
 |-------|---------|-------|---------|--------|-------|-----|----------|
 | Cycle 1 | CYCLE-1 | Foundation: scaffold, design system styles, CI/CD, Storybook, Chromatic (due 2026-10-22) | 1/6 | 🟡 In Progress | 2026-10-14 | — | 2026-10-14 |
-| Cycle 2 | CYCLE-2 | P0 Primitives: Button, Input, Toggle, Slider, Dropdown/Nav, Modal, Tooltip, Badge, Icons, Logo (Oct 23–29; Input already in progress, on hold for merge) | 0/10 | ⏸️ Not Started | — | — | 2026-10-12 13:00 |
+| Cycle 2 | CYCLE-2 | P0 Primitives: Button, Input, Toggle, Slider, Dropdown/Nav, Modal, Tooltip, Badge, Icons, Logo (Oct 23–29; Input 1.2 already merged to main via PR #8 ahead of strict cycle order) | 0/10 | ⏸️ Not Started | — | — | 2026-10-12 13:00 |
 | Cycle 3 | CYCLE-3 | P1 Composition: Footer, HeaderSection, Legend, AddonRow, HelpIcon, GroupItem, FrequencySelector, AgeTag, ButtonGroup, Row, AdjustInflationRate (Oct 30–Nov 4) | 0/11 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
 | Cycle 4 | CYCLE-4 | P2 Complex: Chart/Bar, GraphContainer, TopSummary, BottomSummary, Premium, AnimatedValues (6) + v1.0 release story (Nov 5–9) | 0/7 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
 
@@ -134,7 +134,7 @@
 | BUILDID | Story | Title | AzureDevOps | Start | End | Recorded |
 |---------|-------|-------|-------------|-------|-----|----------|
 | CYCLE-2 | 1.1 | Button component | #23651 | — | — | 2026-10-12 13:00 |
-| CYCLE-2 | 1.2 | Input component | #23652 | 2026-10-20 | — | 2026-10-12 13:00 |
+| CYCLE-2 | 1.2 | Input component (merged PR #8 2026-10-20; no QA yet) | #23652 | 2026-10-20 | — | 2026-10-12 13:00 |
 | CYCLE-2 | 1.3 | Toggle component | #23653 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 1.4 | Badge component | #23654 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 1.5 | Icon component (CheckCircle, ChevronDown, WinLose) | #23655 | — | — | 2026-10-12 13:00 |
@@ -144,8 +144,8 @@
 | CYCLE-2 | 2.3 | Dropdown / Header Navigation component | #23659 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 2.4 | Modal component (Input state + Add Benefits state) | #23660 | — | — | 2026-10-12 13:00 |
 | CYCLE-1 | 3.1 | Repo Scaffold | #23665 | 2026-10-14 | 2026-10-14 | 2026-10-14 |
-| CYCLE-1 | 3.2 | SCSS Design Tokens (Remediation Started 2026-10-21) | #23669 | — | — | 2026-10-13 12:00 |
-| CYCLE-1 | 3.3 | Storybook 8.x Setup | #23668 | — | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.2 | Design System Styles (merged PR #7; review + partial remediation PR #9; QA pending) | #23669 | 2026-10-20 | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.3 | Storybook 8.x Setup (PR #5 closed unmerged 2026-10-20 — needs rework on CR-001 baseline) | #23668 | 2026-10-20 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.4 | Vitest + RTL Setup | #23666 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.5 | Shared Utilities and Types | #23667 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.6 | CI/CD Pipeline | #23670 | — | — | 2026-10-13 12:00 |
@@ -256,9 +256,10 @@
 ## Upcoming
 
 1. ~~**QA Story 3.1**~~ — ✅ Complete (22/22 PASS, signed off 2026-10-19)
-2. **Build CYCLE-1 Wave 4** — `aire-dev-implement 3.2` / `3.3` / `3.4` / `3.5` in parallel (all unblocked by 3.1) → then Wave 5: 3.6 CI/CD
-3. **Build CYCLE-2 (Sprint 2)** — run `aire-dev-implement 1.1` (Wave 1: 8 stories in parallel) → Wave 2: [2.3, 2.4]
-4. **Build CYCLE-3 (Sprint 3)** — run Wave 6: all 11 stories in parallel (all independent)
+2. **Finish CYCLE-1 Wave 2** — decide ISS-001 (gray 700) and QA Story 3.2; rework 3.3 (PR #5 closed); `aire-dev-implement 3.4` / `3.5` in parallel → then Wave 3: 3.6 CI/CD
+2a. **Catch-up QA Story 1.2** — merged to main (PR #8) without a QA report
+3. **Build CYCLE-2 (Sprint 2)** — Wave 4: remaining 7 stories in parallel (1.2 already merged) → Wave 5: [2.3, 2.4]
+4. **Build CYCLE-3 (Sprint 3)** — Wave 6: all 11 stories in parallel (all independent)
 5. **Build CYCLE-4 (Sprint 4)** — Wave 7: [5.1, 5.3, 5.4, 5.5, 5.6] parallel → Wave 8: 5.2 GraphContainer → Wave 9: 5.7 v1.0 Release
 6. Per story: `aire-review-code` → `aire-qa-validate` → mark Done in Azure DevOps
 
@@ -268,7 +269,8 @@
 
 | ID | Description | Owner | Opened | Status | Recorded |
 |----|-------------|-------|--------|--------|----------|
-| — | (none) | — | — | — | 2026-10-12 00:00 |
+| RISK-1 | CYCLE-1 due 2026-10-22: 3.3 needs rework, 3.4/3.5/3.6 not started | DEV | 2026-10-21 | 🟡 Open | 2026-10-21 |
+| RISK-2 | 3.6 CI/CD needs Chromatic project token + GITHUB_TOKEN confirmed | Nubia Barba | 2026-10-21 | 🟡 Open | 2026-10-21 |
 
 ---
 
