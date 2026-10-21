@@ -1,7 +1,7 @@
 # Project Status
 
 **Last Updated**: 2026-10-21
-**Updated By**: DEV
+**Updated By**: QA
 **Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 1/6 stories done; 3.4, 3.5, 3.6 not started
 
 ---
@@ -34,11 +34,33 @@
 | UI/UX Design | ✅ Done | UI_UX_DESIGNER | 2026-10-12 | `docs/ui-ux/ui-ux-spec.md` | 2026-10-12 12:00 |
 | Implementation Plan | ✅ Done (updated CR-001) | PRODUCT_OWNER | 2026-10-20 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
 | Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.2-code-review-v1.md` | 2026-10-21 12:30 |
-| QA | ✅ Done | QA | 2026-10-19 | `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-19 14:30 |
+| QA | 🟡 In Progress | QA | 2026-10-21 | `docs/testing/validation-report-story-3.2-2026-10-21.md` | 2026-10-21 14:56 |
 
 ---
 
 ## Current Step Details
+
+### QA — Story 3.2
+
+**Owner**: QA
+**Status**: 🟡 In Progress — validation 🟡 PARTIAL, sign-off CONDITIONAL
+**Started**: 2026-10-21
+
+**Progress**:
+- [x] Test plan created for Story 3.2 ✅
+  - Evidence: `docs/testing/test-plan-story-3.2.md` (17 test cases, 14 requirements traced)
+- [x] Validation executed — 15/17 PASS; 25/25 unit tests; coverage 100%; build/typecheck/lint exit 0; mutation check on `:export` parity passes ✅
+  - Evidence: `docs/testing/validation-report-story-3.2-2026-10-21.md`
+  - BUG-001 🟡 Medium — spec gray 700 `#404042` not in palette (`#414651`); same as review ISS-001, awaiting design decision
+  - BUG-002 🟠 High — `require('@annexus/ui')` returns `{}`: `"type": "module"` makes Node load `dist/index.cjs.js` as ESM. Pre-existing from Story 3.1 build config; blocks package release
+- [x] Bug triage complete — 2 bugs (0 P0, 1 P1, 1 P2), 1 release blocker ✅
+  - Evidence: `docs/testing/bug-triage-2026-10-21.md`
+  - BUG-002 P1 → DEV, fix before 3.6 / CYCLE-1 close; BUG-001 P2 → design/PO decision, gates 3.2 sign-off
+  - Release decision: ⚠️ CONDITIONAL — do not publish `@annexus/ui` until BUG-002 is fixed
+  - Pushed to Azure DevOps: BUG-002 → #23779 (child of #23665), BUG-001 → #23780 (child of #23669), Sprint 1
+- [ ] Sign-off → APPROVED once BUG-001 is decided and TC-005 re-tested
+
+---
 
 ### Remediation — Story 3.2
 
@@ -144,7 +166,7 @@
 | CYCLE-2 | 2.3 | Dropdown / Header Navigation component | #23659 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 2.4 | Modal component (Input state + Add Benefits state) | #23660 | — | — | 2026-10-12 13:00 |
 | CYCLE-1 | 3.1 | Repo Scaffold | #23665 | 2026-10-14 | 2026-10-14 | 2026-10-14 |
-| CYCLE-1 | 3.2 | Design System Styles (merged PR #7; review + partial remediation PR #9; QA pending) | #23669 | 2026-10-20 | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.2 | Design System Styles (merged PR #7; review + partial remediation PR #9; QA conditional — BUG-001/BUG-002) | #23669 | 2026-10-20 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.3 | Storybook 8.x Setup (PR #5 closed unmerged 2026-10-20 — needs rework on CR-001 baseline) | #23668 | 2026-10-20 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.4 | Vitest + RTL Setup | #23666 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.5 | Shared Utilities and Types | #23667 | — | — | 2026-10-13 12:00 |
@@ -250,13 +272,17 @@
 - [x] **Remediation — Story 3.2** — 🟡 Partially remediated (3/5) — 2026-10-21
   - Evidence: `docs/reviews/story-3.2-code-review-v1.md` (banner + Remediation Section); 25/25 tests, coverage 100%
   - Fixed ISS-002 (SCSS guard tests), ISS-003, ISS-004; deferred ISS-001 (design decision), ISS-005 (Story 1.2)
+- [x] **QA Validation — Story 3.2** — 🟡 PARTIAL (CONDITIONAL) — 2026-10-21
+  - Evidence: `docs/testing/test-plan-story-3.2.md`, `docs/testing/validation-report-story-3.2-2026-10-21.md`
+  - 15/17 test cases pass; 25/25 tests; coverage 100%
+  - Open: BUG-001 🟡 (gray 700 vs spec), BUG-002 🟠 (CJS entry exports nothing — Story 3.1 build config)
 
 ---
 
 ## Upcoming
 
 1. ~~**QA Story 3.1**~~ — ✅ Complete (22/22 PASS, signed off 2026-10-19)
-2. **Finish CYCLE-1 Wave 2** — decide ISS-001 (gray 700) and QA Story 3.2; rework 3.3 (PR #5 closed); `aire-dev-implement 3.4` / `3.5` in parallel → then Wave 3: 3.6 CI/CD
+2. **Finish CYCLE-1 Wave 2** — decide ISS-001/BUG-001 (gray 700) and re-test TC-005; fix BUG-002 (CJS `.cjs` extension) before 3.6; rework 3.3 (PR #5 closed); `aire-dev-implement 3.4` / `3.5` in parallel → then Wave 3: 3.6 CI/CD
 2a. **Catch-up QA Story 1.2** — merged to main (PR #8) without a QA report
 3. **Build CYCLE-2 (Sprint 2)** — Wave 4: remaining 7 stories in parallel (1.2 already merged) → Wave 5: [2.3, 2.4]
 4. **Build CYCLE-3 (Sprint 3)** — Wave 6: all 11 stories in parallel (all independent)
@@ -271,6 +297,7 @@
 |----|-------------|-------|--------|--------|----------|
 | RISK-1 | CYCLE-1 due 2026-10-22: 3.3 needs rework, 3.4/3.5/3.6 not started | DEV | 2026-10-21 | 🟡 Open | 2026-10-21 |
 | RISK-2 | 3.6 CI/CD needs Chromatic project token + GITHUB_TOKEN confirmed | Nubia Barba | 2026-10-21 | 🟡 Open | 2026-10-21 |
+| BUG-002 | 🟠 High / P1 — `require('@annexus/ui')` returns `{}` (CJS entry loaded as ESM under `"type": "module"`); blocks package release — ADO #23779 — `docs/testing/bug-triage-2026-10-21.md` | DEV | 2026-10-21 | 🟡 Open | 2026-10-21 15:41 |
 
 ---
 
@@ -301,4 +328,4 @@
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
 | DEV | Remediated story 3.2 (story-3.2-code-review-v1.md) — ISS-002/003/004 fixed | Idle | 2026-10-21 | 2026-10-21 13:00 |
 | REVIEWER | Reviewed story 3.2 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 3🟡 2🟢) | Idle | 2026-10-21 | 2026-10-21 12:30 |
-| QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
+| QA | Bug triage complete — 2 bugs, 1 blocker — docs/testing/bug-triage-2026-10-21.md; pushed to ADO #23779, #23780 | Active | 2026-10-21 | 2026-10-21 15:41 |
