@@ -1,0 +1,39 @@
+// Design variables — the only variables exposed to component .scss files.
+// Each one is named after the section it styles and references the palette.
+// Exported to JS through design.variables.module.scss (see designVariables.ts).
+// Consume with: @use '../../styles/design.variables' as *;
+@use 'pallete.color' as palette;
+
+// ── Fonts ───────────────────────────────────────────────────────────────
+$fontFamilyBase: 'Assistant', sans-serif;
+
+$inputLabelFontSize: 14px;
+$inputLabelLineHeight: 20px;
+$inputLabelFontWeight: 600;
+
+$inputFieldFontSize: 14px;
+$inputFieldLineHeight: 20px;
+$inputFieldFontWeight: 400;
+
+$inputErrorFontSize: 12px;
+$inputErrorLineHeight: 18px;
+$inputErrorFontWeight: 400;
+
+$inputHelperFontSize: 12px;
+$inputHelperLineHeight: 18px;
+$inputHelperFontWeight: 400;
+
+// ── Colors ──────────────────────────────────────────────────────────────
+$inputLabelColor: palette.$gray700;
+$inputFieldBorderColor: palette.$gray300;
+$inputFieldBackgroundColor: palette.$white;
+$inputFieldTextColor: palette.$gray900;
+$inputFieldPlaceholderColor: palette.$gray400;
+$inputFieldFocusBorderColor: palette.$midnightBlue;
+$inputFieldFocusOutlineColor: palette.$midnightBlue;
+$inputFieldShadowColor: palette.$shadowBlack;
+$inputErrorBorderColor: palette.$brickRed;
+$inputErrorFocusBorderColor: palette.$brickRed;
+$inputErrorTextColor: palette.$brickRed;
+$inputHelperTextColor: palette.$gray500;
+$inputDisabledBackgroundColor: palette.$gray100;
