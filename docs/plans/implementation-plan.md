@@ -43,13 +43,16 @@ graph TD
 | 6 | 4.1–4.11 | CYCLE-3 — require all P0 stories |
 | 7–9 | 5.1, 5.3–5.6 · 5.2 · 5.7 | CYCLE-4 — require all P1 stories |
 
-### Wave Workload Distribution (team_size: 2)
+### Wave Workload Distribution (team_size: 3 — 2 Dev + 1 QA)
 
-| Wave | Stories | Per Dev | Dev Assignments | Notes |
-|------|---------|---------|----------------|-------|
-| 2 | 4 | 2 each | Dev-1: [3.2, 3.3] / Dev-2: [3.4, 3.5] | ✅ All devs active |
-| 4 | 8 | 4 each | Dev-1: [1.1, 1.3, 1.5, 2.1] / Dev-2: [1.2, 1.4, 1.6, 2.2] | ✅ All devs active |
-| 5 | 2 | 1 each | Dev-1: [2.3] / Dev-2: [2.4] | ✅ All devs active |
+| Wave | Stories | Per Dev | Dev Assignments | QA Assignments | Notes |
+|------|---------|---------|----------------|----------------|-------|
+| 2 | 4 | 2 each | Dev-1: [3.2, 3.3] / Dev-2: [3.4, 3.5] | QA-1: [3.1 regression, 3.2, 3.3, 3.4, 3.5] | ✅ All active |
+| 3 | 1 | — | Dev-1: [3.6] | QA-1: [3.6] + CYCLE-1 sign-off | ✅ All active |
+| 4 | 8 | 4 each | Dev-1: [1.1, 1.3, 1.5, 2.1] / Dev-2: [1.2, 1.4, 1.6, 2.2] | QA-1: all 8 — as each story leaves review | ✅ All active |
+| 5 | 2 | 1 each | Dev-1: [2.3] / Dev-2: [2.4] | QA-1: [2.3, 2.4] + CYCLE-2 regression | ✅ All active |
+
+**QA role (QA-1: Vicky)**: validates every story after `aire-review-code` and before it is marked Done — runs `aire-qa-validate`, owns the test plan and validation report, and approves Chromatic snapshots, Storybook a11y results and WCAG 2.2 AA / keyboard checks. Devs do not sign off their own stories. QA-1 runs a regression pass at the end of each cycle.
 
 ---
 
