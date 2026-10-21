@@ -1,5 +1,5 @@
-// @annexus/ui styles — design tokens and component styles imported per story
-// Global styles — token partials added by Story 3.2 (src/tokens/_colors.scss, _typography.scss, _spacing.scss, _shadows.scss)
+// @annexus/ui styles — global reset only.
+// Design variables live in src/styles/design.variables.scss (Story 3.2); components import them with @use.
 // Component styles added per component story (Story 1.1+)
 
 *,

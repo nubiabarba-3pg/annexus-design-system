@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { globSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { designVariables } from './designVariables';
@@ -33,5 +33,21 @@ describe('pallete.color.scss', () => {
     const hexes = [...source.matchAll(/:\s*(#[0-9a-f]{6});/gi)].map(([, hex]) => hex.toLowerCase());
 
     expect(new Set(hexes).size).toBe(hexes.length);
+  });
+});
+
+describe('component SCSS', () => {
+  const files = globSync('../components/**/*.scss', { cwd: __dirname });
+
+  it('is found so the rules below are actually checked', () => {
+    expect(files.length).toBeGreaterThan(0);
+  });
+
+  it.each(files)('%s uses no hex values', (file) => {
+    expect(read(file)).not.toMatch(/#[0-9a-f]{3,8}\b/i);
+  });
+
+  it.each(files)('%s does not reference the palette', (file) => {
+    expect(read(file)).not.toMatch(/pallete\.color|palette\./);
   });
 });

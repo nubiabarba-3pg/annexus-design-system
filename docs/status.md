@@ -1,7 +1,7 @@
 # Project Status
 
-**Last Updated**: 2026-10-20
-**Updated By**: REVIEWER
+**Last Updated**: 2026-10-21
+**Updated By**: DEV
 **Overall Status**: 🟢 ON TRACK
 
 ---
@@ -26,12 +26,39 @@
 | Build Cycles | ✅ Done | BUILD_CYCLE_PLANNER | 2026-10-12 | `docs/plans/builds/` | 2026-10-12 11:30 |
 | UI/UX Design | ✅ Done | UI_UX_DESIGNER | 2026-10-12 | `docs/ui-ux/ui-ux-spec.md` | 2026-10-12 12:00 |
 | Implementation Plan | ✅ Done (updated CR-001) | PRODUCT_OWNER | 2026-10-20 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
-| Review | ✅ Done | REVIEWER | 2026-10-19 | `docs/reviews/story-3.1-code-review-v1.md` | 2026-10-19 10:00 |
+| Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.2-code-review-v1.md` | 2026-10-21 12:30 |
 | QA | ✅ Done | QA | 2026-10-19 | `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-19 14:30 |
 
 ---
 
 ## Current Step Details
+
+### Remediation — Story 3.2
+
+**Owner**: DEV
+**Status**: 🟡 Partially remediated (3/5)
+**Started**: 2026-10-21
+
+**Progress**:
+- [x] Remediation from `docs/reviews/story-3.2-code-review-v1.md` — ISS-002, ISS-003, ISS-004 fixed ✅ (25/25 tests, coverage 100%, lint/typecheck/build clean)
+- [ ] ISS-001 deferred — gray 700 `#414651` vs spec `#404042` needs a design decision
+- ISS-005 deferred to Story 1.2
+
+---
+
+### Review — Story 3.2
+
+**Owner**: REVIEWER
+**Status**: ✅ Done
+**Started**: 2026-10-21
+
+**Progress**:
+- [x] Story 3.2 reviewed (INITIAL_REVIEW) — ⚠️ APPROVED WITH COMMENTS | 0 🔴 | 0 🟠 | 3 🟡 | 2 🟢 ✅
+  - Evidence: `docs/reviews/story-3.2-code-review-v1.md`
+  - Gates re-run by reviewer: build/typecheck/lint exit 0; 22/22 tests; coverage 100%
+  - Remediated same day (see above): ISS-002, ISS-003, ISS-004 fixed; ISS-001 (gray700 #414651 vs spec #404042) and ISS-005 deferred
+
+---
 
 ### QA — Story 3.1
 
@@ -110,7 +137,7 @@
 | CYCLE-2 | 2.3 | Dropdown / Header Navigation component | #23659 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 2.4 | Modal component (Input state + Add Benefits state) | #23660 | — | — | 2026-10-12 13:00 |
 | CYCLE-1 | 3.1 | Repo Scaffold | #23665 | 2026-10-14 | 2026-10-14 | 2026-10-14 |
-| CYCLE-1 | 3.2 | SCSS Design Tokens | #23669 | — | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.2 | SCSS Design Tokens (Remediation Started 2026-10-21) | #23669 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.3 | Storybook 8.x Setup | #23668 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.4 | Vitest + RTL Setup | #23666 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.5 | Shared Utilities and Types | #23667 | — | — | 2026-10-13 12:00 |
@@ -155,10 +182,10 @@
 
 | Metric | Target | Current | Status | Recorded |
 |--------|--------|---------|--------|----------|
-| Unit Test Coverage | ≥90% | —% | ⏸️ | 2026-10-12 09:00 |
+| Unit Test Coverage | ≥90% | 100% | ✅ | 2026-10-21 |
 | Integration Tests | 100% pass | — | ⏸️ | 2026-10-12 00:00 |
-| Code Review | All stories | 2/34 | 🟡 | 2026-10-20 |
-| Documentation | All stories | 1/34 | 🟡 | 2026-10-14 |
+| Code Review | All stories | 3/34 | 🟡 | 2026-10-21 |
+| Documentation | All stories | 2/34 | 🟡 | 2026-10-21 |
 
 ---
 
@@ -210,6 +237,12 @@
 - [x] **QA Regression — Story 3.1** — ✅ NO REGRESSIONS — 2026-10-19
   - Evidence: `docs/testing/regression-report-2026-10-19.md`
   - 22/22 pass; 0 new failures; 0 flaky tests; identical file sizes to baseline
+- [x] **Code Review — Story 3.2** — ⚠️ APPROVED WITH COMMENTS — 2026-10-21
+  - Evidence: `docs/reviews/story-3.2-code-review-v1.md`
+  - Issues: 0 🔴 | 0 🟠 | 3 🟡 | 2 🟢
+- [x] **Remediation — Story 3.2** — 🟡 Partially remediated (3/5) — 2026-10-21
+  - Evidence: `docs/reviews/story-3.2-code-review-v1.md` (banner + Remediation Section); 25/25 tests, coverage 100%
+  - Fixed ISS-002 (SCSS guard tests), ISS-003, ISS-004; deferred ISS-001 (design decision), ISS-005 (Story 1.2)
 
 ---
 
@@ -257,6 +290,6 @@
 | PRODUCT_OWNER | Implementation plan complete — 5 epics, 34 stories (Waves 1–9), all 4 cycles planned | Idle | 2026-10-13 | 2026-10-13 12:00 |
 | BUILD_CYCLE_PLANNER | Build cycles complete — 4 cycles, docs/plans/builds/ | Idle | 2026-10-12 | 2026-10-12 11:30 |
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
-| DEV | Remediated story 3.1 (story-3.1-code-review-v1.md) — ISS-001 + ISS-002 fixed | Idle | 2026-10-19 | 2026-10-19 10:30 |
-| REVIEWER | Reviewed story 1.2 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 4🟡 4🟢) | Idle | 2026-10-20 | 2026-10-20 |
+| DEV | Remediated story 3.2 (story-3.2-code-review-v1.md) — ISS-002/003/004 fixed | Idle | 2026-10-21 | 2026-10-21 13:00 |
+| REVIEWER | Reviewed story 3.2 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 3🟡 2🟢) | Idle | 2026-10-21 | 2026-10-21 12:30 |
 | QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
