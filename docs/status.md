@@ -56,7 +56,7 @@
 - [x] Story 3.2 reviewed (INITIAL_REVIEW) — ⚠️ APPROVED WITH COMMENTS | 0 🔴 | 0 🟠 | 3 🟡 | 2 🟢 ✅
   - Evidence: `docs/reviews/story-3.2-code-review-v1.md`
   - Gates re-run by reviewer: build/typecheck/lint exit 0; 22/22 tests; coverage 100%
-  - Open: ISS-001 (gray700 #414651 vs spec #404042), ISS-002 (no test for "no hex in component SCSS"), ISS-004 (no self-review doc)
+  - Remediated same day (see above): ISS-002, ISS-003, ISS-004 fixed; ISS-001 (gray700 #414651 vs spec #404042) and ISS-005 deferred
 
 ---
 
@@ -237,9 +237,6 @@
 - [x] **QA Regression — Story 3.1** — ✅ NO REGRESSIONS — 2026-10-19
   - Evidence: `docs/testing/regression-report-2026-10-19.md`
   - 22/22 pass; 0 new failures; 0 flaky tests; identical file sizes to baseline
-- [x] **Code Review — Story 3.2** — ⚠️ APPROVED WITH COMMENTS — 2026-10-21
-  - Evidence: `docs/reviews/story-3.2-code-review-v1.md`
-  - Issues: 0 🔴 | 0 🟠 | 3 🟡 | 2 🟢
 - [x] **Code Review — Story 3.2** — ⚠️ APPROVED WITH COMMENTS — 2026-10-21
   - Evidence: `docs/reviews/story-3.2-code-review-v1.md`
   - Issues: 0 🔴 | 0 🟠 | 3 🟡 | 2 🟢
