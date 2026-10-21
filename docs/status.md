@@ -65,12 +65,14 @@
 ### Remediation — Story 3.2
 
 **Owner**: DEV
-**Status**: 🟡 Partially remediated (3/5)
+**Status**: ✅ BUG-001 and BUG-002 remediated 2026-10-21 — awaiting QA re-test (TC-005, TC-014)
 **Started**: 2026-10-21
 
 **Progress**:
 - [x] Remediation from `docs/reviews/story-3.2-code-review-v1.md` — ISS-002, ISS-003, ISS-004 fixed ✅ (25/25 tests, coverage 100%, lint/typecheck/build clean)
-- [ ] ISS-001 deferred — gray 700 `#414651` vs spec `#404042` needs a design decision
+- [x] ISS-001 / BUG-001 — gray 700 set to spec `#404042` ✅
+- [x] BUG-002 — CJS bundle emitted as `index.cjs`; `smoke:require` script added ✅
+  - Evidence: `docs/testing/bug-triage-2026-10-21.md` (Remediation Section)
 - ISS-005 deferred to Story 1.2
 
 ---

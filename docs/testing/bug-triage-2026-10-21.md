@@ -112,3 +112,17 @@ The required custom field "Iteration #" was copied from each parent story.
 1. DEV: fix BUG-002 via `aire-dev-remediate` (P1, target 2026-10-22)
 2. Design / PO: decide gray 700 for BUG-001; DEV applies it
 3. QA: re-validate TC-005 and TC-014 after the fixes. Add a `require()` smoke check to the regression suite.
+
+---
+
+## Remediation Section
+
+**Date**: 2026-10-21 | **Agent**: DEV
+
+| Bug | Files changed | Result |
+|-----|---------------|--------|
+| BUG-002 | `vite.config.ts` (CJS emitted as `index.cjs`), `package.json` (`main`, `exports.require`, `smoke:require` script wired into `prepublishOnly`), `scripts/smoke-require.cjs` | ✅ `require('@annexus/ui')` build output exposes `Input` and `designVariables` |
+| BUG-001 | `src/styles/pallete.color.scss` (`$gray700` → `#404042`), `src/styles/designVariables.test.ts` (asserts `inputLabelColor === '#404042'`), story 3.2 Observable updated | ✅ Spec value adopted (decision: spec wins) |
+
+**Tests**: 25/25 pass | **Coverage**: 100% | `pnpm build` / `typecheck` / `lint` / `smoke:require` exit 0
+**Next**: QA re-runs TC-005 and TC-014. The `require()` smoke check is not yet in CI (Story 3.6).
