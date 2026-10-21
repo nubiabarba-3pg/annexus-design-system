@@ -47,10 +47,12 @@ graph TD
 
 | Wave | Stories | Per Dev | Dev Assignments | QA Assignments | Notes |
 |------|---------|---------|----------------|----------------|-------|
-| 2 | 4 | 2 each | Dev-1: [3.2, 3.3] / Dev-2: [3.4, 3.5] | QA-1: [3.1 regression, 3.2, 3.3, 3.4, 3.5] | ✅ All active |
+| 2 | 4 | 2 each | Dev-1: [3.3, 3.4] / Dev-2: [3.2, 3.5] | QA-1: [3.1 regression, 3.2, 3.3, 3.4, 3.5] | ✅ All active |
 | 3 | 1 | — | Dev-1: [3.6] | QA-1: [3.6] + CYCLE-1 sign-off | ✅ All active |
 | 4 | 8 | 4 each | Dev-1: [1.1, 1.3, 1.5, 2.1] / Dev-2: [1.2, 1.4, 1.6, 2.2] | QA-1: all 8 — as each story leaves review | ✅ All active |
 | 5 | 2 | 1 each | Dev-1: [2.3] / Dev-2: [2.4] | QA-1: [2.3, 2.4] + CYCLE-2 regression | ✅ All active |
+
+**Assignees**: Dev-1 = Salvador · Dev-2 = Angel · QA-1 = Vicky
 
 **QA role (QA-1: Vicky)**: validates every story after `aire-review-code` and before it is marked Done — runs `aire-qa-validate`, owns the test plan and validation report, and approves Chromatic snapshots, Storybook a11y results and WCAG 2.2 AA / keyboard checks. Devs do not sign off their own stories. QA-1 runs a regression pass at the end of each cycle.
 

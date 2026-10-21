@@ -18,7 +18,7 @@
 
 | Role | Count | Assignment |
 |------|-------|------------|
-| Dev | 2 | Dev-1 / Dev-2 per `docs/plans/implementation-plan.md` (Wave Workload Distribution) |
+| Dev | 2 | Salvador (Dev-1) / Angel (Dev-2) per `docs/plans/implementation-plan.md` (Wave Workload Distribution) |
 | QA | 1 | Vicky (QA-1) — added 2026-10-21; validates every story after code review, approves Chromatic/a11y, runs cycle regression |
 
 ---
