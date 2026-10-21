@@ -1,7 +1,7 @@
 # Project Status
 
 **Last Updated**: 2026-10-21
-**Updated By**: REVIEWER
+**Updated By**: DEV
 **Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 1/6 stories done; 3.5 implemented (review + QA pending); 3.4, 3.6 not started
 
 ---
@@ -43,7 +43,7 @@
 ### Implementation — Story 3.5
 
 **Owner**: DEV (Angel)
-**Status**: ✅ Implemented and reviewed (approved with comments) — pending remediation of ISS-001/002 and QA
+**Status**: ✅ Implemented, reviewed and remediated (3/5; ISS-003/004 deferred) — pending QA
 **Started**: 2026-10-21
 
 **Progress**:
@@ -52,7 +52,8 @@
   - 35/35 tests (10 new), coverage 100%, typecheck/lint/build exit 0
 - [x] `aire-review-code` for 3.5 — ⚠️ APPROVED WITH COMMENTS | 0 🔴 | 0 🟠 | 2 🟡 | 3 🟢 ✅
   - Evidence: `docs/reviews/story-3.5-code-review-v1.md`
-  - ISS-001 (patterns doc §3.3/§8 out of sync with story) and ISS-002 (`env.d.ts` breaks if `@types/node` is added) recommended before CYCLE-1 closes
+- [x] Remediation 2026-10-21 — ISS-001, ISS-002, ISS-005 fixed ✅ (35/35 tests, coverage 100%, lint/typecheck/build clean)
+  - Evidence: `docs/reviews/story-3.5-code-review-v1.md` (banner + Remediation Section)
 - [ ] QA validation (Vicky)
 
 ---
@@ -321,5 +322,6 @@
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
 | DEV | Implemented story 3.5 — 35/35 tests, coverage 100% | Idle | 2026-10-21 | 2026-10-21 14:00 |
 | DEV | Remediated story 3.2 (story-3.2-code-review-v1.md) — ISS-002/003/004 fixed | Idle | 2026-10-21 | 2026-10-21 13:00 |
+| DEV | Remediated story 3.5 (story-3.5-code-review-v1.md) — ISS-001/002/005 fixed | Idle | 2026-10-21 | 2026-10-21 16:00 |
 | REVIEWER | Reviewed story 3.5 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 2🟡 3🟢) | Idle | 2026-10-21 | 2026-10-21 15:00 |
 | QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
