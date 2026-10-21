@@ -126,3 +126,14 @@ The required custom field "Iteration #" was copied from each parent story.
 
 **Tests**: 25/25 pass | **Coverage**: 100% | `pnpm build` / `typecheck` / `lint` / `smoke:require` exit 0
 **Next**: QA re-runs TC-005 and TC-014. The `require()` smoke check is not yet in CI (Story 3.6).
+
+## QA Verification
+
+**Date**: 2026-10-21 | **Agent**: QA | **Evidence**: `docs/testing/validation-report-story-3.2-2026-10-21-v2.md`
+
+| Bug | Re-test | Result |
+|-----|---------|--------|
+| BUG-002 | TC-014 + `smoke:require` (also mutation-tested) | ✅ Verified fixed — `require('@annexus/ui')` returns `Input` + `designVariables`, identical to ESM |
+| BUG-001 | TC-005 | ✅ Verified fixed — 17/17 spec colors in palette; `inputLabelColor === '#404042'` |
+
+Both bugs can be closed in Azure DevOps (#23779, #23780).
