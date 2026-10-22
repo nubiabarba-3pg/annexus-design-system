@@ -148,7 +148,7 @@ flowchart TD
   IDX --> TK["tokens (SCSS re-export)"]
   IDX --> TY["shared types"]
 
-  C1 --> DIST["dist/\n@annexus/ui\nESM: index.es.js\nCJS: index.cjs.js\nTypes: index.d.ts"]
+  C1 --> DIST["dist/\n@annexus/ui\nESM: index.es.js\nCJS: index.cjs\nTypes: index.d.ts"]
 ```
 
 ---
@@ -206,7 +206,7 @@ flowchart TD
 ```
 dist/
 ├── index.es.js        # ESM (tree-shakable — primary)
-├── index.cjs.js       # CJS (fallback for older toolchains)
+├── index.cjs          # CJS (fallback for older toolchains; .cjs because the package is "type": "module" — CR-1)
 ├── index.d.ts         # TypeScript declarations
 └── style.css          # Bundled component styles
 ```
@@ -218,7 +218,7 @@ dist/
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js",
+      "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
     "./style.css": "./dist/style.css"

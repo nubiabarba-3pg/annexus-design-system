@@ -1,8 +1,8 @@
 # Project Status
 
-**Last Updated**: 2026-10-21
-**Updated By**: QA
-**Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 1/6 stories done; 3.4, 3.5, 3.6 not started
+**Last Updated**: 2026-10-22
+**Updated By**: AIRE_STATUS
+**Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 2/7 stories done (CR-1.1, 3.2); 3.3 needs rework, 3.5 in review (PR #13), 3.4 and 3.6 not started
 
 ---
 
@@ -34,16 +34,31 @@
 | UI/UX Design | ✅ Done | UI_UX_DESIGNER | 2026-10-12 | `docs/ui-ux/ui-ux-spec.md` | 2026-10-12 12:00 |
 | Implementation Plan | ✅ Done (updated CR-001) | PRODUCT_OWNER | 2026-10-20 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
 | Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.2-code-review-v1.md` | 2026-10-21 12:30 |
-| QA | 🟡 In Progress | QA | 2026-10-21 | `docs/testing/validation-report-story-3.2-2026-10-21.md` | 2026-10-21 14:56 |
+| QA | ✅ Done | QA | 2026-10-21 | `docs/testing/validation-report-story-3.2-2026-10-21-v2.md` | 2026-10-21 16:29 |
 
 ---
 
 ## Current Step Details
 
+### Drift — CR-1 (CommonJS entry `index.cjs`)
+
+**Owner**: AIRE_REQUIREMENTS_STEWARD
+**Status**: ✅ Done
+**Started**: 2026-10-21
+
+**Progress**:
+- [x] Drift config bootstrapped — `docs/.requirements-steward.config` ✅
+- [x] Impact analysis (entry-mode 2A): 3 requirement sections; 3.1 → CR-path, 3.6 + 5.7 → direct edit ✅
+- [x] CR-1 applied — `docs/plans/builds/cycle-1/CR/CR-1/` (CR-1.1 supersedes 3.1, status done) ✅
+  - Evidence: `docs/plans/builds/cycle-1/CR/CR-1/change-request.md`, `docs/plans/builds/cycle-1/CR/CR-1/CHANGELOG.md`
+  - Open item: `docs/architecture-diagrams/00-system-architecture-diagrams-greenfield.md` line 111 still `index.cjs.js` (outside drift allow-list)
+
+---
+
 ### QA — Story 3.2
 
 **Owner**: QA
-**Status**: 🟡 In Progress — validation 🟡 PARTIAL, sign-off CONDITIONAL
+**Status**: ✅ Done — re-validation 🟢 PASS, sign-off APPROVED
 **Started**: 2026-10-21
 
 **Progress**:
@@ -58,14 +73,22 @@
   - BUG-002 P1 → DEV, fix before 3.6 / CYCLE-1 close; BUG-001 P2 → design/PO decision, gates 3.2 sign-off
   - Release decision: ⚠️ CONDITIONAL — do not publish `@annexus/ui` until BUG-002 is fixed
   - Pushed to Azure DevOps: BUG-002 → #23779 (child of #23665), BUG-001 → #23780 (child of #23669), Sprint 1
-- [ ] Sign-off → APPROVED once BUG-001 is decided and TC-005 re-tested
+- [x] Re-validation after remediation (`f9a4808`, PR #14) — 🟢 PASS: 17/17 test cases, 25/25 tests, coverage 100%, `smoke:require` exit 0 ✅
+  - Evidence: `docs/testing/validation-report-story-3.2-2026-10-21-v2.md`
+  - BUG-001 ✅ verified (TC-005 17/17, gray 700 `#404042`); BUG-002 ✅ verified (`require('@annexus/ui')` = `import`, 26 keys)
+  - Both regression guards mutation-tested (export parity test, `smoke:require`)
+- [x] Sign-off → ✅ APPROVED 2026-10-21. ADO #23779 / #23780 can be closed
+- [x] Regression run vs pre-remediation baseline — 🟢 NO REGRESSIONS ✅
+  - Evidence: `docs/testing/regression-report-2026-10-21.md`
+  - 25/25 ×3 (no flaky tests); coverage 100%; Story 3.1 package checks re-run (entry points, idempotency, pack contents)
+  - DOC-001 🟡: architecture doc + Story 3.1 spec still prescribe `index.cjs.js`. Run `aire-drift`
 
 ---
 
 ### Remediation — Story 3.2
 
 **Owner**: DEV
-**Status**: ✅ BUG-001 and BUG-002 remediated 2026-10-21 — awaiting QA re-test (TC-005, TC-014)
+**Status**: ✅ BUG-001 and BUG-002 remediated 2026-10-21 — QA verified (re-validation 🟢 PASS)
 **Started**: 2026-10-21
 
 **Progress**:
@@ -146,7 +169,7 @@
 
 | Cycle | BUILDID | Scope | Stories | Status | Start | End | Recorded |
 |-------|---------|-------|---------|--------|-------|-----|----------|
-| Cycle 1 | CYCLE-1 | Foundation: scaffold, design system styles, CI/CD, Storybook, Chromatic (due 2026-10-22) | 1/6 | 🟡 In Progress | 2026-10-14 | — | 2026-10-14 |
+| Cycle 1 | CYCLE-1 | Foundation: scaffold, design system styles, CI/CD, Storybook, Chromatic (due 2026-10-22) | 2/7 | 🟡 In Progress | 2026-10-14 | — | 2026-10-21 16:50 |
 | Cycle 2 | CYCLE-2 | P0 Primitives: Button, Input, Toggle, Slider, Dropdown/Nav, Modal, Tooltip, Badge, Icons, Logo (Oct 23–29; Input 1.2 already merged to main via PR #8 ahead of strict cycle order) | 0/10 | ⏸️ Not Started | — | — | 2026-10-12 13:00 |
 | Cycle 3 | CYCLE-3 | P1 Composition: Footer, HeaderSection, Legend, AddonRow, HelpIcon, GroupItem, FrequencySelector, AgeTag, ButtonGroup, Row, AdjustInflationRate (Oct 30–Nov 4) | 0/11 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
 | Cycle 4 | CYCLE-4 | P2 Complex: Chart/Bar, GraphContainer, TopSummary, BottomSummary, Premium, AnimatedValues (6) + v1.0 release story (Nov 5–9) | 0/7 | ⏸️ Not Started | — | — | 2026-10-13 12:00 |
@@ -167,12 +190,13 @@
 | CYCLE-2 | 2.2 | Tooltip component | #23658 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 2.3 | Dropdown / Header Navigation component | #23659 | — | — | 2026-10-12 13:00 |
 | CYCLE-2 | 2.4 | Modal component (Input state + Add Benefits state) | #23660 | — | — | 2026-10-12 13:00 |
-| CYCLE-1 | 3.1 | Repo Scaffold | #23665 | 2026-10-14 | 2026-10-14 | 2026-10-14 |
-| CYCLE-1 | 3.2 | Design System Styles (merged PR #7; review + partial remediation PR #9; QA conditional — BUG-001/BUG-002) | #23669 | 2026-10-20 | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.1 | Repo Scaffold (superseded by CR-1.1 — CR-1) | #23665 | 2026-10-14 | 2026-10-14 | 2026-10-14 |
+| CYCLE-1 | 3.2 | Design System Styles (merged PR #7; review + remediation PR #9; QA ✅ approved 2026-10-21 after BUG-001/BUG-002 fixes, PR #14) | #23669 | 2026-10-20 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.3 | Storybook 8.x Setup (PR #5 closed unmerged 2026-10-20 — needs rework on CR-001 baseline) | #23668 | 2026-10-20 | — | 2026-10-13 12:00 |
 | CYCLE-1 | 3.4 | Vitest + RTL Setup | #23666 | — | — | 2026-10-13 12:00 |
-| CYCLE-1 | 3.5 | Shared Utilities and Types | #23667 | — | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.5 | Shared Utilities and Types (PR #13 open, awaiting review) | #23667 | — | — | 2026-10-22 |
 | CYCLE-1 | 3.6 | CI/CD Pipeline | #23670 | — | — | 2026-10-13 12:00 |
+| CYCLE-1 | CR-1.1 | CommonJS entry as `dist/index.cjs` + `smoke:require` (CR-1; supersedes 3.1; implemented `f9a4808`, QA verified) | LOCAL | 2026-10-21 | 2026-10-21 | 2026-10-21 16:50 |
 | CYCLE-3 | 4.1 | Footer component | LOCAL | — | — | 2026-10-13 12:00 |
 | CYCLE-3 | 4.2 | HeaderSection component | LOCAL | — | — | 2026-10-13 12:00 |
 | CYCLE-3 | 4.3 | Legend component | LOCAL | — | — | 2026-10-13 12:00 |
@@ -206,6 +230,7 @@
 | CR ID | Status | Scheduled Cycle | Summary | Drafted | Applied | Recorded |
 |-------|--------|-----------------|---------|---------|---------|----------|
 | CR-001 | ✅ Applied | ALL | Re-baseline: deadline Oct 16 → Nov 9; strict cycle order; waves renumbered; Story 3.2 re-scoped to palette + design variables + JS export; Story 1.2 started early (kept, merges after 3.6) | 2026-10-20 | 2026-10-20 | 2026-10-20 |
+| CR-1 | ✅ Applied | CYCLE-1 | CommonJS entry is `dist/index.cjs` + `smoke:require` (BUG-002 / DOC-001); CR-1.1 supersedes 3.1; 3.6 and 5.7 direct-edited; requirements, architecture, plans, dependency graph updated — `docs/plans/builds/cycle-1/CR/CR-1/` | 2026-10-21 | 2026-10-21 | 2026-10-21 16:50 |
 
 ---
 
@@ -271,20 +296,30 @@
 - [x] **Code Review — Story 3.2** — ⚠️ APPROVED WITH COMMENTS — 2026-10-21
   - Evidence: `docs/reviews/story-3.2-code-review-v1.md`
   - Issues: 0 🔴 | 0 🟠 | 3 🟡 | 2 🟢
-- [x] **Remediation — Story 3.2** — 🟡 Partially remediated (3/5) — 2026-10-21
+- [x] **Remediation — Story 3.2** — ✅ Remediated — 2026-10-21 (initially 3/5; ISS-001/BUG-001 and BUG-002 fixed later the same day in `f9a4808`, PR #14)
   - Evidence: `docs/reviews/story-3.2-code-review-v1.md` (banner + Remediation Section); 25/25 tests, coverage 100%
   - Fixed ISS-002 (SCSS guard tests), ISS-003, ISS-004; deferred ISS-001 (design decision), ISS-005 (Story 1.2)
-- [x] **QA Validation — Story 3.2** — 🟡 PARTIAL (CONDITIONAL) — 2026-10-21
+- [x] **QA Validation — Story 3.2** — 🟡 PARTIAL (CONDITIONAL) — 2026-10-21 (superseded by re-validation below)
   - Evidence: `docs/testing/test-plan-story-3.2.md`, `docs/testing/validation-report-story-3.2-2026-10-21.md`
   - 15/17 test cases pass; 25/25 tests; coverage 100%
   - Open: BUG-001 🟡 (gray 700 vs spec), BUG-002 🟠 (CJS entry exports nothing — Story 3.1 build config)
+- [x] **QA Re-validation — Story 3.2** — 🟢 PASS (APPROVED) — 2026-10-21
+  - Evidence: `docs/testing/validation-report-story-3.2-2026-10-21-v2.md`
+  - 17/17 test cases; 25/25 tests; coverage 100%; BUG-001 and BUG-002 verified fixed
+- [x] **QA Regression — Story 3.2** — ✅ NO REGRESSIONS — 2026-10-21
+  - Evidence: `docs/testing/regression-report-2026-10-21.md`
+  - 0 new failures; 2 fixed (TC-005, TC-014); 0 flaky; finding DOC-001 (docs still say `index.cjs.js`)
+
+- [x] **Drift — CR-1** — ✅ Applied — 2026-10-21
+  - Evidence: `docs/plans/builds/cycle-1/CR/CR-1/change-request.md`
+  - CommonJS entry `dist/index.cjs` recorded in requirements, architecture, Story 3.1 (→ CR-1.1), 3.6, 5.7, cycle plan, implementation plan, dependency graph (DOC-001)
 
 ---
 
 ## Upcoming
 
 1. ~~**QA Story 3.1**~~ — ✅ Complete (22/22 PASS, signed off 2026-10-19)
-2. **Finish CYCLE-1 Wave 2** — decide ISS-001/BUG-001 (gray 700) and re-test TC-005; fix BUG-002 (CJS `.cjs` extension) before 3.6; rework 3.3 (PR #5 closed); `aire-dev-implement 3.4` / `3.5` in parallel → then Wave 3: 3.6 CI/CD
+2. **Finish CYCLE-1 Wave 2** — 3.2 ✅ QA approved; review PR #13 (Story 3.5); rework 3.3 (PR #5 closed); `aire-dev-implement 3.4` / `3.5` in parallel → then Wave 3: 3.6 CI/CD
 2a. **Catch-up QA Story 1.2** — merged to main (PR #8) without a QA report
 3. **Build CYCLE-2 (Sprint 2)** — Wave 4: remaining 7 stories in parallel (1.2 already merged) → Wave 5: [2.3, 2.4]
 4. **Build CYCLE-3 (Sprint 3)** — Wave 6: all 11 stories in parallel (all independent)
@@ -299,7 +334,8 @@
 |----|-------------|-------|--------|--------|----------|
 | RISK-1 | CYCLE-1 due 2026-10-22: 3.3 needs rework, 3.4/3.5/3.6 not started | DEV | 2026-10-21 | 🟡 Open | 2026-10-21 |
 | RISK-2 | 3.6 CI/CD needs Chromatic project token + GITHUB_TOKEN confirmed | Nubia Barba | 2026-10-21 | 🟡 Open | 2026-10-21 |
-| BUG-002 | 🟠 High / P1 — `require('@annexus/ui')` returns `{}` (CJS entry loaded as ESM under `"type": "module"`); blocks package release — ADO #23779 — `docs/testing/bug-triage-2026-10-21.md` | DEV | 2026-10-21 | 🟡 Open | 2026-10-21 15:41 |
+| DOC-002 | `docs/architecture-diagrams/00-system-architecture-diagrams-greenfield.md` line 111 still says `index.cjs.js` (CR-1 follow-up, outside drift allow-list) | ARCHITECT | 2026-10-21 | 🟡 Open | 2026-10-22 |
+| BUG-002 | 🟠 High / P1 — `require('@annexus/ui')` returns `{}` (CJS entry loaded as ESM under `"type": "module"`); blocks package release — ADO #23779 — `docs/testing/bug-triage-2026-10-21.md` | DEV | 2026-10-21 | ✅ Resolved (QA verified 2026-10-21) | 2026-10-21 16:29 |
 
 ---
 
@@ -328,6 +364,7 @@
 | PRODUCT_OWNER | Implementation plan complete — 5 epics, 34 stories (Waves 1–9), all 4 cycles planned | Idle | 2026-10-13 | 2026-10-13 12:00 |
 | BUILD_CYCLE_PLANNER | Build cycles complete — 4 cycles, docs/plans/builds/ | Idle | 2026-10-12 | 2026-10-12 11:30 |
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
-| DEV | Remediated story 3.2 (story-3.2-code-review-v1.md) — ISS-002/003/004 fixed | Idle | 2026-10-21 | 2026-10-21 13:00 |
+| DEV | Remediated story 3.2 — BUG-001 (gray 700 `#404042`) and BUG-002 (CJS `index.cjs` + `smoke:require`) fixed, `f9a4808` / PR #14 | Idle | 2026-10-21 | 2026-10-22 |
 | REVIEWER | Reviewed story 3.2 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 3🟡 2🟢) | Idle | 2026-10-21 | 2026-10-21 12:30 |
-| QA | Bug triage complete — 2 bugs, 1 blocker — docs/testing/bug-triage-2026-10-21.md; pushed to ADO #23779, #23780 | Active | 2026-10-21 | 2026-10-21 15:41 |
+| QA | Regression complete (story 3.2) — 0 regressions, DOC-001 found — docs/testing/regression-report-2026-10-21.md | Idle | 2026-10-21 | 2026-10-21 16:33 |
+| AIRE_REQUIREMENTS_STEWARD | Applied CR-1 — CommonJS entry `index.cjs` (CR-1.1 supersedes 3.1; 3.6, 5.7 direct-edited) — docs/plans/builds/cycle-1/CR/CR-1/ | Idle | 2026-10-21 | 2026-10-21 16:50 |
