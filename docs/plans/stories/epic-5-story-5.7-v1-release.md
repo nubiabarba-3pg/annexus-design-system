@@ -25,7 +25,8 @@ This story delivers the v1.0.0 release of `@annexus/ui`. After Stories 5.1–5.6
 **Acceptance Criteria** (plain-English):
 - `package.json` version is `1.0.0`
 - `CHANGELOG.md` documents all components shipped in CYCLE-2, CYCLE-3, CYCLE-4
-- `pnpm build` exits 0 at v1.0.0 with all components exported from `dist/index.es.js`
+- `pnpm build` exits 0 at v1.0.0 with all components exported from `dist/index.es.js` and `dist/index.cjs`
+- `pnpm smoke:require` exits 0 (`require('@annexus/ui')` exposes the public API)
 - `pnpm test` exits 0 with ≥ 90% coverage on all component files
 - `pnpm typecheck` exits 0
 - `pnpm lint` exits 0
@@ -85,7 +86,8 @@ CYCLE-4 — P2 Complex:
 - `package.json`: `"version": "1.0.0"`
 - `CHANGELOG.md`: `## [1.0.0] — 2026-10-13` section listing all 22 components by category
 - `src/index.ts` exports all 22 components and their types (verified by `pnpm typecheck`)
-- `pnpm build` exits 0; `dist/index.es.js` exists and contains all component exports
+- `pnpm build` exits 0; `dist/index.es.js` and `dist/index.cjs` exist and contain all component exports
+- `pnpm smoke:require` exits 0
 - `pnpm test` exits 0; coverage ≥ 90% for all files in `src/components/`
 - `pnpm typecheck` exits 0
 - `pnpm lint` exits 0
@@ -97,7 +99,7 @@ CYCLE-4 — P2 Complex:
 
 | Trigger | Response | Side-effect |
 |---------|----------|-------------|
-| `pnpm publish` without tag | Blocked by `prepublishOnly` script: runs build + typecheck first | Fix: always publish via tag |
+| `pnpm publish` without tag | Blocked by `prepublishOnly` script: runs build + typecheck + smoke:require first | Fix: always publish via tag |
 | Coverage drops below 90% | `pnpm coverage` fails; publish blocked | Fix: add missing tests before tagging |
 | `GITHUB_TOKEN` insufficient | `publish.yml` fails at publish step | Fix: verify `packages: write` permission in repo settings |
 | Consuming app missing `.npmrc` | `pnpm add @annexus/ui` falls back to npm public registry (not found) | Fix: consumer must add `.npmrc` scoped to GitHub Packages |
@@ -108,6 +110,7 @@ CYCLE-4 — P2 Complex:
 - `pnpm build && pnpm test && pnpm typecheck && pnpm lint` — all exit 0.
 - GitHub Packages tab: `@annexus/ui` version `1.0.0` listed.
 - In a consuming project: `pnpm add @annexus/ui` + `import { Button } from '@annexus/ui'` — compiles.
+- In a CommonJS consumer: `require('@annexus/ui').Button` is defined.
 
 **Prerequisites**:
 - All Stories 1.1–5.6 merged to `main`
@@ -126,6 +129,7 @@ CYCLE-4 — P2 Complex:
    pnpm test
    pnpm typecheck
    pnpm lint
+   pnpm smoke:require
    ```
    All must exit 0 before proceeding.
 
@@ -235,6 +239,7 @@ CYCLE-4 — P2 Complex:
 - `pnpm test` exits 0; coverage ≥ 90% all files
 - `pnpm typecheck` exits 0
 - `pnpm lint` exits 0
+- `pnpm smoke:require` exits 0
 - GitHub Packages shows `@annexus/ui@1.0.0`
 
 **Quality**: All four quality gates pass; package published; CHANGELOG documented
@@ -248,3 +253,25 @@ CYCLE-4 — P2 Complex:
 - Terminal output of `pnpm build && pnpm test && pnpm typecheck && pnpm lint` (all exit 0)
 - GitHub Actions screenshot of `publish` workflow succeeding on tag `v1.0.0`
 - GitHub Packages tab showing `@annexus/ui@1.0.0`
+
+---
+
+## Change log
+
+### 2026-10-21 — Updated for docs/requirements.md::Functional Requirements (CR-1)
+
+**Trigger:** drift run; entry-mode 2A plain-English.
+**Pre-edit status:** planned   ← R14(b) carve-out
+
+**Sections modified:**
+- User Reference `Acceptance Criteria` — exports in `dist/index.cjs`; `pnpm smoke:require` exits 0
+- AI Agent Reference `Acceptance Criteria`, `System responses`, `QA-observable behaviour`, `Steps` (1), `Tests` — CommonJS entry verified alongside ESM
+
+**Delta:**
+
+| Aspect | Before | After |
+| :-- | :-- | :-- |
+| Release verification | ESM `dist/index.es.js` only | ESM `dist/index.es.js` + CJS `dist/index.cjs` (`pnpm smoke:require`) |
+| `prepublishOnly` | build + typecheck | build + typecheck + smoke:require |
+
+**Reason no CR was drafted:** foundation story was `status: planned` at edit time (R14(b) carve-out — no shipped or in-flight code to preserve).

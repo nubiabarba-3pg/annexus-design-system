@@ -124,7 +124,7 @@ The Athene Income Wellness Annuity Calculator frontend application needs to be b
 - All 27 components implemented in React + TypeScript
 - Full TypeScript prop types exported — zero `any` usage
 - SASS/SCSS styles using design tokens (colors, spacing, typography, etc.)
-- Vite library mode build producing `dist/` with ESM + CJS outputs
+- Vite library mode build producing `dist/` with ESM (`dist/index.es.js`) + CJS (`dist/index.cjs`) outputs
 - `index.ts` barrel export for all components
 - Importable as: `import { Button, Input } from '@annexus/ui'` (name TBD)
 
@@ -232,6 +232,7 @@ The Athene Income Wellness Annuity Calculator frontend application needs to be b
 - Package installs via npm/yarn/pnpm without peer dependency conflicts (only React + React-DOM as peers)
 - Each component is exported as a named export from the package root
 - Each component ships with its TypeScript types
+- The package can be consumed with both `import` and `require()`; both expose the same named exports
 - Tree-shaking works — importing one component does not bundle the rest
 - SASS styles are either bundled or available as a separate import
 
@@ -304,7 +305,7 @@ The Athene Income Wellness Annuity Calculator frontend application needs to be b
 - Storybook stories covering all variants and states
 - Figma component pages in AnnexusEX (one per component)
 - Design tokens (colors, typography, spacing) as SCSS variables
-- Vite library mode build (ESM + CJS output)
+- Vite library mode build (ESM `dist/index.es.js` + CJS `dist/index.cjs` output)
 - Unit tests with Vitest + React Testing Library (≥90% coverage)
 - Visual regression baseline with Chromatic or Percy
 - npm package (registry TBD)

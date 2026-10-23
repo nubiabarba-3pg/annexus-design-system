@@ -15,6 +15,7 @@ describe('designVariables', () => {
 
   it('resolves variables to the palette values', () => {
     expect(designVariables.inputFieldFocusBorderColor).toBe('#11175e');
+    expect(designVariables.inputLabelColor).toBe('#404042');
     expect(designVariables.inputErrorTextColor).toBe('#b73b3b');
     expect(designVariables.fontFamilyBase).toContain('Assistant');
   });

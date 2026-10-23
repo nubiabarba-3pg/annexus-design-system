@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "description": "Annexus Design System — React component library",
   "type": "module",
-  "main": "./dist/index.cjs.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js"
+      "require": "./dist/index.cjs"
     },
     "./style.css": "./dist/style.css"
   },
@@ -25,7 +25,8 @@
     "coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "prepublishOnly": "pnpm run build && pnpm run typecheck"
+    "smoke:require": "node scripts/smoke-require.cjs",
+    "prepublishOnly": "pnpm run build && pnpm run typecheck && pnpm run smoke:require"
   },
   "peerDependencies": {
     "react": "^18.0.0",

@@ -145,11 +145,12 @@ Defined by Story 3.2; first used by Story 1.2 (Input), which is the reference im
 
 | Story | File | Objective |
 |-------|------|-----------|
-| 3.1: Repo Scaffold | `docs/plans/stories/epic-3-story-3.1-repo-scaffold.md` | package.json, tsconfig strict, vite.config.ts library mode, .npmrc GitHub Packages, ESLint, Prettier, pnpm workspace |
+| 3.1: Repo Scaffold | `docs/plans/stories/epic-3-story-3.1-repo-scaffold.md` | package.json, tsconfig strict, vite.config.ts library mode, .npmrc GitHub Packages, ESLint, Prettier, pnpm workspace — superseded by CR-1.1 |
 | 3.2: Design System Styles | `docs/plans/stories/epic-3-story-3.2-design-tokens.md` | `pallete.color.scss` (hex palette) + `design.variables.scss` (section-named variables for fonts and colors) + JS export (`designVariables`) — re-scoped by CR-001 |
 | 3.3: Storybook Setup | `docs/plans/stories/epic-3-story-3.3-storybook.md` | Storybook 8.x — main.ts, preview.ts, a11y addon wired, autodocs enabled |
 | 3.4: Vitest + RTL Setup | `docs/plans/stories/epic-3-story-3.4-vitest.md` | vitest.config.ts, coverage thresholds ≥90%, RTL setup, test-utils barrel |
 | 3.5: Shared Utilities + Types | `docs/plans/stories/epic-3-story-3.5-shared-utils.md` | classNames.ts, devWarning.ts, common.types.ts (Size/Variant/BaseProps), src/index.ts empty barrel |
+| CR-1.1: CommonJS entry `index.cjs` | `docs/plans/builds/cycle-1/CR/CR-1/Epic 6 (Change Request)/CR-1.1.md` | CJS bundle as `dist/index.cjs`, `main`/`exports.require` updated, `smoke:require` check — CR-1, done |
 | 3.6: CI/CD Pipeline | `docs/plans/stories/epic-3-story-3.6-cicd.md` | GitHub Actions ci.yml (lint→typecheck→test→build→Storybook→Chromatic) + publish.yml (on tag), README.md stub |
 
 ---
@@ -224,7 +225,7 @@ Verify Dropdown/Nav opens on click and keyboard Enter, navigates options with Ar
 ### Epic 3: Foundation Setup
 
 **Group 4** — Stories: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6
-Verify `pnpm install` completes without peer dependency errors; `pnpm build` produces `dist/index.es.js`, `dist/index.cjs.js`, `dist/index.d.ts`, `dist/style.css`; `pnpm storybook` launches with empty component list (no errors); `pnpm test` passes with coverage report generated; `pnpm typecheck` zero TypeScript errors; `pnpm lint` zero ESLint errors; design tokens visible as CSS custom properties at `:root` in browser DevTools; GitHub Actions CI workflow executes all steps without failure; Chromatic project connected and baseline run complete; `.npmrc` correctly scopes `@annexus` to GitHub Packages registry.
+Verify `pnpm install` completes without peer dependency errors; `pnpm build` produces `dist/index.es.js`, `dist/index.cjs`, `dist/index.d.ts`, `dist/style.css`; `require('@annexus/ui')` exposes the public API (`pnpm smoke:require`, CR-1); `pnpm storybook` launches with empty component list (no errors); `pnpm test` passes with coverage report generated; `pnpm typecheck` zero TypeScript errors; `pnpm lint` zero ESLint errors; design tokens visible as CSS custom properties at `:root` in browser DevTools; GitHub Actions CI workflow executes all steps without failure; Chromatic project connected and baseline run complete; `.npmrc` correctly scopes `@annexus` to GitHub Packages registry.
 
 ### Epic 4: P1 Composition Components
 

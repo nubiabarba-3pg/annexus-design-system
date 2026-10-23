@@ -1,3 +1,8 @@
+---
+superseded-by: [CR-1.1]
+last-audit: { date: 2026-10-21, result: pass }
+---
+
 ### Story 3.1: Repo Scaffold
 
 **File**: `docs/plans/stories/epic-3-story-3.1-repo-scaffold.md`

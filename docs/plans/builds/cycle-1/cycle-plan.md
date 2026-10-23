@@ -44,7 +44,8 @@ Each day ends with **production-ready, deployable code** — no partial or broke
 ## Acceptance Criteria
 
 - [ ] `pnpm install` succeeds with no peer dependency errors
-- [ ] `pnpm build` produces `dist/index.es.js`, `dist/index.cjs.js`, `dist/index.d.ts`, `dist/style.css`
+- [ ] `pnpm build` produces `dist/index.es.js`, `dist/index.cjs`, `dist/index.d.ts`, `dist/style.css` (CJS file name per CR-1)
+- [ ] `require('@annexus/ui')` exposes the public API — `pnpm smoke:require` exits 0 (CR-1)
 - [ ] `pnpm test` passes with coverage report generated (0 tests — baseline empty)
 - [ ] `pnpm typecheck` passes (0 TypeScript errors, strict mode)
 - [ ] `pnpm lint` passes (0 ESLint errors)
@@ -53,6 +54,12 @@ Each day ends with **production-ready, deployable code** — no partial or broke
 - [ ] Chromatic project connected — baseline run complete
 - [ ] `.npmrc` correctly scopes `@annexus` to GitHub Packages registry
 - [ ] Palette and design variables compile; `designVariables` is importable from `@annexus/ui` with the exported values
+
+## Scope Changes
+
+| CR | Date | Change | Stories |
+|----|------|--------|---------|
+| CR-1 | 2026-10-21 | CommonJS entry is `dist/index.cjs`; `smoke:require` check (BUG-002) | CR-1.1 added (supersedes 3.1, done); 3.6 adds a CI step; 5.7 (CYCLE-4) release verification — see `CR/CR-1/` |
 
 ## Open Items
 

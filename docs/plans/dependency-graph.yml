@@ -223,6 +223,7 @@ stories:
     github: null
     azure_devops: null
     wave: 1
+    superseded_by: CR-1.1   # CR-1 (2026-10-21) — tombstoned; wave frozen
     requires: []
     enables: [3.2, 3.3, 3.4, 3.5, 3.6]
     files_touched:
@@ -298,7 +299,7 @@ stories:
     github: null
     azure_devops: null
     wave: 3
-    requires: [3.1, 3.2, 3.3, 3.4, 3.5]
+    requires: [CR-1.1, 3.2, 3.3, 3.4, 3.5]   # CR-1: 3.1 → CR-1.1
     enables: []
     files_touched:
       - .github/workflows/ci.yml
@@ -640,6 +641,28 @@ stories:
       - CHANGELOG.md
       - package.json
 
+  # ── CR-1 (cycle-1) ──────────────────────────────────────────────────────────
+  - id: CR-1.1
+    title: CommonJS entry as dist/index.cjs + smoke:require
+    epic: 6
+    cr_id: CR-1
+    jira: LOCAL
+    github: null
+    azure_devops: null
+    wave: 10
+    supersedes: [3.1]
+    requires: []
+    enables: [3.2, 3.3, 3.4, 3.5, 3.6]
+    files_touched:
+      - package.json
+      - tsconfig.json
+      - vite.config.ts
+      - .npmrc
+      - .prettierrc
+      - .eslintrc.cjs
+      - pnpm-workspace.yaml
+      - scripts/smoke-require.cjs
+
 waves:
   # Wave numbers follow strict cycle order (renumbered 2026-10-20, CR-001).
   # ── CYCLE-1 Foundation ───────────────────────────────────────────────────────
@@ -713,3 +736,10 @@ waves:
     assignments:
       - dev: 1
         stories: [5.7]
+
+  # ── CR-1 rework (appended after max wave per sealing model) ─────────────────
+  - wave: 10
+    stories: [CR-1.1]
+    assignments:
+      - dev: 2
+        stories: [CR-1.1]   # implemented in f9a4808

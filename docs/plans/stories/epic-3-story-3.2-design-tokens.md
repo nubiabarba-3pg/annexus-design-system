@@ -15,7 +15,7 @@
   - src/styles/scss-modules.d.ts
   - src/index.ts
 **Roles Ref**: docs/requirements.md#roles--permissions-matrix — single-actor — no role variation
-**QA Candidate**: Yes — **Observable:** `pnpm build` exits 0; `import { designVariables } from '@annexus/ui'` returns an object whose values equal the SCSS variables (e.g. `inputLabelColor === '#414651'`); component SCSS contains no hex values.
+**QA Candidate**: Yes — **Observable:** `pnpm build` exits 0; `import { designVariables } from '@annexus/ui'` returns an object whose values equal the SCSS variables (e.g. `inputLabelColor === '#404042'`); component SCSS contains no hex values.
 
 ---
 
