@@ -47,10 +47,13 @@ graph TD
 
 | Wave | Stories | Per Dev | Dev Assignments | QA Assignments | Notes |
 |------|---------|---------|----------------|----------------|-------|
-| 2 | 4 | 2 each | Dev-1: [3.3, 3.4] / Dev-2: [3.2, 3.5] | QA-1: [3.1 regression, 3.2, 3.3, 3.4, 3.5] | ✅ All active |
-| 3 | 1 | — | Dev-1: [3.6] | QA-1: [3.6] + CYCLE-1 sign-off | ✅ All active |
+| 2 | 4 | 1 / 3 | Dev-1: [3.3] / Dev-2: [3.2, 3.4, 3.5] | QA-1: [3.1 regression, 3.2, 3.3, 3.4, 3.5] | Rebalanced 2026-10-23: 3.4 moved to Angel (3.2 done, 3.5 in review) so Salvador can focus on the 3.3 rework |
+| 3 | 1 | — | Dev-2: [3.6] | QA-1: [3.6] + CYCLE-1 sign-off | Rebalanced 2026-10-23: 3.6 moved to Angel; Salvador is free to start CYCLE-2 prep |
 | 4 | 8 | 4 each | Dev-1: [1.1, 1.3, 1.5, 2.1] / Dev-2: [1.2, 1.4, 1.6, 2.2] | QA-1: all 8 — as each story leaves review | ✅ All active |
 | 5 | 2 | 1 each | Dev-1: [2.3] / Dev-2: [2.4] | QA-1: [2.3, 2.4] + CYCLE-2 regression | ✅ All active |
+| 6 | 11 | 6 / 5 | Dev-1: [4.1, 4.3, 4.5, 4.7, 4.9, 4.11] / Dev-2: [4.2, 4.4, 4.6, 4.8, 4.10] | QA-1: all 11 — as each story leaves review | Added 2026-10-23 |
+| 7 | 5 | 3 / 2 | Dev-1: [5.1, 5.3, 5.5] / Dev-2: [5.4, 5.6] | QA-1: all 5 | Added 2026-10-23 |
+| 8–9 | 2 | 1 each | Dev-1: [5.2] / Dev-2: [5.7] | QA-1: [5.2, 5.7] + CYCLE-4 regression | Added 2026-10-23 |
 
 **Assignees**: Dev-1 = Salvador · Dev-2 = Angel · QA-1 = Vicky
 
