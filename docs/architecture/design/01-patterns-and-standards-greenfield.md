@@ -222,10 +222,8 @@ interface IButtonProps { type: any; size: string; } // `any` + I-prefix + loose 
 
 **✅ DO: Derive classNames from typed props using a utility**
 ```typescript
-// utils/classNames.ts
-export function classNames(...classes: (string | undefined | false | null)[]): string {
-  return classes.filter(Boolean).join(' ');
-}
+// utils/classNames.ts — thin, swappable re-export of clsx (strings, falsy values, arrays)
+export { clsx as classNames } from 'clsx';
 
 // Button.tsx — using classNames util
 const buttonClass = classNames(
@@ -669,10 +667,10 @@ No runtime exceptions for consumers. Errors are caught at **compile time** (Type
 
 **✅ DO: Validate in development only, fail silently in production**
 ```typescript
-// utils/devWarning.ts
-export function devWarning(condition: boolean, message: string): void {
-  if (process.env.NODE_ENV !== 'production' && !condition) {
-    console.warn(`[Annexus UI] ${message}`);
+// utils/devWarning.ts — logs `[Component] message` when condition is false (dev only)
+export function devWarning(condition: boolean, component: string, message: string): void {
+  if (!condition && process.env.NODE_ENV !== 'production') {
+    console.warn(`[${component}] ${message}`);
   }
 }
 
@@ -680,7 +678,8 @@ export function devWarning(condition: boolean, message: string): void {
 export function Slider({ min = 0, max = 100, value, ...rest }: SliderProps) {
   devWarning(
     value === undefined || (value >= min && value <= max),
-    `Slider: value (${value}) is outside the range [${min}, ${max}].`,
+    'Slider',
+    `value (${value}) is outside the range [${min}, ${max}].`,
   );
   // ...
 }
