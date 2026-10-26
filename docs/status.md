@@ -33,11 +33,8 @@
 | Build Cycles | ✅ Done | BUILD_CYCLE_PLANNER | 2026-10-12 | `docs/plans/builds/` | 2026-10-12 11:30 |
 | UI/UX Design | ✅ Done | UI_UX_DESIGNER | 2026-10-12 | `docs/ui-ux/ui-ux-spec.md` | 2026-10-12 12:00 |
 | Implementation Plan | ✅ Done (updated CR-001) | PRODUCT_OWNER | 2026-10-20 | `docs/plans/implementation-plan.md` | 2026-10-13 12:00 |
-| Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.5-code-review-v1.md` | 2026-10-21 15:00 |
-| QA | ✅ Done | QA | 2026-10-19 | `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-19 14:30 |
-| Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.2-code-review-v1.md` | 2026-10-21 12:30 |
-| QA | ✅ Done | QA | 2026-10-21 | `docs/testing/validation-report-story-3.2-2026-10-21-v2.md` | 2026-10-21 16:29 |
-| Review | 🟡 In Progress | REVIEWER | 2026-10-26 | `docs/reviews/story-3.3-code-review-v2.md` (3.3 ✅ APPROVED) | 2026-10-26 11:09 |
+| Review | 🟡 In Progress | REVIEWER | 2026-10-26 | `docs/reviews/story-3.3-code-review-v2.md` (3.3 ✅ APPROVED); `docs/reviews/story-3.5-code-review-v1.md`; `docs/reviews/story-3.2-code-review-v1.md` | 2026-10-26 11:09 |
+| QA | ✅ Done | QA | 2026-10-21 | `docs/testing/validation-report-story-3.2-2026-10-21-v2.md`; `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-21 16:29 |
 
 ---
 
