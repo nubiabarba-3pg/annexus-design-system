@@ -1,11 +1,8 @@
 # Project Status
 
-**Last Updated**: 2026-10-21
-**Updated By**: DEV
-**Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 1/6 stories done; 3.5 implemented (review + QA pending); 3.4, 3.6 not started
-**Last Updated**: 2026-10-22
-**Updated By**: AIRE_STATUS
-**Overall Status**: 🟡 AT RISK — CYCLE-1 due 2026-10-22 with 2/7 stories done (CR-1.1, 3.2); 3.3 needs rework, 3.5 in review (PR #13), 3.4 and 3.6 not started
+**Last Updated**: 2026-10-26
+**Updated By**: REVIEWER
+**Overall Status**: 🔴 BEHIND — CYCLE-1 was due 2026-10-22; 2/7 stories done (CR-1.1, 3.2); 3.3 rework implemented, remediated and re-reviewed ✅ APPROVED 2026-10-26 (QA pending; Story 1.2 TSDoc fix DEF-3.3-01 should land first); 3.5 merged (PR #13, QA pending); 3.4 and 3.6 not started
 
 ---
 
@@ -40,10 +37,36 @@
 | QA | ✅ Done | QA | 2026-10-19 | `docs/testing/validation-report-story-3.1-2026-10-19.md` | 2026-10-19 14:30 |
 | Review | 🟡 In Progress | REVIEWER | 2026-10-21 | `docs/reviews/story-3.2-code-review-v1.md` | 2026-10-21 12:30 |
 | QA | ✅ Done | QA | 2026-10-21 | `docs/testing/validation-report-story-3.2-2026-10-21-v2.md` | 2026-10-21 16:29 |
+| Review | 🟡 In Progress | REVIEWER | 2026-10-26 | `docs/reviews/story-3.3-code-review-v2.md` (3.3 ✅ APPROVED) | 2026-10-26 11:09 |
 
 ---
 
 ## Current Step Details
+
+### Implementation — Story 3.3
+
+**Owner**: DEV (Salvador)
+**Status**: ✅ Implemented (rework on CR-001 baseline), remediated (4/4), re-review ✅ APPROVED — pending QA (after DEF-3.3-01)
+**Started**: 2026-10-26
+
+**Progress**:
+- [x] `.storybook/main.ts` + `.storybook/preview.ts` on fresh branch `feat/cycle-1-story-3.3-storybook-rework` (supersedes closed PR #5) ✅
+  - Evidence: `docs/stories-implemented/story-3.3-review.md`
+  - `pnpm build-storybook` red (exit 7, no config) → green (exit 0); `storybook-static/index.html` exists; idempotent (66 = 66 files)
+  - `pnpm storybook` on :6006; headless Chrome: Accessibility tab present, 0 violations on `Atoms/Input`; autodocs page renders
+  - 35/35 tests, coverage 100%, lint/typecheck/build/smoke:require exit 0; `.storybook/` strict tsc + eslint exit 0
+  - `@storybook/addon-essentials` aligned 8.6.14 → 8.6.19 (removes the incompatible-packages warning)
+  - Console: 0 messages come from this config. 3 external ones are documented: a Storybook 8.6.19 dev-server favicon 404, and 2 React warnings caused by Story 1.2's TSDoc at `Input.types.ts:4`
+- [x] ADO #23668 → In Progress ✅
+- [x] `aire-review-code` for 3.3 — ⚠️ APPROVED WITH COMMENTS | 0 🔴 | 0 🟠 | 1 🟡 | 3 🟢 ✅
+  - Evidence: `docs/reviews/story-3.3-code-review-v1.md`
+  - ISS-001 🟡: AC6 not met on first launch (landing page is the Input docs page). The Story 1.2 TSDoc fix is untracked
+- [x] Remediation 2026-10-26 from `story-3.3-code-review-v1.md`: ISS-001..004 fixed (4/4, doc-only) ✅ (35/35 tests, coverage 100%, lint/typecheck/build-storybook clean)
+  - Evidence: `docs/reviews/story-3.3-code-review-v1.md` (banner + Remediation Section)
+  - Story 1.2 TSDoc fix tracked as DEF-3.3-01 (Blockers, owner Angel); it should land before 3.3 QA
+- [x] Re-review (v2, NEW_CHANGES) — ✅ APPROVED | 0 🔴 | 0 🟠 — ISS-001..004 verified resolved; code/config unchanged since v1 ✅
+  - Evidence: `docs/reviews/story-3.3-code-review-v2.md`
+- [ ] QA validation (Vicky), after DEF-3.3-01 lands
 
 ### Implementation — Story 3.5
 
@@ -212,10 +235,9 @@
 | CYCLE-2 | 2.4 | Modal component (Input state + Add Benefits state) | #23660 | — | — | 2026-10-12 13:00 |
 | CYCLE-1 | 3.1 | Repo Scaffold (superseded by CR-1.1 — CR-1) | #23665 | 2026-10-14 | 2026-10-14 | 2026-10-14 |
 | CYCLE-1 | 3.2 | Design System Styles (merged PR #7; review + remediation PR #9; QA ✅ approved 2026-10-21 after BUG-001/BUG-002 fixes, PR #14) | #23669 | 2026-10-20 | — | 2026-10-13 12:00 |
-| CYCLE-1 | 3.3 | Storybook 8.x Setup (PR #5 closed unmerged 2026-10-20 — needs rework on CR-001 baseline) | #23668 | 2026-10-20 | — | 2026-10-13 12:00 |
+| CYCLE-1 | 3.3 | Storybook 8.x Setup (PR #5 closed unmerged 2026-10-20; rework started and implemented 2026-10-26 on `feat/cycle-1-story-3.3-storybook-rework`; review ⚠️ v1; remediation started 2026-10-26; QA pending) | #23668 | 2026-10-20 | — | 2026-10-26 10:40 |
 | CYCLE-1 | 3.4 | Vitest + RTL Setup | #23666 | — | — | 2026-10-13 12:00 |
-| CYCLE-1 | 3.5 | Shared Utilities and Types (implemented 2026-10-21; review + QA pending) | #23667 | 2026-10-21 | — | 2026-10-13 12:00 |
-| CYCLE-1 | 3.5 | Shared Utilities and Types (PR #13 open, awaiting review) | #23667 | — | — | 2026-10-22 |
+| CYCLE-1 | 3.5 | Shared Utilities and Types (implemented 2026-10-21; reviewed ⚠️ + remediated; merged PR #13 2026-10-23; QA pending) | #23667 | 2026-10-21 | — | 2026-10-26 10:40 |
 | CYCLE-1 | 3.6 | CI/CD Pipeline | #23670 | — | — | 2026-10-13 12:00 |
 | CYCLE-1 | CR-1.1 | CommonJS entry as `dist/index.cjs` + `smoke:require` (CR-1; supersedes 3.1; implemented `f9a4808`, QA verified) | LOCAL | 2026-10-21 | 2026-10-21 | 2026-10-21 16:50 |
 | CYCLE-3 | 4.1 | Footer component | LOCAL | — | — | 2026-10-13 12:00 |
@@ -259,10 +281,10 @@
 
 | Metric | Target | Current | Status | Recorded |
 |--------|--------|---------|--------|----------|
-| Unit Test Coverage | ≥90% | 100% | ✅ | 2026-10-21 |
+| Unit Test Coverage | ≥90% | 100% (35/35 tests) | ✅ | 2026-10-26 10:05 |
 | Integration Tests | 100% pass | — | ⏸️ | 2026-10-12 00:00 |
-| Code Review | All stories | 4/34 | 🟡 | 2026-10-21 |
-| Documentation | All stories | 2/34 | 🟡 | 2026-10-21 |
+| Code Review | All stories | 5/34 | 🟡 | 2026-10-26 10:17 |
+| Documentation | All stories | 5/34 (self-reviews in `docs/stories-implemented/`: 1.2, 3.1, 3.2, 3.3, 3.5) | 🟡 | 2026-10-26 10:05 |
 
 ---
 
@@ -334,6 +356,22 @@
   - Evidence: `docs/testing/regression-report-2026-10-21.md`
   - 0 new failures; 2 fixed (TC-005, TC-014); 0 flaky; finding DOC-001 (docs still say `index.cjs.js`)
 
+- [x] **Story 3.3: Storybook 8.x Setup** — Implemented (rework) — 2026-10-26
+  - Evidence: `docs/stories-implemented/story-3.3-review.md`
+  - `pnpm build-storybook` exit 0 (red exit 7 before config); `storybook-static/index.html`; a11y panel 0 violations on `Atoms/Input`
+  - 35/35 tests, coverage 100%, lint/typecheck/build exit 0
+  - Follow-up for Story 1.2: backtick the `<label htmlFor>` / `<input id>` TSDoc at `src/components/Input/Input.types.ts:4` (autodocs console warnings)
+
+- [x] **Code Review — Story 3.3** — ⚠️ APPROVED WITH COMMENTS — 2026-10-26
+  - Evidence: `docs/reviews/story-3.3-code-review-v1.md`
+  - Issues: 0 🔴 | 0 🟠 | 1 🟡 | 3 🟢
+- [x] **Remediation — Story 3.3** — ✅ Resolved (4/4) — 2026-10-26
+  - Evidence: `docs/reviews/story-3.3-code-review-v1.md` (banner + Remediation Section)
+  - Doc-only fixes; 35/35 tests, coverage 100%, lint clean; DEF-3.3-01 and DOC-003 opened in Blockers for their owners
+- [x] **Code Review — Story 3.3 (v2, NEW_CHANGES)** — ✅ APPROVED — 2026-10-26
+  - Evidence: `docs/reviews/story-3.3-code-review-v2.md`
+  - Issues: 0 🔴 | 0 🟠 (new); ISS-001..004 verified resolved
+
 - [x] **Drift — CR-1** — ✅ Applied — 2026-10-21
   - Evidence: `docs/plans/builds/cycle-1/CR/CR-1/change-request.md`
   - CommonJS entry `dist/index.cjs` recorded in requirements, architecture, Story 3.1 (→ CR-1.1), 3.6, 5.7, cycle plan, implementation plan, dependency graph (DOC-001)
@@ -343,7 +381,7 @@
 ## Upcoming
 
 1. ~~**QA Story 3.1**~~ — ✅ Complete (22/22 PASS, signed off 2026-10-19)
-2. **Finish CYCLE-1 Wave 2** — 3.2 ✅ QA approved; review PR #13 (Story 3.5); rework 3.3 (PR #5 closed); `aire-dev-implement 3.4` / `3.5` in parallel → then Wave 3: 3.6 CI/CD
+2. **Finish CYCLE-1 Wave 2** — 3.2 ✅ QA approved; 3.5 merged (PR #13) → QA; 3.3 ✅ review approved (v2) → PR + QA after DEF-3.3-01 (Angel); `aire-dev-implement 3.4` (Angel) → then Wave 3: 3.6 CI/CD (Angel)
 2a. **Catch-up QA Story 1.2** — merged to main (PR #8) without a QA report
 3. **Build CYCLE-2 (Sprint 2)** — Wave 4: remaining 7 stories in parallel (1.2 already merged) → Wave 5: [2.3, 2.4]
 4. **Build CYCLE-3 (Sprint 3)** — Wave 6: all 11 stories in parallel (all independent)
@@ -356,9 +394,11 @@
 
 | ID | Description | Owner | Opened | Status | Recorded |
 |----|-------------|-------|--------|--------|----------|
-| RISK-1 | CYCLE-1 due 2026-10-22: 3.3 needs rework, 3.4/3.5/3.6 not started | DEV | 2026-10-21 | 🟡 Open | 2026-10-21 |
+| RISK-1 | CYCLE-1 was due 2026-10-22 (overdue): 3.3 review approved (QA pending, after DEF-3.3-01), 3.5 merged (QA pending), 3.4/3.6 not started | DEV | 2026-10-21 | 🔴 Open | 2026-10-26 11:09 |
 | RISK-2 | 3.6 CI/CD needs Chromatic project token + GITHUB_TOKEN confirmed | Nubia Barba | 2026-10-21 | 🟡 Open | 2026-10-21 |
 | DOC-002 | `docs/architecture-diagrams/00-system-architecture-diagrams-greenfield.md` line 111 still says `index.cjs.js` (CR-1 follow-up, outside drift allow-list) | ARCHITECT | 2026-10-21 | 🟡 Open | 2026-10-22 |
+| DEF-3.3-01 | 🟡 Story 1.2 TSDoc `src/components/Input/Input.types.ts:4` (`<label htmlFor>` / `<input id>` unquoted) causes 2 React console errors, plus a stray empty `<label>`/`<input>` in the props table, on the Input autodocs page. That page is Storybook's landing page. Fix: wrap both in backticks. Blocks a clean Story 3.3 AC6 run; should land before 3.3 QA — `docs/reviews/story-3.3-code-review-v1.md` ISS-001 | Angel (Dev-2) | 2026-10-26 | 🟡 Open | 2026-10-26 10:40 |
+| DOC-003 | Story 3.3 User Reference (`docs/plans/stories/epic-3-story-3.3-storybook.md:27, 79`) still describes pre-CR-001 `--annexus-*` custom properties; the AI Agent Reference is correct — `docs/reviews/story-3.3-code-review-v1.md` ISS-003 | PRODUCT_OWNER | 2026-10-26 | 🟡 Open | 2026-10-26 10:40 |
 | BUG-002 | 🟠 High / P1 — `require('@annexus/ui')` returns `{}` (CJS entry loaded as ESM under `"type": "module"`); blocks package release — ADO #23779 — `docs/testing/bug-triage-2026-10-21.md` | DEV | 2026-10-21 | ✅ Resolved (QA verified 2026-10-21) | 2026-10-21 16:29 |
 
 ---
@@ -388,9 +428,13 @@
 | PRODUCT_OWNER | Implementation plan complete — 5 epics, 34 stories (Waves 1–9), all 4 cycles planned | Idle | 2026-10-13 | 2026-10-13 12:00 |
 | BUILD_CYCLE_PLANNER | Build cycles complete — 4 cycles, docs/plans/builds/ | Idle | 2026-10-12 | 2026-10-12 11:30 |
 | UI_UX_DESIGNER | UI/UX spec complete — docs/ui-ux/ui-ux-spec.md | Idle | 2026-10-12 | 2026-10-12 12:00 |
+| DEV | Remediated story 3.3 (story-3.3-code-review-v1.md) — ISS-001..004 fixed (doc-only) | Idle | 2026-10-26 | 2026-10-26 10:40 |
+| DEV | Implemented story 3.3 (Salvador) — Storybook config; build-storybook exit 0; 35/35 tests, coverage 100% | Idle | 2026-10-26 | 2026-10-26 10:05 |
 | DEV | Implemented story 3.5 — 35/35 tests, coverage 100% | Idle | 2026-10-21 | 2026-10-21 14:00 |
 | DEV | Remediated story 3.2 (story-3.2-code-review-v1.md) — ISS-002/003/004 fixed | Idle | 2026-10-21 | 2026-10-21 13:00 |
 | DEV | Remediated story 3.5 (story-3.5-code-review-v1.md) — ISS-001/002/005 fixed | Idle | 2026-10-21 | 2026-10-21 16:00 |
+| REVIEWER | Re-reviewed story 3.3 (v2, NEW_CHANGES) — ✅ APPROVED; ISS-001..004 verified | Idle | 2026-10-26 | 2026-10-26 11:09 |
+| REVIEWER | Reviewed story 3.3 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 1🟡 3🟢) | Idle | 2026-10-26 | 2026-10-26 10:17 |
 | REVIEWER | Reviewed story 3.5 — ⚠️ APPROVED WITH COMMENTS (0🔴 0🟠 2🟡 3🟢) | Idle | 2026-10-21 | 2026-10-21 15:00 |
 | QA | Regression complete (story 3.1) — 0 regressions — docs/testing/regression-report-2026-10-19.md | Idle | 2026-10-19 | 2026-10-19 14:35 |
 | DEV | Remediated story 3.2 — BUG-001 (gray 700 `#404042`) and BUG-002 (CJS `index.cjs` + `smoke:require`) fixed, `f9a4808` / PR #14 | Idle | 2026-10-21 | 2026-10-22 |
